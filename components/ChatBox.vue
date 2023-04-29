@@ -1,18 +1,16 @@
 <template>
   <div class="fixed bottom-2 right-2">
-    <button v-if="!open" @click="open = true" class="bg-white p-4 rounded cursor-pointer">
+    <button v-if="!open" @click="open = true" class="btn btn-md ">
       <IconsChat />
     </button>
-    <div v-else class="box bg-gray-300 dark:bg-gray-800 rounded w-[450px] overflow-hidden">
-      <header class="h-10 bg-black overflow-hidden flex justify-end items-center p-4">
-        <span @click="open = false" class="cursor-pointer">V</span>
+    <div v-else class="card bg-base-300 w-[450px] rounded-lg">
+      <header class="bg-base-200 overflow-hidden flex justify-end items-center p-4 rounded-tr-lg rounded-tl-lg">
+        <IconsClose  @click="open = false" class="cursor-pointer" />
       </header>
-      <div class="block h-[250px]">
+      <div class="h-[250px]">
         sss
-      </div>
+      </div>   
     </div>
-
-
   </div>
 </template>
 
