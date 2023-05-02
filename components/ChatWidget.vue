@@ -11,35 +11,32 @@
 <script setup lang="ts">
 import { Message, User } from '~~/types/chat'
 
-const user = ref<User>(
-  {
-    id: 'user',
-    name: 'me'
-  }
-)
+const user = ref<User>({
+  id: 'user',
+  name: 'Ja',
+})
 
-const bot = ref<User>(
-  {
-    id: 'bot',
-    name: 'bot'
-  }
-)
+const bot = ref<User>({
+  id: 'system',
+  name: 'bot',
+})
 
 const users = computed(() => [user.value, bot.value])
 
-const { chat, response } = useChatGpt()
+const { chat } = useChatGpt()
 
-const messagesToApi = computed(
-  () => 
-    messages.value
-      .map(item =>({
-        role: item.userId,
-        content: item.text
-      }))
-      .splice(-2)
-  )
+const messagesToApi = computed(() =>
+  messages.value
+    .map((item) => ({
+      role: item.userId,
+      content: item.text,
+    }))
+    .splice(-2)
+)
 
 const messages = ref<Message[]>([])
+const typings = ref<User[]>([])
+
 async function onSendMessage(message: Message) {
   typings.value.push(bot.value)
   messages.value.push(message)
@@ -47,24 +44,18 @@ async function onSendMessage(message: Message) {
   try {
     const response = await chat(messagesToApi.value)
     typings.value = []
-    if (!response.choices[0].message?.content) return;
+    if (!response.choices[0].message?.content) return
+
     const msg = {
       id: response.id,
       userId: bot.value.id,
       createdAt: new Date(),
       text: response.choices[0].message?.content,
-    };
-  
+    }
+
     messages.value.push(msg)
   } catch (error) {
-    debugger
+    console.log(error)
   }
-
 }
-
-const typings = ref<User[]>([])
-async function onTypingMessage(user: User) {
-  typings.value.push(user)
-}
-
 </script>
