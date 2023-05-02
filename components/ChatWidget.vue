@@ -9,6 +9,7 @@
 </template>
 
 <script setup lang="ts">
+import { nanoid } from "nanoid"
 import { Message, User } from '~~/types/chat'
 
 const user = ref<User>({
@@ -22,6 +23,116 @@ const bot = ref<User>({
   name: 'ChatGPT',
   avatar: ''
 })
+
+const mockMesssages = [
+  {
+    id: nanoid(),
+    userId: 'user',
+    createdAt: new Date(),
+    text: '12345'
+  },
+  {
+    id: nanoid(),
+    userId: 'user',
+    createdAt: new Date(),
+    text: '1234'
+  },
+  {
+    id: nanoid(),
+    userId: 'user',
+    createdAt: new Date(),
+    text: '1234'
+  },
+  {
+    id: nanoid(),
+    userId: 'user',
+    createdAt: new Date(),
+    text: '1234'
+  },
+  {
+    id: nanoid(),
+    userId: 'user',
+    createdAt: new Date(),
+    text: '1234'
+  },
+  {
+    id: nanoid(),
+    userId: 'user',
+    createdAt: new Date(),
+    text: '1234'
+  },
+  {
+    id: nanoid(),
+    userId: 'user',
+    createdAt: new Date(),
+    text: '1234'
+  },
+  {
+    id: nanoid(),
+    userId: 'user',
+    createdAt: new Date(),
+    text: '1234'
+  },
+  {
+    id: nanoid(),
+    userId: 'user',
+    createdAt: new Date(),
+    text: '1234'
+  },
+  {
+    id: nanoid(),
+    userId: 'system',
+    createdAt: new Date(),
+    text: '1234'
+  },
+  {
+    id: nanoid(),
+    userId: 'system',
+    createdAt: new Date(),
+    text: '1234'
+  },
+  {
+    id: nanoid(),
+    userId: 'system',
+    createdAt: new Date(),
+    text: '1234'
+  },
+  {
+    id: nanoid(),
+    userId: 'system',
+    createdAt: new Date(),
+    text: '1234'
+  },
+  {
+    id: nanoid(),
+    userId: 'system',
+    createdAt: new Date(),
+    text: '1234'
+  },
+  {
+    id: nanoid(),
+    userId: 'user',
+    createdAt: new Date(),
+    text: '1234'
+  },
+  {
+    id: nanoid(),
+    userId: 'user',
+    createdAt: new Date(),
+    text: '1234'
+  },
+  {
+    id: nanoid(),
+    userId: 'user',
+    createdAt: new Date(),
+    text: '1234'
+  }, {
+    id: nanoid(),
+    userId: 'user',
+    createdAt: new Date(),
+    text: '1234'
+  }
+]
 
 const users = computed(() => [user.value, bot.value])
 

@@ -10,14 +10,14 @@
         <IconsClose @click="open = false" class="cursor-pointer" />
       </header>
       <div class="d-flex min-h-[100px]">
-        <div class="pt-2 pb-2 max-h-[80vh]">
+        <div ref="messageBox" class="pt-2 pb-2 max-h-[80vh] overflow-y-scroll">
           <div v-for="message in messages" :key="message.id">
             <UiChatBubble 
               :mode="messageMode(message)"
               :created-at="message.createdAt"
               :user="getUser(message.userId)"
               >
-              <Markdown :source="message?.text" class="w-full" />
+              <Markdown :source="message?.text" class="w-full break-words" />
             </UiChatBubble>
           </div>
           <div v-for="userTyping in usersTypings" :key="userTyping.id">
@@ -62,9 +62,7 @@ const emit = defineEmits<{
 
 function getUser(id: string) {
   const user = props.users.find((user) => user.id === id);
-  if(user) {
-    return user
-  }
+  if(user) return user
   return null
 }
 
@@ -90,4 +88,17 @@ const messageMode = (message: Message) => {
   if (message.userId === props.currentUser.id) return "end";
   return "start";
 };
+
+const messageBox = ref()
+watch(
+  () => [open, props.messages],
+  async (val) => {
+    if(!open.value) return
+    await nextTick()
+    messageBox.value.scrollTop = messageBox.value.scrollHeight
+  },
+  {
+    deep: true,
+  }
+)
 </script>
