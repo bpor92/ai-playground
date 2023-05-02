@@ -6,6 +6,6 @@
     </NuxtLayout>
   </div>
   <div class="max-w-full w-[900px] m-auto p-5">
-    <ChatBox/>
+    <ChatWidget/>
   </div>
 </template>
