@@ -12,7 +12,11 @@
       <div class="d-flex min-h-[100px]">
         <div class="pt-2 pb-2 max-h-[80vh]">
           <div v-for="message in messages" :key="message.id">
-            <UiChatBubble :mode="messageMode(message)">
+            <UiChatBubble 
+              :mode="messageMode(message)"
+              :created-at="message.createdAt"
+              :user="getUser(message.userId)"
+              >
               <Markdown :source="message?.text" class="w-full" />
             </UiChatBubble>
           </div>
@@ -56,7 +60,11 @@ const emit = defineEmits<{
 }>();
 
 function getUser(id: string) {
-  return props.users.find((user) => user.id === id);
+  const user = props.users.find((user) => user.id === id);
+  if(user) {
+    return user
+  }
+  return null
 }
 
 const open = ref(false);
@@ -78,7 +86,7 @@ const onSendMessage = () => {
 };
 
 const messageMode = (message: Message) => {
-  if (message.userId === "user") return "end";
+  if (message.userId === props.currentUser.id) return "end";
   return "start";
 };
 </script>

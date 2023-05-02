@@ -14,11 +14,13 @@ import { Message, User } from '~~/types/chat'
 const user = ref<User>({
   id: 'user',
   name: 'Ja',
+  avatar: ''
 })
 
 const bot = ref<User>({
   id: 'system',
-  name: 'bot',
+  name: 'ChatGPT',
+  avatar: ''
 })
 
 const users = computed(() => [user.value, bot.value])

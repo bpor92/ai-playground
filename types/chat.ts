@@ -7,7 +7,8 @@ interface Message {
 
 interface User {
   id: string,
-  name: string
+  name: string,
+  avatar: ''
 }
 
 export {
