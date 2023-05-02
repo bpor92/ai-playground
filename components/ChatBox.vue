@@ -26,6 +26,7 @@
         </div>
         <footer class="relative bottom-0 left-0 right-0 p-2">
           <textarea
+            placeholder="Ask question"
             type="text"
             class="textarea w-full"
             :value="message"
