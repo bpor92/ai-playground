@@ -17,8 +17,9 @@ export const useChatGpt = () => {
       state.value = 'complete'
       result.value = data
       return result.value
-    } catch (error) {
+    } catch (error: any) {
       state.value = 'error'
+      throw error.data.message
     }
   }
 

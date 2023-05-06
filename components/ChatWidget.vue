@@ -168,6 +168,7 @@ async function onSendMessage(message: Message) {
 
     messages.value.push(msg)
   } catch (error) {
+    typings.value = []
     console.log(error)
   }
 }
