@@ -133,7 +133,8 @@ const mockMesssages = [
     text: '1234'
   }
 ]
-
+// onMounted(() => {
+// })
 const users = computed(() => [user.value, bot.value])
 
 const { chat } = useChatGpt()
@@ -153,7 +154,6 @@ const typings = ref<User[]>([])
 async function onSendMessage(message: Message) {
   typings.value.push(bot.value)
   messages.value.push(message)
-
   try {
     const response = await chat(messagesToApi.value)
     typings.value = []

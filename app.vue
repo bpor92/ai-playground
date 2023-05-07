@@ -6,6 +6,13 @@
     </NuxtLayout>
   </div>
   <div class="max-w-full w-[900px] m-auto p-5">
-    <ChatWidget/>
+    <NuxtErrorBoundary>
+      <ChatWidget/>
+      <template #error>
+        <div>
+          dsadsadasd
+        </div>
+      </template>
+    </NuxtErrorBoundary>
   </div>
 </template>

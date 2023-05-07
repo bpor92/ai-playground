@@ -5,6 +5,27 @@
     <IconsMoon/>
     <IconsSun />
   </UiSwap>
+  <br>
+
+  <UiAlert>
+    Info - default
+    <template #actions>
+      <button class="btn btn-sm">See</button>
+    </template>
+  </UiAlert>
+  <br>
+
+  <UiAlert mode="info">info</UiAlert>
+  <br>
+
+  <UiAlert mode="success">success</UiAlert>
+  <br>
+
+  <UiAlert mode="warning">warning</UiAlert>
+  <br>
+
+  <UiAlert mode="error">error</UiAlert>
+
 </template>
 
 <script setup lang="ts">

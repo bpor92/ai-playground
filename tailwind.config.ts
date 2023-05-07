@@ -4,4 +4,10 @@ module.exports = {
     './pages/**/*.{html,vue,ts}',
     './components/**/*.{html,,vue,ts}',
   ],
+  safelist: [
+    'alert-info',
+    'alert-success',
+    'alert-error',
+    'alert-warning'
+  ]
 };
