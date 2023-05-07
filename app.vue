@@ -1,5 +1,7 @@
 <template>
   <Navbar/>
+  <UiToastContainer />
+
   <div class="md:container md:mx-auto">
     <NuxtLayout>
       <NuxtPage />

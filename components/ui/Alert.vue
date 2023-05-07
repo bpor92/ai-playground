@@ -18,8 +18,7 @@ import IconsInfo from "~~/components/icons/Info.vue"
 import IconsSuccess from "~~/components/icons/Success.vue"
 import IconsWarning from "~~/components/icons/Warning.vue"
 import IconsError from "~~/components/icons/Error.vue"
-
-type Mode = 'success' | 'info' | 'warning' | 'error'
+import { type Mode } from '~~/types/alert'
 
 interface Props {
   mode?: Mode

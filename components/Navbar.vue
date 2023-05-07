@@ -32,7 +32,11 @@
     </div>
     <div class="navbar-center hidden lg:flex">
       <ul class="menu menu-horizontal px-1">
-        <li><a>Item 1</a></li>
+        <li>
+          <NuxtLink to="/ui">
+            UI
+          </NuxtLink>
+        </li>
         <li tabindex="0">
           <a>
             Parent
@@ -68,8 +72,3 @@ watch(swap, (value: Boolean) => {
   document.querySelector('html')!.setAttribute('data-theme', theme);
 })
 </script>
-
-
-<style scoped>
-
-</style>

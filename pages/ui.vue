@@ -26,8 +26,27 @@
 
   <UiAlert mode="error">error</UiAlert>
 
+  <!-- <UiToast horizontal="right" vertical="top">
+    <UiAlert mode="success">success</UiAlert>
+  </UiToast> -->
+
+
+  <span @click="addToast">
+    Add Toast
+  </span>
+
 </template>
 
 <script setup lang="ts">
+const { add } = useToast()
 const swap = ref(false)
+
+const addToast = () => {
+  add({
+    id: Math.random().toString(),
+    title: Math.random().toString(),
+    content: Math.random().toString(),
+    mode: 'success'
+  })
+}
 </script>
