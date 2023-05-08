@@ -23,7 +23,6 @@ export default defineEventHandler(async (event) => {
       messages: body.messages || [],
       temperature: body.temperature || 1,
       ...twitterAgent(body)
-      // ...customerSupportAgent(body),
     });
   
     return completion.data;

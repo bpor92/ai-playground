@@ -1,11 +1,4 @@
-import { type Mode } from '~~/types/alert'
-
-interface Toast {
-  id: string,
-  title: string,
-  content: string,
-  mode: Mode
-}
+import { Toast } from "~/types/toast"
 
 const toasts = ref<Toast[]>([])
 

@@ -9,8 +9,8 @@
 </template>
 
 <script setup lang="ts">
-import { nanoid } from "nanoid"
 import { Message, User } from '~~/types/chat'
+import { nanoid } from "nanoid"
 
 const user = ref<User>({
   id: 'user',
@@ -24,120 +24,7 @@ const bot = ref<User>({
   avatar: ''
 })
 
-const mockMesssages = [
-  {
-    id: nanoid(),
-    userId: 'user',
-    createdAt: new Date(),
-    text: '12345'
-  },
-  {
-    id: nanoid(),
-    userId: 'user',
-    createdAt: new Date(),
-    text: '1234'
-  },
-  {
-    id: nanoid(),
-    userId: 'user',
-    createdAt: new Date(),
-    text: '1234'
-  },
-  {
-    id: nanoid(),
-    userId: 'user',
-    createdAt: new Date(),
-    text: '1234'
-  },
-  {
-    id: nanoid(),
-    userId: 'user',
-    createdAt: new Date(),
-    text: '1234'
-  },
-  {
-    id: nanoid(),
-    userId: 'user',
-    createdAt: new Date(),
-    text: '1234'
-  },
-  {
-    id: nanoid(),
-    userId: 'user',
-    createdAt: new Date(),
-    text: '1234'
-  },
-  {
-    id: nanoid(),
-    userId: 'user',
-    createdAt: new Date(),
-    text: '1234'
-  },
-  {
-    id: nanoid(),
-    userId: 'user',
-    createdAt: new Date(),
-    text: '1234'
-  },
-  {
-    id: nanoid(),
-    userId: 'system',
-    createdAt: new Date(),
-    text: '1234'
-  },
-  {
-    id: nanoid(),
-    userId: 'system',
-    createdAt: new Date(),
-    text: '1234'
-  },
-  {
-    id: nanoid(),
-    userId: 'system',
-    createdAt: new Date(),
-    text: '1234'
-  },
-  {
-    id: nanoid(),
-    userId: 'system',
-    createdAt: new Date(),
-    text: '1234'
-  },
-  {
-    id: nanoid(),
-    userId: 'system',
-    createdAt: new Date(),
-    text: '1234'
-  },
-  {
-    id: nanoid(),
-    userId: 'user',
-    createdAt: new Date(),
-    text: '1234'
-  },
-  {
-    id: nanoid(),
-    userId: 'user',
-    createdAt: new Date(),
-    text: '1234'
-  },
-  {
-    id: nanoid(),
-    userId: 'user',
-    createdAt: new Date(),
-    text: '1234'
-  }, {
-    id: nanoid(),
-    userId: 'user',
-    createdAt: new Date(),
-    text: '1234'
-  }
-]
-// onMounted(() => {
-// })
 const users = computed(() => [user.value, bot.value])
-
-const { chat } = useChatGpt()
 
 const messagesToApi = computed(() =>
   messages.value
@@ -155,6 +42,7 @@ async function onSendMessage(message: Message) {
   typings.value.push(bot.value)
   messages.value.push(message)
   try {
+    const { chat } = useChatGpt()
     const response = await chat(messagesToApi.value)
     typings.value = []
     if (!response.choices[0].message?.content) return
@@ -169,7 +57,13 @@ async function onSendMessage(message: Message) {
     messages.value.push(msg)
   } catch (error) {
     typings.value = []
-    console.log(error)
+    const { add } = useToast()
+    add({
+      id: nanoid(),
+      title: 'Error:',
+      content: error as string,
+      mode: 'error'
+    })
   }
 }
 </script>
