@@ -7,7 +7,7 @@
         </label>
         <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
           <li>
-            <NuxtLink to="/ui">
+            <NuxtLink to="/job-description-generator">
               Job description generator
             </NuxtLink>
           </li>
@@ -40,7 +40,7 @@
     <div class="navbar-center hidden lg:flex">
       <ul class="menu menu-horizontal px-1">
         <li>
-          <NuxtLink to="/ui">
+          <NuxtLink to="/job-description-generator">
             Job description generator
           </NuxtLink>
         </li>

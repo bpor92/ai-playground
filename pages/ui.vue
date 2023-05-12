@@ -26,11 +26,16 @@
 
   <UiAlert mode="error">error</UiAlert>
 
-  <br />
+  <br>
+  <br>
+  <UiSteps @click="value => step = value" :currentStep="step" :items="[{title: 'First'}, {title: 'Second'}, {title: 'Third'}, {title: 'Four'}]"/>
 
-  <span @click="addToast">
+  <br>
+  <br>
+
+  <div @click="addToast">
     Add Toast
-  </span>
+  </div>
 
 </template>
 
@@ -46,4 +51,6 @@ const addToast = () => {
     mode: 'success'
   })
 }
+
+const step = ref<Number>(3)
 </script>
