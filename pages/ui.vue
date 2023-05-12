@@ -28,7 +28,15 @@
 
   <br>
   <br>
-  <UiSteps @click="value => step = value" :currentStep="step" :items="[{title: 'First'}, {title: 'Second'}, {title: 'Third'}, {title: 'Four'}]"/>
+
+  <UiSteps @click="value => step = value" :currentStep="step" :items="items"/>
+
+  <br>
+  <br>
+
+  <pre>{{ tab }}</pre>
+
+  <UiTabs @click="value => tab = value" :activeItem="tab" :items="items"/>
 
   <br>
   <br>
@@ -52,5 +60,11 @@ const addToast = () => {
   })
 }
 
+const items = [{title: 'First', id: 'FIRST'}, {title: 'Second', id: 'SECOND'}, {title: 'Third', id: 'THIRD'}, {title: 'Four', id: 'FOUR'}]
+
 const step = ref<Number>(3)
+
+const tab = ref<string>('FIRST')
+
+
 </script>
