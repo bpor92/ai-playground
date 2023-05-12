@@ -26,10 +26,7 @@
 
   <UiAlert mode="error">error</UiAlert>
 
-  <!-- <UiToast horizontal="right" vertical="top">
-    <UiAlert mode="success">success</UiAlert>
-  </UiToast> -->
-
+  <br />
 
   <span @click="addToast">
     Add Toast
