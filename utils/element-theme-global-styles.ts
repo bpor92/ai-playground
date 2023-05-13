@@ -4,5 +4,6 @@ export const elementThemeGlobalStyles = `
   --el-fill-color-blank: hsl(var(--b3));
   --el-border-radius-base: var(--rounded-box);
   --el-input-text-color: var(--bc);
+  --el-text-color-regular: var(--bc);
 `
 

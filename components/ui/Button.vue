@@ -1,5 +1,5 @@
 <template>
-  <button class="btn btn-primary" ><slot/></button>
+  <button class="btn" :class="classes"><slot/></button>
 </template>
 
 <script setup lang="ts">
@@ -10,4 +10,11 @@ interface Props {
 }
 
 const props = defineProps<Props>()
+
+const classes = computed(() => {
+  return {
+    [`btn-${props.mode}`]: props.mode
+  }
+})
+
 </script>

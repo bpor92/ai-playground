@@ -6,13 +6,13 @@ const alertClass = [
 ]
 
 const buttonClass = [
-  'button-info',
-  'button-success',
-  'button-error',
-  'button-warning',
-  'button-primary',
-  'button-secondary',
-  'button-link',
+  'btn-info',
+  'btn-success',
+  'btn-error',
+  'btn-warning',
+  'btn-primary',
+  'btn-secondary',
+  'btn-link',
 ]
 
 const toastClass = [

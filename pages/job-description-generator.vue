@@ -6,13 +6,15 @@
   <br>
 
   <UiForm>
-    <UiElSelect 
-      :options="jobs"
-      filterable
-      label="Job position"
-      v-model="form.position"
-    />
-    <UiButton mode="link" @click="prepareTasks">Prepare Tasks</UiButton>
+    <div>
+      <UiElSelect 
+        :options="jobs"
+        filterable
+        label="Job position"
+        v-model="form.position"
+      />
+      <UiButton v-if="form.position" mode="link" @click="prepareTasks">Prepare Tasks</UiButton>
+    </div>
 
     <UiElTextarea v-model="form.tasks" label="Tasks" :loading="prepareTasksLoader" />
     <br>
