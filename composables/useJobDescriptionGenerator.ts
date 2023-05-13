@@ -10,9 +10,7 @@ export const useJobDescriptionGnerator = () => {
       state.value = 'loading'
       const data = await $fetch('/api/job-description-generator', {
         method: "POST",
-        body: {
-          payload
-        },
+        body: payload,
       })
       state.value = 'complete'
       result.value = data

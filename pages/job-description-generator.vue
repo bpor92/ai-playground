@@ -19,15 +19,23 @@
     <br>
     <UiButton mode="primary" @click="generateJobDescription">Generate</UiButton>
   </UiForm>
+
+  <div>
+    <Markdown :source="responseDescription" class="w-full break-words" />
+
+  </div>
 </template>
 
 <script setup lang="ts">
 import { jobs } from "~/types/jobs";
+import Markdown from "vue3-markdown-it";
 
 const form = reactive({
   position: '',
   tasks: ''
 })
+
+const responseDescription = ref('')
 
 const generateJobDescription = async () => {
 
@@ -39,8 +47,9 @@ const generateJobDescription = async () => {
   }
 
   const response = await api(data)
+  if (!response.choices[0].message?.content) return
 
-
+  responseDescription.value = response.choices[0].message?.content
 }
 
 </script>

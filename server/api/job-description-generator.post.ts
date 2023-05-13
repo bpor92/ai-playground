@@ -16,8 +16,8 @@ export default defineEventHandler(async (event) => {
   try {
     const completion = await openai.createChatCompletion({
       model: "gpt-3.5-turbo",
-      messages: body.messages || [],
-      temperature: body.temperature || 1,
+      messages: [],
+      temperature: 1,
       ...jobDescriptionAgent(body)
     });
   
