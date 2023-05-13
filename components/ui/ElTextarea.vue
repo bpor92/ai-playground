@@ -2,9 +2,10 @@
   <div class="form-control">
     <label class="label" >{{ label }}:</label>
     <el-input
+      v-loading="loading"
       :model-value="modelValue"
       @update:model-value="value => emit('update:model-value', value)"
-      :rows="10"
+      :rows="5"
       type="textarea"
       :placeholder="placeholder"
     />
@@ -15,6 +16,7 @@
 const props = defineProps<{
   modelValue: string,
   label: string,
+  loading?: boolean
   placeholder?: string
 }>()
 

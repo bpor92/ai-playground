@@ -18,6 +18,15 @@
       label="aqua"
       v-model="model"
     />
+    <UiRadio 
+      name="test"
+      :value="Theme.SYMFONIA"
+      label="symfonia"
+      v-model="model"
+    />
+
+
+    
   </div>
 </template>
 

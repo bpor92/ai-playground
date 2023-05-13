@@ -1,5 +1,6 @@
 export enum Theme {
   DARK = "dark",
   AQUA = "aqua",
-  CUPCAKE = "cupcake"
+  CUPCAKE = "cupcake",
+  SYMFONIA = "symfonia"
 }

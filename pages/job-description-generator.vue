@@ -1,10 +1,8 @@
 <template>
-  <div>
-    Tworzenie opisów stanowisk na bazie zadań realizowanych przez osoby
+  <div class="prose ">
+    <h2 class="w-full">Tworzenie opisów stanowisk na bazie zadań realizowanych przez osoby</h2>
   </div>
 
-  <br>
-  <br>
   <br>
 
   <UiForm>
@@ -14,13 +12,16 @@
       label="Job position"
       v-model="form.position"
     />
+    <UiButton mode="link" @click="prepareTasks">Prepare Tasks</UiButton>
 
-    <UiElTextarea v-model="form.tasks" label="Tasks" />
+    <UiElTextarea v-model="form.tasks" label="Tasks" :loading="prepareTasksLoader" />
     <br>
     <UiButton mode="primary" @click="generateJobDescription">Generate</UiButton>
   </UiForm>
 
-  <UiMockupWindow>
+  <br>
+
+  <UiMockupWindow  >
     <Markdown :source="responseDescription" class="p-5 break-words" />
   </UiMockupWindow>
 
@@ -32,7 +33,6 @@
 <script setup lang="ts">
 import { jobs } from "~/types/jobs";
 import Markdown from "vue3-markdown-it";
-import { UiMockupWindow } from "~/.nuxt/components";
 
 const form = reactive({
   position: '',
@@ -40,9 +40,7 @@ const form = reactive({
 })
 
 const responseDescription = ref('')
-
 const generateJobDescription = async () => {
-
   const { api } = useJobDescriptionGnerator()
 
   const data = {
@@ -54,6 +52,22 @@ const generateJobDescription = async () => {
   if (!response.choices[0].message?.content) return
 
   responseDescription.value = response.choices[0].message?.content
+}
+
+const prepareTasksLoader = ref<boolean>(false)
+const prepareTasks = async () => {
+  const { api } = usePrepareTask()
+
+  const data = {
+    position: form.position,
+  }
+  prepareTasksLoader.value = true
+  const response = await api(data)
+  
+  if (!response.choices[0].message?.content) return
+  
+  form.tasks = response.choices[0].message?.content
+  prepareTasksLoader.value = false
 }
 
 </script>

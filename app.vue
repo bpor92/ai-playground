@@ -1,20 +1,20 @@
 <template>
-  <Navbar/>
-  <UiToastContainer />
+  <div :style="elementThemeGlobalStyles">
+    <Navbar/>
+    <UiToastContainer />
+  
+    <div class="md:container md:mx-auto mt-10">
+      <NuxtLayout>
+        <NuxtPage />
+      </NuxtLayout>
+    </div>
 
-  <div class="md:container md:mx-auto">
-    <NuxtLayout>
-      <NuxtPage />
-    </NuxtLayout>
-  </div>
-  <div class="max-w-full w-[900px] m-auto p-5">
-    <NuxtErrorBoundary>
+    <div class="max-w-full w-[900px] m-auto p-5">
       <ChatWidget/>
-      <template #error>
-        <div>
-          dsadsadasd
-        </div>
-      </template>
-    </NuxtErrorBoundary>
+    </div>
   </div>
 </template>
+
+<script setup lang="ts">
+import { elementThemeGlobalStyles } from "./utils/element-theme-global-styles";
+</script>

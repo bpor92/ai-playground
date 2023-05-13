@@ -34,5 +34,21 @@ module.exports = {
     ...alertClass,
     ...toastClass,
     ...buttonClass
-  ]
+  ],
+  daisyui: {
+    themes: [
+      {
+        symfonia: {
+          primary: "#009A00",
+          secondary: "#003349",
+          accent: "#37cdbe",
+          neutral: "#3d4451",
+          "base-100": "#ffffff",
+        },
+      },
+      "dark",
+      "cupcake",
+      "aqua"
+    ],
+  }
 };
