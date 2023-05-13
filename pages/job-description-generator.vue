@@ -20,15 +20,19 @@
     <UiButton mode="primary" @click="generateJobDescription">Generate</UiButton>
   </UiForm>
 
-  <div>
-    <Markdown :source="responseDescription" class="w-full break-words" />
+  <UiMockupWindow>
+    <Markdown :source="responseDescription" class="p-5 break-words" />
+  </UiMockupWindow>
 
+  <div>
   </div>
+
 </template>
 
 <script setup lang="ts">
 import { jobs } from "~/types/jobs";
 import Markdown from "vue3-markdown-it";
+import { UiMockupWindow } from "~/.nuxt/components";
 
 const form = reactive({
   position: '',

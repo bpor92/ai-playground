@@ -1,17 +1,10 @@
 import  createAgent  from '.'
 
 export const jobDescriptionAgent = createAgent((context) => {
-  let tasksPrompt = {}
-
-  if(context.tasks) {
-    tasksPrompt = {
-      role: "user",
-      content: `Create a job description for ${context.position}. The job description should include the tasks performed in this position, such as: ${context.tasks}`,
-    }
-  }else {
-    tasksPrompt = {}
-  }
-
+  const userContent = context.tasks ?
+    `Create a job description for ${context.position}. The job description should include the tasks performed in this position, such as: ${context.tasks}` :
+    `Create a job description for ${context.position}.`
+  
   return {
     messages: [
       {
@@ -19,7 +12,10 @@ export const jobDescriptionAgent = createAgent((context) => {
         content:
           "You are a human resources specialist, you help create job descriptions based on the tasks they perform.",
       },
-      tasksPrompt
+      {
+        role: "user",
+        content: userContent
+      }
     ],
     max_tokens: 1000,
   }

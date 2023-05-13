@@ -6,7 +6,7 @@ const { openai } = initializeOpenAi()
 export default defineEventHandler(async (event) => {
   const body = await readBody(event)
 
-  if (!body.position || !body.tasks) {
+  if (!body.position) {
     throw createError({
       statusCode: 400,
       statusMessage: 'Wrong body paramaters',
