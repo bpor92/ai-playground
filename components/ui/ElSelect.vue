@@ -1,0 +1,39 @@
+<template>
+  <div class="form-control">
+    <label class="label" >{{ label }}:</label>
+    <el-select 
+      :filterable="filterable"
+      :model-value="modelValue"
+      size="large"
+      @update:model-value="value => emit('update:model-value', value)"
+      :placeholder="placeholder"
+    >
+      <el-option
+        v-for="item in options"
+        :key="item.value"
+        :label="item.label"
+        :value="item.value"
+      />
+    </el-select>
+  </div>
+</template>
+
+<script lang="ts" setup>
+interface IElSelect {
+  value: string | number,
+  label: string,
+}
+
+const props = withDefaults(defineProps<{
+  modelValue: any,
+  options: IElSelect[],
+  label: string,
+  filterable?: boolean,
+  placeholder?: string
+}>(), {
+  filterable: false,
+})
+
+const emit = defineEmits(['update:model-value'])
+
+</script>

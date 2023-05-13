@@ -5,6 +5,16 @@ const alertClass = [
   'alert-warning',
 ]
 
+const buttonClass = [
+  'button-info',
+  'button-success',
+  'button-error',
+  'button-warning',
+  'button-primary',
+  'button-secondary',
+  'button-link',
+]
+
 const toastClass = [
   'toast-start',
   'toast-center',
@@ -22,6 +32,7 @@ module.exports = {
   ],
   safelist: [
     ...alertClass,
-    ...toastClass
+    ...toastClass,
+    ...buttonClass
   ]
 };
