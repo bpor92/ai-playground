@@ -3,7 +3,7 @@
     <Navbar/>
     <UiToastContainer />
   
-    <div class="md:container md:mx-auto mt-10">
+    <div class="container mx-auto mt-10 p-5">
       <NuxtLayout>
         <NuxtPage />
       </NuxtLayout>
