@@ -1,4 +1,4 @@
-import { jobDescriptionAgent } from "~/agents";
+import { jobDescriptionAgent } from "~/agents/jobDescriptionAgent";
 import { initializeOpenAi } from "../utils/openAi";
 
 const { openai } = initializeOpenAi()

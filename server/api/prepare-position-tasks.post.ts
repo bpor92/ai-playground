@@ -1,4 +1,4 @@
-import { preparePositionAgent } from "~/agents";
+import { preparePositionAgent } from "~/agents/preparePositionAgent";
 import { initializeOpenAi } from "../utils/openAi";
 
 const { openai } = initializeOpenAi()

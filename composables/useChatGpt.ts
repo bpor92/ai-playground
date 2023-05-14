@@ -8,7 +8,7 @@ export const useChatGpt = () => {
   async function chat(messages: ApiMessage[]){
     try {
       state.value = 'loading'
-      const data = await $fetch('/api/ai', {
+      const data = await $fetch('/api/chat', {
         method: "POST",
         body: {
           messages
