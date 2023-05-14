@@ -1,6 +1,6 @@
 <template>
   <div class="prose ">
-    <h2 class="w-full">Tworzenie opisów stanowisk na bazie zadań realizowanych przez osoby</h2>
+    <h2 class="w-full">Job description based on the tasks performed</h2>
   </div>
 
   <br>
@@ -34,7 +34,7 @@
 </template>
 
 <script setup lang="ts">
-import { jobs } from "~/types/jobs";
+import { jobs } from "~/types/employee-position";
 import Markdown from "vue3-markdown-it";
 
 const form = reactive({

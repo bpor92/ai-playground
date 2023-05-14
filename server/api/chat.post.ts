@@ -1,20 +1,9 @@
-import { Configuration, OpenAIApi } from "openai";
+import { initializeOpenAi } from "../utils/openAi";
+
+const { openai } = initializeOpenAi()
 
 export default defineEventHandler(async (event) => {
   const body = await readBody(event)
-  const { OPENAI_API_KEY } = useRuntimeConfig()
-
-  const configuration = new Configuration({
-    apiKey: OPENAI_API_KEY,
-  });
-  const openai = new OpenAIApi(configuration);
-
-  if (!body.url) {
-    throw createError({
-      statusCode: 400,
-      statusMessage: 'Need body url paramater',
-    })
-  }
 
   try {
     const completion = await openai.createChatCompletion({
