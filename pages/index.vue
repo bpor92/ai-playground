@@ -1,11 +1,11 @@
 <template>
   <div>
     <form>
-      <select v-model="locale">
-        <option value="en">en</option>
-        <option value="pl">pl</option>
-      </select>
-      <p>{{ $t('hello') }}</p>
+      <UiElSelect 
+        v-model="locale"
+        :label="$t('lang')"
+        :options="[{ label: 'pl', value: 'pl'}, {value: 'en', label: 'en'}]"
+      />
     </form>
   </div>
 </template>
@@ -13,3 +13,4 @@
 <script setup>
 const { locale } = useI18n()
 </script>
+

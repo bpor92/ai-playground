@@ -1,3 +1,4 @@
 {
-  "hello": "hello from locales"
+  "hello": "hello",
+  "lang": "language"
 }
