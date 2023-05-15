@@ -63,10 +63,10 @@ const form = reactive({
 })
 
 const responseDescription = ref('')
-const responseDescriptionLoader  = ref(false)
-const generateJobDescription = async () => {
-  const { api } = useJobDescriptionGenerator()
+const { api: descriptionApi, state: jobDescriptionState } = useJobDescriptionGenerator()
+const responseDescriptionLoader  = computed(() => jobDescriptionState.value === 'loading')
 
+const generateJobDescription = async () => {
   const position = useArrayFind(jobs, val => val.value === form.position).value?.label
   if(!position) throw new Error('Invalid position')
 
@@ -75,28 +75,25 @@ const generateJobDescription = async () => {
     tasks: form.tasks
   }
 
-  responseDescriptionLoader.value = true
-  const response = await api(data)
+  const response = await descriptionApi(data)
   if (!response.choices[0].message?.content) return
 
   responseDescription.value = response.choices[0].message?.content
-  responseDescriptionLoader.value = false
 }
 
-const prepareTasksLoader = ref<boolean>(false)
-const prepareTasks = async () => {
-  const { api } = usePrepareTask()
 
+const { api: taskApi, state: taskState } = usePrepareTask()
+const prepareTasksLoader  = computed(() => taskState.value === 'loading')
+
+const prepareTasks = async () => {
   const data = {
     position: form.position,
   }
-  prepareTasksLoader.value = true
-  const response = await api(data)
+  const response = await taskApi(data)
   
   if (!response.choices[0].message?.content) return
   
   form.tasks = response.choices[0].message?.content
-  prepareTasksLoader.value = false
 }
 
 </script>
