@@ -1,11 +1,11 @@
 import type { AsyncState } from "@/types/api";
 
-export const useJobDescriptionGnerator = () => {
+export const useJobDescriptionGenerator = () => {
   const state = ref<AsyncState>(null)
   const result = ref()
   const response = computed(() => result.value)
 
-  async function api(payload: any){
+  const api = async (payload: any) => {
     try {
       state.value = 'loading'
       const data = await $fetch('/api/job-description-generator', {
@@ -23,6 +23,7 @@ export const useJobDescriptionGnerator = () => {
 
   return {
     api,
-    response
+    response,
+    state
   }
 }

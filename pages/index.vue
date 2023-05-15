@@ -1,12 +1,12 @@
 <template>
   <div>
-    <form>
+    <UiForm  class="w-full  p-2 md:max-w-sm md:mx-auto">
       <UiElSelect 
         v-model="locale"
         :label="$t('lang')"
         :options="[{ label: 'pl', value: 'pl'}, {value: 'en', label: 'en'}]"
       />
-    </form>
+    </UiForm>
   </div>
 </template>
 

@@ -1,12 +1,13 @@
 <template>
-  <button class="btn" :class="classes"><slot/></button>
+  <button class="btn" :class="classes" :disabled="disabled"><slot/></button>
 </template>
 
 <script setup lang="ts">
 import { Mode } from "~/types/button";
 
 interface Props {
-  mode?: Mode
+  mode?: Mode,
+  disabled?: boolean
 }
 
 const props = defineProps<Props>()

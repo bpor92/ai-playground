@@ -8,7 +8,6 @@ export const usePrepareTask = () => {
   async function api(payload: any){
     try {
       state.value = 'loading'
-      debugger
       const data = await $fetch('/api/prepare-position-tasks', {
         method: "POST",
         body: payload,
@@ -24,6 +23,7 @@ export const usePrepareTask = () => {
 
   return {
     api,
-    response
+    response,
+    state
   }
 }

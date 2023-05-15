@@ -1,5 +1,5 @@
 <template>
-  <div class="prose ">
+  <div class="prose">
     <h2 class="w-full">Job description based on the tasks performed</h2>
   </div>
 
@@ -13,18 +13,37 @@
         label="Employee position"
         v-model="form.position"
       />
-      <UiButton v-if="form.position" mode="link" @click="prepareTasks">Prepare Tasks</UiButton>
+      <UiButton 
+        v-if="form.position"
+        mode="link" 
+        @click="prepareTasks"
+      >
+        Prepare Tasks
+      </UiButton>
     </div>
 
-    <UiElTextarea v-model="form.tasks" label="Tasks" :loading="prepareTasksLoader" />
+    <UiElTextarea 
+      v-model="form.tasks" 
+      label="Tasks" 
+      :loading="prepareTasksLoader" 
+    />
     
     <br>
-    <UiButton  mode="primary" @click="generateJobDescription">Generate</UiButton>
+    <UiButton 
+      :disabled="prepareTasksLoader || responseDescriptionLoader"  
+      mode="primary" 
+      @click="generateJobDescription"
+    >
+      Generate
+    </UiButton>
   </UiForm>
   
   <br>
   
-  <UiMockupWindow v-show="responseDescription || responseDescriptionLoader" v-loading="responseDescriptionLoader"  >
+  <UiMockupWindow
+    v-show="responseDescription || responseDescriptionLoader" 
+    v-loading="responseDescriptionLoader"
+  >
     <Markdown :source="responseDescription" class="p-5 break-words" />
   </UiMockupWindow>
 
@@ -45,7 +64,7 @@ const form = reactive({
 const responseDescription = ref('')
 const responseDescriptionLoader  = ref(false)
 const generateJobDescription = async () => {
-  const { api } = useJobDescriptionGnerator()
+  const { api } = useJobDescriptionGenerator()
 
 
   const data = {
