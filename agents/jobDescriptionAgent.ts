@@ -2,8 +2,8 @@ import  createAgent  from '.'
 
 export const jobDescriptionAgent = createAgent((context) => {
   const userContent = context.tasks ?
-    `Create a job description for ${context.position}. The job description should include the tasks performed in this position, such as: ${context.tasks}` :
-    `Create a job description for ${context.position}.`
+    `Create a job description for ${context.position}. The job description should include the tasks performed in this position, such as: ${context.tasks}. Only points` :
+    `Create a job description for ${context.position}. Only points`
   
   return {
     messages: [

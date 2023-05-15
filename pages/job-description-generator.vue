@@ -55,6 +55,7 @@
 <script setup lang="ts">
 import { jobs } from "~/types/employee-position";
 import Markdown from "vue3-markdown-it";
+import { JobDescription } from "~/types/job-description";
 
 const form = reactive({
   position: '',
@@ -66,11 +67,14 @@ const responseDescriptionLoader  = ref(false)
 const generateJobDescription = async () => {
   const { api } = useJobDescriptionGenerator()
 
+  const position = useArrayFind(jobs, val => val.value === form.position).value?.label
+  if(!position) throw new Error('Invalid position')
 
-  const data = {
-    position: useArrayFind(jobs, val => val.value === form.position).value?.label,
+  const data: JobDescription = {
+    position,
     tasks: form.tasks
   }
+
   responseDescriptionLoader.value = true
   const response = await api(data)
   if (!response.choices[0].message?.content) return
