@@ -1,7 +1,3 @@
-<script setup>
-const { locale } = useI18n()
-</script>
-
 <template>
   <div>
     <form>
@@ -13,3 +9,7 @@ const { locale } = useI18n()
     </form>
   </div>
 </template>
+
+<script setup>
+const { locale } = useI18n()
+</script>
