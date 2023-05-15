@@ -40,54 +40,54 @@
 </template>
 
 <script setup lang="ts">
-import { nanoid } from "nanoid";
-import { Message, User } from "~/types/chat";
-import Markdown from "vue3-markdown-it";
+import { nanoid } from "nanoid"
+import { Message, User } from "~/types/chat"
+import Markdown from "vue3-markdown-it"
 
 const props = withDefaults(
   defineProps<{
-    messages: Message[];
-    users: User[];
-    currentUser: User;
-    usersTypings?: User[];
+    messages: Message[]
+    users: User[]
+    currentUser: User
+    usersTypings?: User[]
   }>(),
   {
     usersTypings: () => [],
   }
-);
+)
 
 const emit = defineEmits<{
-  (e: "newMessage", payload: Message): void;
-}>();
+  (e: "newMessage", payload: Message): void
+}>()
 
 function getUser(id: string) {
-  const user = props.users.find((user) => user.id === id);
+  const user = props.users.find((user) => user.id === id)
   if(user) return user
   return null
 }
 
-const open = ref(false);
+const open = ref(false)
 
-const message = ref("");
+const message = ref("")
 const changeMessage = (event: Event) => {
-  const target = event.target as HTMLTextAreaElement;
-  message.value = target.value;
-};
+  const target = event.target as HTMLTextAreaElement
+  message.value = target.value
+}
 
 const onSendMessage = () => {
   emit("newMessage", {
     userId: props.currentUser.id,
     id: nanoid(),
     createdAt: new Date(),
-    text: message.value,
-  });
-  message.value = "";
-};
+    text: message.value
+  })
+  message.value = ""
+}
 
 const messageMode = (message: Message) => {
-  if (message.userId === props.currentUser.id) return "end";
-  return "start";
-};
+  if (message.userId === props.currentUser.id) return "end"
+  return "start"
+}
 
 const messageBox = ref()
 watch(
@@ -98,7 +98,7 @@ watch(
     messageBox.value.scrollTop = messageBox.value.scrollHeight
   },
   {
-    deep: true,
+    deep: true
   }
 )
 </script>
