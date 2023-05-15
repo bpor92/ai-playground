@@ -10,7 +10,7 @@ export const preparePositionAgent = createAgent((context) => {
       },
       {
         role: "user",
-        content:  `Create a 10 tasks for ${context.position} work.`
+        content:  `Create a 10 tasks for ${context.position} work. Only points`
       }
     ],
     max_tokens: 1000,
