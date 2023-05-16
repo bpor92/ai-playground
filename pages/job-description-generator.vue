@@ -75,10 +75,9 @@ const generateJobDescription = async () => {
     tasks: form.tasks
   }
 
-  const response = await descriptionApi(data)
-  if (!response.choices[0].message?.content) return
-
-  responseDescription.value = response.choices[0].message?.content
+  const { data: response, error } = await descriptionApi(data)
+  if(error) throw new Error(error)
+  responseDescription.value = response
 }
 
 
@@ -89,11 +88,9 @@ const prepareTasks = async () => {
   const data = {
     position: form.position,
   }
-  const response = await taskApi(data)
-  
-  if (!response.choices[0].message?.content) return
-  
-  form.tasks = response.choices[0].message?.content
+  const { data: response, error } = await taskApi(data)
+  if(error) throw new Error(error)
+  form.tasks = response
 }
 
 </script>

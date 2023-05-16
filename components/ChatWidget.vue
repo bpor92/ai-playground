@@ -43,15 +43,16 @@ async function onSendMessage(message: Message) {
   messages.value.push(message)
   try {
     const { chat } = useChatGpt()
-    const response = await chat(messagesToApi.value)
+    const { id, data, error } = await chat(messagesToApi.value)
+    if(error) throw new Error(error);
+    
     typings.value = []
-    if (!response.choices[0].message?.content) return
 
     const msg = {
-      id: response.id,
+      id,
       userId: bot.value.id,
       createdAt: new Date(),
-      text: response.choices[0].message?.content,
+      text: data,
     }
 
     messages.value.push(msg)
@@ -60,7 +61,7 @@ async function onSendMessage(message: Message) {
     const { add } = useToast()
     add({
       id: nanoid(),
-      title: 'Error:',
+      title: '',
       content: error as string,
       mode: 'error'
     })

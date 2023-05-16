@@ -36,6 +36,7 @@ module.exports = {
     ...buttonClass
   ],
   daisyui: {
+    darkTheme: 'cupcake',
     themes: [
       {
         symfonia: {
