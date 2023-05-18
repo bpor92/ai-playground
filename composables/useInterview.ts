@@ -1,17 +1,23 @@
 import type { ApiMessage, AsyncState } from "@/types/api";
 
+interface InterviewJsonGenerator {
+  file: File,
+  candidate: string
+}
+
 export const useInterview = () => {
   const state = ref<AsyncState>(null)
   const result = ref()
   const response = computed(() => result.value)
 
-  async function interviewJsonGenerator(file: string){
+  async function interviewJsonGenerator(payload: InterviewJsonGenerator){
     try {
       state.value = 'loading'
       const data = await $fetch('/api/interview', {
         method: "POST",
         body: {
-          file
+          file: payload.file,
+          candidate: payload.candidate
         },
       })
       state.value = 'complete'
