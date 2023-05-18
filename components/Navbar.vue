@@ -17,6 +17,11 @@
             </NuxtLink>
           </li>
           <li>
+            <NuxtLink to="/interview">
+              Interview
+            </NuxtLink>
+          </li>
+          <li>
             <NuxtLink to="/ui">
               UI
             </NuxtLink>
@@ -40,6 +45,11 @@
           <NuxtLink to="/chat">
             Chat
           </NuxtLink>
+        </li>
+        <li>
+            <NuxtLink to="/interview">
+              Interview
+            </NuxtLink>
         </li>
         <li>
           <NuxtLink to="/ui">
