@@ -1,6 +1,6 @@
 <template>
   <div class="form-control">
-    <label class="label" >{{ label }}:</label>
+    <label class="label" >{{ label }}</label>
     <el-input
       v-loading="loading"
       :model-value="modelValue"

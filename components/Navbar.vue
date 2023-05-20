@@ -22,6 +22,11 @@
             </NuxtLink>
           </li>
           <li>
+            <NuxtLink to="/ai-learning">
+              AI Learning
+            </NuxtLink>
+          </li>
+          <li>
             <NuxtLink to="/ui">
               UI
             </NuxtLink>
@@ -47,9 +52,14 @@
           </NuxtLink>
         </li>
         <li>
-            <NuxtLink to="/interview">
-              Interview
-            </NuxtLink>
+          <NuxtLink to="/interview">
+            Interview
+          </NuxtLink>
+        </li>
+        <li>
+          <NuxtLink to="/ai-learning">
+            AI Learning
+          </NuxtLink>
         </li>
         <li>
           <NuxtLink to="/ui">
