@@ -32,6 +32,7 @@ export const useInterview = () => {
   const rateState = ref<AsyncState>(null)
   const rateResult = ref()
   const rateLoading = computed(() => rateState.value === 'loading')
+  // TODO payload type
   const rateInterview = async (payload: any) => {
     try {
       rateState.value = 'loading'
@@ -53,9 +54,37 @@ export const useInterview = () => {
     }
   }
 
+
+  const summaryState = ref<AsyncState>(null)
+  const summaryResult = ref()
+  // TODO payload type
+  const summarizeInterview = async (payload:any) => {
+    try {
+      summaryState.value = 'loading'
+      const data = await $fetch('/api/summary-interview', {
+        method: "POST",
+        body: {
+          questions: payload.value,
+          position: payload.position,
+          level: payload.level,
+          candidate: payload.candidate,
+          positiveFeedback: payload.positiveFeedback,
+          feedback: payload.feedback
+        },
+      })
+      summaryState.value = 'complete'
+      summaryResult.value = data
+      return summaryResult.value
+    } catch (error: any) {
+      summaryState.value = 'error'
+      throw error.data.message
+    }
+  }
+  
   return {
     interviewJsonGenerator,
     rateInterview,
+    summarizeInterview,
     state,
     response,
     rateLoading,
