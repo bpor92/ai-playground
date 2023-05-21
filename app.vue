@@ -1,5 +1,6 @@
 <template>
-  <div :style="elementThemeGlobalStyles">
+  <div>
+  <!-- <div :style="elementThemeGlobalStyles"> -->
     <Navbar/>
     <UiToastContainer />
   

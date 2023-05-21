@@ -1,7 +1,7 @@
 import type { ApiMessage, AsyncState } from "@/types/api";
 
 interface InterviewJsonGenerator {
-  file: File,
+  file: string,
   candidate: string
 }
 
@@ -10,7 +10,7 @@ export const useInterview = () => {
   const result = ref()
   const response = computed(() => result.value)
 
-  async function interviewJsonGenerator(payload: InterviewJsonGenerator){
+  const interviewJsonGenerator = async (payload: InterviewJsonGenerator) => {
     try {
       state.value = 'loading'
       const data = await $fetch('/api/interview', {
@@ -29,9 +29,35 @@ export const useInterview = () => {
     }
   }
 
+  const rateState = ref<AsyncState>(null)
+  const rateResult = ref()
+  const rateLoading = computed(() => rateState.value === 'loading')
+  const rateInterview = async (payload: any) => {
+    try {
+      rateState.value = 'loading'
+      const data = await $fetch('/api/rate-interview', {
+        method: "POST",
+        body: {
+          answer: payload.answer,
+          question: payload.question,
+          position: payload.position
+        },
+      })
+      rateState.value = 'complete'
+      rateResult.value = data
+      return rateResult.value
+    } catch (error: any) {
+      rateState.value = 'error'
+      throw error.data.message
+    }
+  }
+
   return {
     interviewJsonGenerator,
+    rateInterview,
     state,
-    response
+    response,
+    rateLoading,
+    rateResult
   }
 }
