@@ -40,7 +40,8 @@ export const useInterview = () => {
         body: {
           answer: payload.answer,
           question: payload.question,
-          position: payload.position
+          position: payload.position,
+          level: payload.level,
         },
       })
       rateState.value = 'complete'

@@ -1,8 +1,11 @@
 <template>
   <div class="form-control">
-    <label class="label" >{{ label }}:</label>
+    <label class="label">
+      <span class="label-text">{{ label }}</span>
+    </label>
     <el-select 
       :filterable="filterable"
+      :label="label"
       :model-value="modelValue"
       size="large"
       @update:model-value="value => emit('update:model-value', value)"

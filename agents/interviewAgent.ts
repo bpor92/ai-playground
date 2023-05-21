@@ -23,7 +23,7 @@ export const rateInterviewAgent = createAgent((context) => {
       {
         role: "system",
         content:
-          `Przesle ci rozmowe rekrutacyjna na stanowisko ${context.position}. Rozmowa sklada sie z pytan i odpowiedzi. Ocen czy kandydat poprawnie odpowiedzial na zadane mu pytanie.`,
+          `Przesle ci rozmowe rekrutacyjna na stanowisko ${context.level} ${context.position}. Rozmowa sklada sie z pytan i odpowiedzi. Ocen czy kandydat poprawnie odpowiedzial na zadane mu pytanie. Wez pod uwage poziom kandydata.`,
       },
       {
         role: "user",
