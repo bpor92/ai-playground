@@ -5,7 +5,7 @@ export const generateAnswersAgent = createAgent((context) => {
     messages: [
       {
         role: "system",
-        content: `I WILL SEND YOU A QUESTION. THE ANSWER MUST BE ${context.answerLevel}. THE ANSWER SHOULD BE IN POLISH.`,
+        content: `I WILL SEND YOU A QUESTION. YOUR ANSWER MUST BE ${context.answerLevel}. YOUR ANSWER MUST BE IN POLISH LANGUAGE!`,
       },
       {
         role: "user",
