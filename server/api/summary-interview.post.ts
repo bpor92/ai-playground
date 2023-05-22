@@ -1,9 +1,8 @@
-// import { initializeOpenAi } from "../utils/open-ai";
 import { openAiResponseHandler } from "../utils/open-ai-response-handler";
 import { summaryInterviewAgent } from '~/agents/interviewAgent'
-import { initializeOpenAi } from "../utils/azure-open-ai";
+import { initOpenAi } from '../utils/initialize-open-ai'
 
-const { openai, model } = initializeOpenAi()
+const { openai, model } = initOpenAi()
 
 export default defineEventHandler(async (event) => {
   const body = await readBody(event)

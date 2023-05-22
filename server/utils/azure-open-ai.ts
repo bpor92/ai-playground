@@ -1,6 +1,6 @@
 import { Configuration, OpenAIApi } from "azure-openai";
 
-export const initializeOpenAi = () => {
+export const initializeAzureOpenAi = () => {
   const { AZURE_API_KEY } = useRuntimeConfig()
   
   const configuration = new Configuration({
