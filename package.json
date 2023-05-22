@@ -21,6 +21,7 @@
     "@nuxt/test-utils": "^3.4.3",
     "@nuxtjs/tailwindcss": "^6.6.7",
     "@vueuse/nuxt": "^9.13.0",
+    "azure-openai": "^0.9.4",
     "daisyui": "^2.51.5",
     "nanoid": "^4.0.1",
     "openai": "^3.2.1",
