@@ -5,7 +5,7 @@ export const usePrepareTask = () => {
   const result = ref()
   const response = computed(() => result.value)
 
-  async function api(payload: any){
+  const api = async (payload: any) => {
     try {
       state.value = 'loading'
       const data = await $fetch('/api/prepare-position-tasks', {

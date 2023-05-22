@@ -11,7 +11,7 @@ export const useGenerateAnswers = () => {
   const response = computed(() => result.value)
   const loader = computed(() => state.value === 'loading')
 
-  async function generateAnswer(payload: GenerateAnswer){
+  const generateAnswer = async (payload: GenerateAnswer) => {
     try {
       state.value = 'loading'
       const data = await $fetch('/api/generate-answers', {

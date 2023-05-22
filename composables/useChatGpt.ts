@@ -5,7 +5,7 @@ export const useChatGpt = () => {
   const result = ref()
   const response = computed(() => result.value)
 
-  async function chat(messages: ApiMessage[]){
+  const chat = async (messages: ApiMessage[]) => {
     try {
       state.value = 'loading'
       const data = await $fetch('/api/chat', {

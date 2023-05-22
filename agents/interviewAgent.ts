@@ -13,7 +13,7 @@ export const interviewAgent = createAgent((context) => {
         content: context.file
       }
     ],
-    max_tokens: 2000,
+    max_tokens: 4000,
   }
 })
 

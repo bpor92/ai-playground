@@ -38,7 +38,7 @@ const messagesToApi = computed(() =>
 const messages = ref<Message[]>([])
 const typings = ref<User[]>([])
 
-async function onSendMessage(message: Message) {
+const onSendMessage = async (message: Message) => {
   typings.value.push(bot.value)
   messages.value.push(message)
   try {

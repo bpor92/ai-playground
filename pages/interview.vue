@@ -92,9 +92,9 @@
 <script lang="ts" setup>
 import Markdown from "vue3-markdown-it"
 
-const FEEDBACK = {
-  POSITIVE: 'POSITIVE',
-  NEGATIVE: 'NEGATIVE'
+enum FEEDBACK {
+  POSITIVE = 'POSITIVE',
+  NEGATIVE = 'NEGATIVE'
 }
 
 const form = reactive({

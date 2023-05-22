@@ -60,7 +60,7 @@ const emit = defineEmits<{
   (e: "newMessage", payload: Message): void
 }>()
 
-function getUser(id: string) {
+const getUser = (id: string) => {
   const user = props.users.find((user) => user.id === id)
   if(user) return user
   return null
