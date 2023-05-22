@@ -39,9 +39,9 @@
 import { questionOptions } from '~/types/questions'
 
 enum ANSWER_LEVEL {
-  GOOD = 'dobra',
-  BAD = 'błędna',
-  NEUTRAL = 'neutralna'
+  GOOD = 'good',
+  BAD = 'wrong',
+  NEUTRAL = 'neutral'
 }
 
 interface Question{
@@ -75,11 +75,11 @@ const onSend = () => {
 
 const onGenerateAnswers = () => {
   form.questions.forEach(async (item, index) => {
-    const { api } = useGenerateAnswers()
+    const { generateAnswer, response } = useGenerateAnswers()
     form.questions[index].loader = true
-    const result = await api({ answerLevel: form.answerLevel, question: item.text })
+    await generateAnswer({ answerLevel: form.answerLevel, question: item.text })
     form.questions[index].loader = false
-    form.questions[index].value = result.data
+    form.questions[index].value = response.value.data
   })
 }
 </script>

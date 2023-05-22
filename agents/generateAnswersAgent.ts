@@ -1,13 +1,11 @@
 import  createAgent  from '.'
 
 export const generateAnswersAgent = createAgent((context) => {
-
-
   return {
     messages: [
       {
         role: "system",
-        content: `Przesle Ci pytanie. Odpowiedz musi byc ${context.answerLevel}. Odpowiedz powinna byc w jezyku polskim.`,
+        content: `I WILL SEND YOU A QUESTION. THE ANSWER MUST BE ${context.answerLevel}. THE ANSWER SHOULD BE IN POLISH.`,
       },
       {
         role: "user",
