@@ -22,8 +22,9 @@ export const rateInterviewAgent = createAgent((context) => {
     messages: [
       {
         role: "system",
-        content:
-          `Przesle ci rozmowe rekrutacyjna na stanowisko ${context.level} ${context.position}. Rozmowa sklada sie z pytan i odpowiedzi. Ocen krytycznie czy kandydat poprawnie odpowiedzial na zadane mu pytanie. Przy ocenie kandydata wez pod uwage jego poziom ${context.level}. Odpowiedz we formacie JSON we formacie: { result, rate }, result - Twoja pisemna ocena kandydata, rate Twoja ocena od 0 do 5. Odpowiedz powinna byc tylko tekstem we formacie json, bez zbednych dodatkowych prefixow. JSON nie powinien byc w markdown i zawierac dodatkowego formatowania.`,
+        content: 
+          `Na podstawie wprowadzonego pytania, oceń krytycznie odpowiedz, badz wymagający. Jesli pytanie dotyczy doświadczenia - wymagaj opisu. Wez pod uwagę poziom odpowiedzi: ${context.level}. Odpowiedz we formacie JSON we formacie: { result, rate }, result - Twoja pisemna ocena kandydata, rate Twoja ocena od 0 do 5. Odpowiedz powinna byc tylko tekstem we formacie json, bez zbednych dodatkowych prefixow. JSON nie powinien byc w markdown i zawierac dodatkowego formatowania.`
+        // `Przesle ci rozmowe rekrutacyjna na stanowisko ${context.level} ${context.position}. Rozmowa sklada sie z pytan i odpowiedzi. Ocen krytycznie czy kandydat poprawnie odpowiedzial na zadane mu pytanie. Przy ocenie kandydata wez pod uwage jego poziom ${context.level}. Odpowiedz we formacie JSON we formacie: { result, rate }, result - Twoja pisemna ocena kandydata, rate Twoja ocena od 0 do 5. Odpowiedz powinna byc tylko tekstem we formacie json, bez zbednych dodatkowych prefixow. JSON nie powinien byc w markdown i zawierac dodatkowego formatowania.`,
       },
       {
         role: "user",
