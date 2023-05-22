@@ -18,7 +18,7 @@
         </div>
       </div>
     <div class="divider"></div>
-    <div class="grid grid-cols-2 gap-5">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
       <div v-for="item in form.questions" :key="item.id" class="mb-5 self-end">
         <UiElTextarea 
           :label="item.text"

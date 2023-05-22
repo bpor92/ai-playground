@@ -1,6 +1,6 @@
 <template>
   <UiForm>
-    <div class="grid grid-cols-2 gap-5 mb-10">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-10">
       <div v-for="item in form.questions" :key="item.id" class="mb-5 self-end">
         <UiElTextarea 
           :label="item.text"
