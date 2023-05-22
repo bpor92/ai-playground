@@ -6,11 +6,11 @@ export const preparePositionAgent = createAgent((context) => {
       {
         role: "system",
         content:
-          "You are a human resources specialist, you help create job descriptions based on the tasks they perform.",
+          "YOU ARE A HUMAN RESOURCES SPECIALIST, YOU HELP CREATE JOB DESCRIPTIONS BASED ON THE TASKS THEY PERFORM. YOUR ANSWERS MUST BE IN POLISH!",
       },
       {
         role: "user",
-        content:  `Create a 10 tasks for ${context.position} work. Only points`
+        content: `CREATE A 10 TASKS FOR ${context.position} WORK. ONLY POINTS`
       }
     ],
     max_tokens: 1000,
