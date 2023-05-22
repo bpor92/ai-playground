@@ -11,8 +11,10 @@ export const initializeOpenAi = () => {
   });
   
   const openai = new OpenAIApi(configuration);
+  const model = 'CumulusPK_Test_GPT35'
 
   return {
-    openai
+    openai,
+    model
   }
 }

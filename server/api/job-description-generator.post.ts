@@ -1,8 +1,9 @@
 import { jobDescriptionAgent } from "~/agents/jobDescriptionAgent";
-import { initializeOpenAi } from "../utils/open-ai";
+// import { initializeOpenAi } from "../utils/open-ai";
 import { openAiResponseHandler } from "../utils/open-ai-response-handler";
+import { initializeOpenAi } from "../utils/azure-open-ai";
 
-const { openai } = initializeOpenAi()
+const { openai, model } = initializeOpenAi()
 
 export default defineEventHandler(async (event) => {
   const body = await readBody(event)
@@ -16,7 +17,7 @@ export default defineEventHandler(async (event) => {
 
   try {
     const completion = await openai.createChatCompletion({
-      model: "gpt-3.5-turbo",
+      model,
       messages: [],
       temperature: 1,
       ...jobDescriptionAgent(body)

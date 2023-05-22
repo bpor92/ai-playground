@@ -8,8 +8,10 @@ export const initializeOpenAi = () => {
   });
   
   const openai = new OpenAIApi(configuration);
+  const model = 'gpt-3.5-turbo'
 
   return {
-    openai
+    openai,
+    model
   }
 }
