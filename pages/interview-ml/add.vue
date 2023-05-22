@@ -1,11 +1,17 @@
 <template>
-  <UiForm class="grid grid-cols-2 gap-5">
-    <div v-for="item in form.questions" :key="item.id">
-      <UiElTextarea 
-        :label="item.text"
-        v-model="item.value"
-      />
-      <br>
+  <UiForm>
+    <div class="grid grid-cols-2 gap-5">
+      <div v-for="item in form.questions" :key="item.id" class="mb-5 self-end">
+        <UiElTextarea 
+          :label="item.text"
+          v-model="item.value"
+        />
+        <br>
+      </div>
+    </div>
+
+    <div class="flex justify-center">
+      <UiElButton  mode="success" @click="onSend">Send</UiElButton>
     </div>
   </UiForm>
 </template>
@@ -33,4 +39,8 @@ onMounted(() => {
     value: ''
   }))
 })
+
+const onSend = () => {
+
+}
 </script>

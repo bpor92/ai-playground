@@ -2,9 +2,9 @@
   <UiForm>
     <div class="divider">Candidate</div>
     
-    <div class="w-full  p-2 md:max-w-sm md:mx-auto">
+    <div class="w-full p-2 md:max-w-sm md:mx-auto">
       <UiElText
-        label="Name and surname"
+        label="Surname and name"
         v-model="form.candidate"
       />
       <UiElText
@@ -32,7 +32,7 @@
     <div v-if="questions.length" class="divider">Interview</div>
     
     <div class="grid grid-cols-2 gap-5">
-      <div v-for="(question, index) in questions" :key="index" class="flex flex-col">
+      <div v-for="(question, index) in questions" :key="index" class="flex flex-col self-end">
         <UiElTextarea 
           :label="question.question"
           v-model="question.answer"

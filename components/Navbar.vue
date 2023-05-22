@@ -12,11 +12,6 @@
             </NuxtLink>
           </li>
           <li>
-            <NuxtLink to="/chat">
-              Chat
-            </NuxtLink>
-          </li>
-          <li>
             <NuxtLink to="/interview">
               Interview
             </NuxtLink>
@@ -24,6 +19,11 @@
           <li>
             <NuxtLink to="/interview-ml">
               ML
+            </NuxtLink>
+          </li>
+          <li>
+            <NuxtLink to="/chat">
+              Chat
             </NuxtLink>
           </li>
           <li>
@@ -47,11 +47,6 @@
           </NuxtLink>
         </li>
         <li>
-          <NuxtLink to="/chat">
-            Chat
-          </NuxtLink>
-        </li>
-        <li>
           <NuxtLink to="/interview">
             Interview
           </NuxtLink>
@@ -59,6 +54,11 @@
         <li>
           <NuxtLink to="/interview-ml">
             ML
+          </NuxtLink>
+        </li>
+        <li>
+          <NuxtLink to="/chat">
+            Chat
           </NuxtLink>
         </li>
         <li>

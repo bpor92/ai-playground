@@ -1,41 +1,31 @@
 <template>
-  <div class="prose">
-    <h2 class="w-full">Job description based on the tasks performed</h2>
-  </div>
-
-  <br>
-
-  <UiForm>
-    <div >
+  <UiForm class="w-full p-2 md:max-w-sm md:mx-auto">
+    <div class="flex justify-between items-end">
       <UiElSelect 
         :options="jobs"
         filterable
         label="Employee position"
         v-model="form.position"
       />
-      <UiButton 
+  
+      <UiElButton 
         v-if="form.position"
-        mode="link" 
         @click="prepareTasks"
       >
         Prepare Tasks
-      </UiButton>
+      </UiElButton>
     </div>
 
     <UiElTextarea 
       v-model="form.tasks" 
       label="Tasks" 
+      :rows="22"
       :loading="prepareTasksLoader" 
     />
-    
-    <br>
-    <UiButton 
-      :disabled="prepareTasksLoader || responseDescriptionLoader"  
-      mode="primary" 
-      @click="generateJobDescription"
-    >
-      Generate
-    </UiButton>
+
+    <div class="flex justify-center mt-5">
+      <UiElButton :loading="prepareTasksLoader || responseDescriptionLoader" mode="success" @click="generateJobDescription">Generate</UiElButton>
+    </div>
   </UiForm>
   
   <br>
@@ -46,9 +36,6 @@
   >
     <Markdown :source="responseDescription" class="p-5 break-words" />
   </UiMockupWindow>
-
-  <div>
-  </div>
 
 </template>
 
@@ -82,7 +69,7 @@ const generateJobDescription = async () => {
 
 
 const { api: taskApi, state: taskState } = usePrepareTask()
-const prepareTasksLoader  = computed(() => taskState.value === 'loading')
+const prepareTasksLoader = computed(() => taskState.value === 'loading')
 
 const prepareTasks = async () => {
   const data = {
@@ -92,5 +79,4 @@ const prepareTasks = async () => {
   if(error) throw new Error(error)
   form.tasks = response
 }
-
 </script>

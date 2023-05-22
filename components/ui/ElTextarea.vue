@@ -1,11 +1,13 @@
 <template>
   <div class="form-control">
-    <label class="label" >{{ label }}</label>
+    <label class="label">
+      <span class="label-text">{{ label }}</span>
+    </label>
     <el-input
       v-loading="loading"
       :model-value="modelValue"
       @update:model-value="value => emit('update:model-value', value)"
-      :rows="5"
+      :rows="rows"
       type="textarea"
       :placeholder="placeholder"
     />
@@ -13,12 +15,17 @@
 </template>
 
 <script lang="ts" setup>
-const props = defineProps<{
+const props = withDefaults(defineProps<{
   modelValue: string,
   label: string,
-  loading?: boolean
+  loading?: boolean,
+  rows?: number,
   placeholder?: string
-}>()
+}>(),
+ {
+  rows: 5
+ }
+)
 
 const emit = defineEmits(['update:model-value'])
 

@@ -1,17 +1,20 @@
 <template>
-  <UiForm class="grid grid-cols-2 gap-5">
-    <div v-for="item in form.questions" :key="item.id">
-      <UiElTextarea 
-        :label="item.text"
-        v-model="item.value"
-      />
-      <UiElSelect 
-        label="Score"
-        v-model="item.score"
-        :options="scoreModel()"
-      />
-      <br>
-      <br>
+  <UiForm>
+    <div class="grid grid-cols-2 gap-5 mb-10">
+      <div v-for="item in form.questions" :key="item.id" class="mb-5 self-end">
+        <UiElTextarea 
+          :label="item.text"
+          v-model="item.value"
+        />
+        <UiElSelect 
+          label="Score"
+          v-model="item.score"
+          :options="scoreModel()"
+        />
+      </div>
+    </div>
+    <div class="flex justify-center">
+      <UiElButton  mode="success" @click="onSend">Learn</UiElButton>
     </div>
   </UiForm>
 </template>
@@ -50,6 +53,14 @@ const scoreModel = () => {
     scoreOptions.push({ value: index, label: index});
   }
   return scoreOptions
+}
+
+const route = useRoute()
+// When accessing /posts/1, route.params.id will be 1
+console.log(route.params.id)
+
+const onSend = () => {
+  debugger
 }
 
 </script>
