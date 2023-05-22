@@ -1,11 +1,12 @@
 import { Configuration, OpenAIApi } from "azure-openai";
 
 export const initializeOpenAi = () => {
-  const apiKey = "ea188ad92d2d42efb0189e0e8bd82389"
+  const { AZURE_API_KEY } = useRuntimeConfig()
+  
   const configuration = new Configuration({
-    apiKey: apiKey,
+    apiKey: AZURE_API_KEY,
     azure: {
-      apiKey: apiKey,
+      apiKey: AZURE_API_KEY,
       endpoint: "https://hakatonopenai.openai.azure.com/"
     }
   });

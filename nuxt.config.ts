@@ -4,6 +4,7 @@ export default defineNuxtConfig({
     ssr: false,
     runtimeConfig: {
         OPENAI_API_KEY: "",
+        AZURE_API_KEY: "",
     },
     i18n: {
         locales: [
