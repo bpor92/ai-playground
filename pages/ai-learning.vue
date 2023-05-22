@@ -1,13 +1,13 @@
 <template>
   <UiForm class="grid grid-cols-2 gap-5">
-    <div v-for="(item, index) in questionsModel" :key="item.id">
+    <div v-for="item in form.questions" :key="item.id">
       <UiElTextarea 
         :label="item.text"
-        v-model="form.questions[index].value"
+        v-model="item.value"
       />
       <UiElSelect 
         label="Score"
-        v-model="form.questions[index].score"
+        v-model="item.score"
         :options="scoreModel()"
       />
       <br>
