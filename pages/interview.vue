@@ -13,7 +13,7 @@
       />
       <UiElSelect 
         v-model="form.level"
-        :label="$t('Level')"
+        :label="'Level'"
         :options="[{ label: 'Junior', value: 'Junior'}, {value: 'Mid', label: 'Mid'}, {value: 'Senior', label: 'Senior'}]"
       />
 
