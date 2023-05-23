@@ -21,6 +21,7 @@
 
 <script setup lang="ts">
 import { questionOptions } from '~/types/questions'
+import { Parser } from '@json2csv/plainjs'
 
 type Score = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10
 
@@ -60,7 +61,24 @@ const route = useRoute()
 console.log(route.params.id)
 
 const onSend = () => {
-  debugger
+  let parser = new Parser({header: false})
+
+  let jsonData = form.questions.map(item => ({
+    id: item.id,
+    text: item.text,
+    value: item.value,
+    score: item.score
+  }))
+
+  let csv = parser.parse(jsonData);
+
+  var blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+  var url = URL.createObjectURL(blob);
+
+  var pom = document.createElement('a');
+  pom.href = url;
+  pom.setAttribute('download', 'ai-batch.csv');
+  pom.click();
 }
 
 </script>
