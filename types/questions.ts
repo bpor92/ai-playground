@@ -8,39 +8,39 @@ export const QUESTIONS = {
   CACHING_MECHANISM: 'CACHING_MECHANISM',
   LOAD_BALANCING: 'LOAD_BALANCING',
   SERVER_SECURITY: 'SERVER_SECURITY',
-  HTTP_PROTOCOL: 'HTTP_PROTOCOL',
+  HTTP_PROTOCOL: 'HTTP_PROTOCOL'
 }
 
 const questionsModel = {
   [QUESTIONS.REST_VS_SOAP]: {
-    text: 'What is the difference between REST and SOAP?'
+    text: 'Jaka jest różnica między REST a SOAP',
   },
   [QUESTIONS.SQL_INJECTION]: {
-    text: 'What is SQL Injection and how can it be prevented?'
+    text: 'Co to jest SQL Injection i jak można temu zapobiec?'
   },
   [QUESTIONS.DATABASE_INDEXING]: {
-    text: 'What are the advantages and disadvantages of database indexing?'
+    text: 'Jakie są zalety i wady indeksowania baz danych?'
   },
   [QUESTIONS.ORM_BENEFITS]: {
-    text: 'What is ORM (Object-Relational Mapping) and what are its benefits?'
+    text: 'Co to jest ORM (Object-Relational Mapping) i jakie są jego zalety?'
   },
   [QUESTIONS.DATABASE_PERFORMANCE_OPTIMIZATION]: {
-    text: 'What techniques can be used to optimize database performance?'
+    text: 'Co to jest ORM (Object-Relational Mapping) i jakie są jego zalety?'
   },
   [QUESTIONS.SESSIONS_VS_COOKIES]: {
-    text: 'What are the differences between sessions and cookies?'
+    text: 'Jakie są różnice między sesjami a plikami cookie?'
   },
   [QUESTIONS.CACHING_MECHANISM]: {
-    text: 'How does caching mechanism work and what are its advantages?'
+    text: 'Jak działa mechanizm buforowania i jakie są jego zalety?'
   },
   [QUESTIONS.LOAD_BALANCING]: {
-    text: 'What is load balancing and how does it impact application scalability?'
+    text: 'Co to jest równoważenie obciążenia i jak wpływa na skalowalność aplikacji?'
   },
   [QUESTIONS.SERVER_SECURITY]: {
-    text: 'What are the basic security measures that should be implemented on a server?'
+    text: 'Jakie podstawowe środki bezpieczeństwa należy wdrożyć na serwerze?'
   },
   [QUESTIONS.HTTP_PROTOCOL]: {
-    text: 'How does the HTTP protocol work and what are the differences between GET and POST methods?'
+    text: 'Jak działa protokół HTTP i jakie są różnice między metodami GET i POST?'
   }
 }
 
