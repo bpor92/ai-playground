@@ -70,9 +70,9 @@ import { questionOptions } from '~/types/questions'
 import { Parser } from '@json2csv/plainjs'
 
 enum ANSWER_LEVEL {
-  GOOD = 'dobry',
+  GOOD = 'zaawansowanym',
   BAD = 'zły',
-  NEUTRAL = 'średni'
+  NEUTRAL = 'podstawowym'
 }
 
 interface Question{
@@ -110,6 +110,7 @@ onMounted(() => {
 const onSend = async () => {
 
   const { data } = await useFetch(() => `http://localhost:8001/mark-response`,  {
+        mode: 'no-cors',
         method: "POST",
         body: [
             {
