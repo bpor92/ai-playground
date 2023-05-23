@@ -60,12 +60,14 @@
 
     <div class="flex justify-center">
       <UiElButton  mode="success" @click="onSend">Send</UiElButton>
+      <UiElButton  mode="success" @click="onCsv">to CSV</UiElButton>
     </div>
   </UiForm>
 </template>
 
 <script setup lang="ts">
 import { questionOptions } from '~/types/questions'
+import { Parser } from '@json2csv/plainjs'
 
 enum ANSWER_LEVEL {
   GOOD = 'zły',
@@ -107,6 +109,26 @@ onMounted(() => {
 
 const onSend = () => {
 
+}
+
+const onCsv = () => {
+  let parser = new Parser({header: false})
+
+  let jsonData = form.questions.map(item => ({
+    id: item.id,
+    text: item.text,
+    value: item.value
+  }))
+
+  let csv = parser.parse(jsonData);
+
+  var blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+  var url = URL.createObjectURL(blob);
+
+  var pom = document.createElement('a');
+  pom.href = url;
+  pom.setAttribute('download', 'ai-batch.csv');
+  pom.click();
 }
 
 const fileInput = ref()
