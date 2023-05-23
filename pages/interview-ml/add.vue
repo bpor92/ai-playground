@@ -138,7 +138,6 @@ const onCsv = () => {
   }
   let jsonData = form.questions.map(item => ({
     id: item.id,
-    text: item.text,
     value: item.value,
     score: answerLevel()
   }))
