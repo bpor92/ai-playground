@@ -142,14 +142,15 @@ const readFile = () =>  {
   }
 }
 
-const onGenerateAnswers = () => {
-  form.questions.forEach(async (item, index) => {
-    const { generateAnswer, response } = useGenerateAnswers()
+const onGenerateAnswers = async () => {
+  const { generateAnswer } = useGenerateAnswers()
+
+  for (let index = 0; index <= form.questions.length; index++) {
     form.questions[index].loader = true
-    await generateAnswer({ answerLevel: form.answerLevel, question: item.text })
+    const response = await generateAnswer({ answerLevel: form.answerLevel, question: form.questions[index].text })
     form.questions[index].loader = false
-    form.questions[index].value = response.value.data
-  })
+    form.questions[index].value = response.data
+  }
 }
 
 const onSendFile = async () => {
