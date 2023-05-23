@@ -61,6 +61,7 @@
 <script setup lang="ts">
 import { questionOptions } from '~/types/questions'
 import { Parser } from '@json2csv/plainjs'
+import axios from 'axios';
 
 enum ANSWER_LEVEL {
   GOOD = 'zaawansowanym',
@@ -101,14 +102,15 @@ onMounted(() => {
 const onSend = async () => {
   const body = form.questions.map(item => ({ id: item.id, question: item.text, answer: item.value }))
 
-  const { data } = await useFetch(() => `http://localhost:8001/mark-response`,  {
-    mode: 'no-cors',
-    method: "POST",
-    body
+  axios.post('http://localhost:8001/mark-response', body)
+  .then(function (response) {
+    console.log(response);
+  debugger
+
   })
-
-  console.log(data)
-
+  .catch(function (error) {
+    console.log(error);
+  });
 }
 
 
