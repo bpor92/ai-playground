@@ -25,7 +25,7 @@ const questionsModel = {
     text: 'Co to jest ORM (Object-Relational Mapping) i jakie są jego zalety?'
   },
   [QUESTIONS.DATABASE_PERFORMANCE_OPTIMIZATION]: {
-    text: 'Co to jest ORM (Object-Relational Mapping) i jakie są jego zalety?'
+    text: 'Jakich technik można użyć do optymalizacji wydajności bazy danych?'
   },
   [QUESTIONS.SESSIONS_VS_COOKIES]: {
     text: 'Jakie są różnice między sesjami a plikami cookie?'

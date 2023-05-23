@@ -72,5 +72,13 @@ Metoda POST służy do przesyłania danych do serwera. W przypadku tej metody, �
 
 Różnica między metodami GET i POST polega na tym, że metoda GET jest używana do pobierania danych, a metoda POST jest używana do przesyłania danych. Metoda GET jest szybsza i prostsza w użyciu, ale nie jest bezpieczna, ponieważ dane są przesyłane w sposób jawny. Metoda POST jest bezpieczniejsza, ponieważ dane są przesyłane w sposób ukryty, ale jest wolniejsza i bardziej skomplikowana w użyciu.</v>
 
+00:02:57.420 --> 00:03:01.340
+<v Porębski, Bartosz>Jakich technik można użyć do optymalizacji wydajności bazy danych?</v>
+
+00:03:03.400 --> 00:03:09.410
+<v Base, Patryk>Do optymalizacji wydajności bazy danych można użyć takich technik jak indeksowanie, partycjonowanie, normalizacja, denormalizacja, cache'owanie, optymalizacja zapytań, optymalizacja konfiguracji serwera bazy danych oraz optymalizacja sprzętu.</v>
+
+
+
 00:03:41.130 --> 00:03:43.630
 <v Porębski, Bartosz>O K super odezwiemy się do ciebie? Dzięki.</v>

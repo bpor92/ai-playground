@@ -1,23 +1,50 @@
 <template>
   <UiForm>
     <div class="divider">Helper</div>
-      <div class="w-full p-2 md:max-w-sm md:mx-auto">
+    <div class="w-full p-2 md:max-w-sm md:mx-auto">
 
-        <UiElSelect 
-          :options="[
-            { label: ANSWER_LEVEL.BAD, value: ANSWER_LEVEL.BAD },
-            { label: ANSWER_LEVEL.NEUTRAL, value: ANSWER_LEVEL.NEUTRAL },
-            { label: ANSWER_LEVEL.GOOD, value: ANSWER_LEVEL.GOOD }
-          ]"
-          label="Answer level"
-          v-model="form.answerLevel"
-        />
+      <UiElSelect 
+        :options="[
+          { label: ANSWER_LEVEL.BAD, value: ANSWER_LEVEL.BAD },
+          { label: ANSWER_LEVEL.NEUTRAL, value: ANSWER_LEVEL.NEUTRAL },
+          { label: ANSWER_LEVEL.GOOD, value: ANSWER_LEVEL.GOOD }
+        ]"
+        label="Answer level"
+        v-model="form.answerLevel"
+      />
 
-        <div class="flex justify-center mt-5">
-          <UiElButton  mode="success" @click="onGenerateAnswers">Generate</UiElButton>
-        </div>
+      <div class="flex justify-center mt-5">
+        <UiElButton  mode="success" @click="onGenerateAnswers">Generate</UiElButton>
       </div>
+    </div>
+    
+    <div class="divider">Candidate</div>
+    <div class="w-full p-2 md:max-w-sm md:mx-auto">
+      <UiElText
+        label="Surname and name"
+        v-model="form.candidate"
+      />
+      <UiElText
+        label="Position"
+        v-model="form.position"
+      />
+      <UiElSelect 
+        v-model="form.level"
+        :label="'Level'"
+        :options="[{ label: 'Junior', value: 'Junior'}, {value: 'Mid', label: 'Mid'}, {value: 'Senior', label: 'Senior'}]"
+      />
+
+      <br>
+      <input type="file" ref="fileInput" @change="readFile" />
+      <br>
+      <br>
+
+      <div class="flex justify-center">
+        <UiElButton  mode="success" @click="onSendFile">Send</UiElButton>
+      </div>
+    </div>
     <div class="divider"></div>
+    
     <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
       <div v-for="item in form.questions" :key="item.id" class="mb-5 self-end">
         <UiElTextarea 
@@ -29,6 +56,8 @@
       </div>
     </div>
 
+    
+
     <div class="flex justify-center">
       <UiElButton  mode="success" @click="onSend">Send</UiElButton>
     </div>
@@ -39,9 +68,9 @@
 import { questionOptions } from '~/types/questions'
 
 enum ANSWER_LEVEL {
-  GOOD = 'good',
-  BAD = 'wrong',
-  NEUTRAL = 'neutral'
+  GOOD = 'zły',
+  BAD = 'średni',
+  NEUTRAL = 'dobry'
 }
 
 interface Question{
@@ -53,11 +82,18 @@ interface Question{
 
 const form = reactive<{
   answerLevel: string,
-  questions: Question[]
+  questions: Question[],
+  candidate: string,
+  position: string,
+  level: string,
 }>({
   answerLevel: ANSWER_LEVEL.GOOD,
-  questions: []
+  questions: [],
+  candidate: 'Base, Patryk',
+  position: 'Frontend developer',
+  level: 'Junior',
 })
+
 
 const questionsModel = [...questionOptions()]
 onMounted(() => {
@@ -73,6 +109,17 @@ const onSend = () => {
 
 }
 
+const fileInput = ref()
+const fileContent = ref('')
+const readFile = () =>  {
+  const file = fileInput.value.files[0];
+  const reader = new FileReader();
+  reader.readAsText(file);
+  reader.onload = async (res: any) => {
+    fileContent.value = res.target.result
+  }
+}
+
 const onGenerateAnswers = () => {
   form.questions.forEach(async (item, index) => {
     const { generateAnswer, response } = useGenerateAnswers()
@@ -82,4 +129,19 @@ const onGenerateAnswers = () => {
     form.questions[index].value = response.value.data
   })
 }
+
+const onSendFile = async () => {
+  const loading = ElLoading.service({ fullscreen: true })
+
+  const { interviewMlJsonGenerator } = useInterview()
+  const res = await interviewMlJsonGenerator({ file: fileContent.value, candidate: form.candidate })
+  loading.close()
+  const data = JSON.parse(res.data)
+
+  data.forEach(question => {
+    const questionIndex = form.questions.findIndex(item => item.id === question.id)
+    form.questions[questionIndex].value = question.answer
+  })
+}
+
 </script>

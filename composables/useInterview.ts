@@ -29,6 +29,25 @@ export const useInterview = () => {
     }
   }
 
+  const interviewMlJsonGenerator = async (payload: InterviewJsonGenerator) => {
+    try {
+      state.value = 'loading'
+      const data = await $fetch('/api/interview-ml', {
+        method: "POST",
+        body: {
+          file: payload.file,
+          candidate: payload.candidate
+        },
+      })
+      state.value = 'complete'
+      result.value = data
+      return result.value
+    } catch (error: any) {
+      state.value = 'error'
+      throw error.data.message
+    }
+  }
+
   const rateState = ref<AsyncState>(null)
   const rateResult = ref()
   const rateLoading = computed(() => rateState.value === 'loading')
@@ -85,6 +104,7 @@ export const useInterview = () => {
     interviewJsonGenerator,
     rateInterview,
     summarizeInterview,
+    interviewMlJsonGenerator,
     state,
     response,
     rateLoading,
