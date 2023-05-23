@@ -59,7 +59,6 @@
     
 
     <div class="flex justify-center">
-      <UiElButton  mode="success" @click="onSend">Send</UiElButton>
       <UiElButton  mode="success" @click="onCsv">to CSV</UiElButton>
     </div>
   </UiForm>
@@ -113,11 +112,21 @@ const onSend = () => {
 
 const onCsv = () => {
   let parser = new Parser({header: false})
-
+  let answerLevel = () => {
+    switch(form.answerLevel) {
+      case ANSWER_LEVEL.GOOD :
+        return 10;
+      case ANSWER_LEVEL.NEUTRAL:
+        return 5;
+      default:
+        return 0;
+    }
+  }
   let jsonData = form.questions.map(item => ({
     id: item.id,
     text: item.text,
-    value: item.value
+    value: item.value,
+    score: answerLevel()
   }))
 
   let csv = parser.parse(jsonData);
