@@ -28,11 +28,6 @@
         label="Position"
         v-model="form.position"
       />
-      <UiElSelect 
-        v-model="form.level"
-        :label="'Level'"
-        :options="[{ label: 'Junior', value: 'Junior'}, {value: 'Mid', label: 'Mid'}, {value: 'Senior', label: 'Senior'}]"
-      />
 
       <br>
       <input type="file" ref="fileInput" @change="readFile" />
@@ -55,8 +50,6 @@
         <br>
       </div>
     </div>
-
-    
 
     <div class="flex justify-center">
       <UiElButton  mode="success" @click="onSend">send</UiElButton>
@@ -87,13 +80,11 @@ const form = reactive<{
   questions: Question[],
   candidate: string,
   position: string,
-  level: string,
 }>({
   answerLevel: ANSWER_LEVEL.GOOD,
   questions: [],
   candidate: 'Base, Patryk',
-  position: 'Frontend developer',
-  level: 'Junior',
+  position: 'Backend developer',
 })
 
 
@@ -108,18 +99,15 @@ onMounted(() => {
 })
 
 const onSend = async () => {
+  const body = form.questions.map(item => ({ id: item.id, question: item.text, answer: item.value }))
 
   const { data } = await useFetch(() => `http://localhost:8001/mark-response`,  {
-        mode: 'no-cors',
-        method: "POST",
-        body: [
-            {
-                "id": "TEST",
-                "question": "dff",
-                "answer": "Co to ?"
-            }
-          ]
-      })
+    mode: 'no-cors',
+    method: "POST",
+    body
+  })
+
+  console.log(data)
 
 }
 
