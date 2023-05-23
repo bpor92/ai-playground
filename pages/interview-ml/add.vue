@@ -102,15 +102,13 @@ onMounted(() => {
 const onSend = async () => {
   const body = form.questions.map(item => ({ id: item.id, question: item.text, answer: item.value }))
 
-  axios.post('http://localhost:8001/mark-response', body)
-  .then(function (response) {
-    console.log(response);
-  debugger
-
+  const { data } = await useFetch(`http://localhost:8001/mark-response`,  {
+    method: "POST",
+    body
   })
-  .catch(function (error) {
-    console.log(error);
-  });
+
+  console.log(data.value)
+
 }
 
 
