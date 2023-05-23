@@ -59,6 +59,7 @@
     
 
     <div class="flex justify-center">
+      <UiElButton  mode="success" @click="onSend">send</UiElButton>
       <UiElButton  mode="success" @click="onCsv">to CSV</UiElButton>
     </div>
   </UiForm>
@@ -107,8 +108,26 @@ onMounted(() => {
 })
 
 const onSend = () => {
+//  POST http://localhost:8001/mark-response
+//   [
+//     {
+//         "id": "TEST",
+//         "question": "dff",
+//         "answer": "Co to ?"
+//     }
+// ]
 
+// Response
+// [
+//     {
+//         "id": "TEST",
+//         "answer": "Co to ?",
+//         "question": "dff",
+//         "rate": 0
+//     }
+// ]
 }
+
 
 const onCsv = () => {
   let parser = new Parser({header: false})
