@@ -8,7 +8,6 @@ export default defineEventHandler(async (event) => {
   const body = await readBody(event)
 
   try {
-    console.log(body)
     const completion = await openai.createChatCompletion({
       model,
       messages: [],

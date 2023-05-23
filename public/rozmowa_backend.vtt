@@ -1,0 +1,76 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:02.320
+<v Porębski, Bartosz>Witam cię patryku na rozmowie rekrutacyjnej.</v>
+
+00:00:05.160 --> 00:00:05.580
+<v Base, Patryk>Witam.</v>
+
+00:00:04.280 --> 00:00:07.930
+<v Porębski, Bartosz>Jaka jest różnica między REST a SOAP?</v>
+
+00:00:11.710 --> 00:00:13.280
+<v Base, Patryk>REST i SOAP to dwa różne podejścia do tworzenia interfejsów programistycznych (API). REST jest architekturą opartą na zasobach, która wykorzystuje standardowe protokoły HTTP, takie jak GET, POST, PUT i DELETE, do przesyłania danych między klientem a serwerem. SOAP natomiast jest protokołem opartym na XML, który wykorzystuje specjalne formaty wiadomości i protokoły transportowe, takie jak HTTP, do przesyłania danych między klientem a serwerem. Główną różnicą między REST a SOAP jest to, że REST jest bardziej elastyczny i prostszy w użyciu, podczas gdy SOAP jest bardziej złożony i ma bardziej formalną strukturę.</v>
+
+00:00:35.610 --> 00:00:40.750
+<v Porębski, Bartosz>Co to jest SQL Injection i jak można temu zapobiec?</v>
+
+00:00:43.220 --> 00:00:54.840
+<v Base, Patryk>SQL Injection to atak na aplikację internetową, który polega na wprowadzeniu złośliwego kodu SQL do formularza lub innej interaktywnej części strony internetowej. Atakujący może w ten sposób uzyskać dostęp do bazy danych i wykonywać różne operacje, takie jak pobieranie, modyfikowanie lub usuwanie danych.
+
+Aby zapobiec SQL Injection, należy stosować parametryzowane zapytania SQL, które pozwalają na oddzielenie danych od kodu SQL. Należy również unikać używania niezaufanych danych wejściowych, takich jak dane wprowadzane przez użytkowników, bez uprzedniego ich sprawdzenia i walidacji. Warto również stosować mechanizmy zabezpieczające, takie jak filtrowanie danych wejściowych, ograniczanie uprawnień użytkowników do bazy danych oraz regularne aktualizowanie oprogramowania i zabezpieczeń serwera.</v>
+
+00:00:56.270 --> 00:01:00.200
+<v Porębski, Bartosz>Jakie są zalety i wady indeksowania baz danych?</v>
+
+00:01:02.110 --> 00:01:12.840
+<v Base, Patryk>Zalety indeksowania baz danych to szybsze wyszukiwanie i sortowanie danych, co przyspiesza działanie systemu. Indeksowanie również umożliwia uniknięcie powtarzających się wartości w bazie danych, co pozwala na oszczędność miejsca. Wady indeksowania to zwiększone wymagania dotyczące pamięci i zasobów procesora, co może wpłynąć na wydajność systemu. Indeksowanie również może spowodować opóźnienia w czasie dodawania, usuwania lub aktualizowania danych, co może prowadzić do problemów z synchronizacją.</v>
+
+00:01:14.170 --> 00:01:18.320
+<v Porębski, Bartosz>Co to jest ORM (Object-Relational Mapping) i jakie są jego zalety?</v>
+
+00:01:20.370 --> 00:01:28.440
+<v Base, Patryk>ORM to technologia, która umożliwia mapowanie obiektów z języka programowania na relacyjne bazy danych. Zalety ORM to m.in. łatwiejsza i szybsza implementacja aplikacji, większa czytelność kodu, unikanie błędów związanych z ręcznym mapowaniem obiektów na tabele w bazie danych oraz możliwość łatwej zmiany bazy danych bez konieczności zmiany kodu aplikacji.</v>
+
+00:01:29.640 --> 00:01:33.580
+<v Porębski, Bartosz>Jakie są różnice między sesjami a plikami cookie?</v>
+
+00:01:34.620 --> 00:01:47.290
+<v Base, Patryk>Sesje są przechowywane po stronie serwera i służą do przechowywania informacji o użytkowniku podczas jednej wizyty na stronie internetowej. Pliki cookie są przechowywane po stronie klienta (w przeglądarce) i służą do przechowywania informacji o użytkowniku między różnymi wizytami na stronie internetowej.</v>
+
+00:01:48.450 --> 00:01:52.980
+<v Porębski, Bartosz>Jak działa mechanizm buforowania i jakie są jego zalety?</v>
+
+00:01:53.840 --> 00:01:57.650
+<v Base, Patryk>Mechanizm buforowania polega na tym, że dane są tymczasowo przechowywane w pamięci podręcznej przed ich przetworzeniem lub zapisaniem na stałe. Dzięki temu procesor ma szybszy dostęp do danych i nie musi oczekiwać na ich pobranie z wolniejszych urządzeń pamięciowych, co przyspiesza działanie systemu.
+
+Zalety buforowania to przede wszystkim zwiększenie wydajności systemu, zmniejszenie opóźnień i czasu oczekiwania na dane oraz zmniejszenie obciążenia łącza komunikacyjnego. Dodatkowo, buforowanie pozwala na optymalizację wykorzystania pamięci i zwiększenie jej efektywności.
+
+Warto jednak pamiętać, że nadmierne buforowanie może prowadzić do zwiększenia zużycia pamięci i spowolnienia systemu, dlatego ważne jest odpowiednie dostosowanie mechanizmu buforowania do potrzeb i wymagań systemu.</v>
+
+00:02:13.780 --> 00:02:18.320
+<v Porębski, Bartosz>Co to jest równoważenie obciążenia i jak wpływa na skalowalność aplikacji?</v>
+
+00:02:21.490 --> 00:02:27.930
+<v Base, Patryk>Równoważenie obciążenia to proces dystrybucji ruchu sieciowego i obciążenia między różnymi serwerami w celu zapewnienia optymalnej wydajności i minimalizacji czasu odpowiedzi. Dzięki równoważeniu obciążenia aplikacja może skalować się w miarę wzrostu liczby użytkowników, ponieważ serwery są w stanie obsłużyć większą liczbę żądań. W ten sposób aplikacja może działać szybciej i bardziej niezawodnie, a użytkownicy nie doświadczają opóźnień lub awarii.</v>
+
+00:02:36.680 --> 00:02:42.890
+<v Porębski, Bartosz>Jakie podstawowe środki bezpieczeństwa należy wdrożyć na serwerze?</v>
+
+00:02:44.330 --> 00:02:55.270
+<v Base, Patryk>Należy zainstalować aktualizacje systemu operacyjnego i oprogramowania, skonfigurować zapory sieciowe, zabezpieczyć hasłami konta użytkowników, zainstalować oprogramowanie antywirusowe i przeprowadzać regularne kopie zapasowe danych.</v>
+
+00:02:57.420 --> 00:03:01.340
+<v Porębski, Bartosz>Jak działa protokół HTTP i jakie są różnice między metodami GET i POST?</v>
+
+00:03:03.400 --> 00:03:09.410
+<v Base, Patryk>Protokół HTTP służy do przesyłania danych między serwerem a klientem w Internecie. Działanie protokołu polega na tym, że klient wysyła żądanie do serwera, a serwer odpowiada na to żądanie.
+
+Metoda GET służy do pobierania danych z serwera. W przypadku tej metody, żądanie jest przesyłane w adresie URL, co oznacza, że dane są przesyłane w sposób jawny. Metoda ta jest używana do pobierania danych, takich jak strony internetowe, obrazy, pliki itp.
+
+Metoda POST służy do przesyłania danych do serwera. W przypadku tej metody, żądanie jest przesyłane w ciele żądania, co oznacza, że dane są przesyłane w sposób ukryty. Metoda ta jest używana do przesyłania danych, takich jak formularze, logowanie, dodawanie nowych rekordów itp.
+
+Różnica między metodami GET i POST polega na tym, że metoda GET jest używana do pobierania danych, a metoda POST jest używana do przesyłania danych. Metoda GET jest szybsza i prostsza w użyciu, ale nie jest bezpieczna, ponieważ dane są przesyłane w sposób jawny. Metoda POST jest bezpieczniejsza, ponieważ dane są przesyłane w sposób ukryty, ale jest wolniejsza i bardziej skomplikowana w użyciu.</v>
+
+00:03:41.130 --> 00:03:43.630
+<v Porębski, Bartosz>O K super odezwiemy się do ciebie? Dzięki.</v>

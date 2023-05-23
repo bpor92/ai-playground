@@ -13,6 +13,7 @@ export const initializeAzureOpenAi = () => {
   
   const openai = new OpenAIApi(configuration);
   const model = 'CumulusPK_Test_GPT35'
+  // const model = 'gpt4deploy'
 
   return {
     openai,

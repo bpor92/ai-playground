@@ -13,7 +13,7 @@ export const QUESTIONS = {
 
 const questionsModel = {
   [QUESTIONS.REST_VS_SOAP]: {
-    text: 'Jaka jest różnica między REST a SOAP',
+    text: 'Jaka jest różnica między REST a SOAP?',
   },
   [QUESTIONS.SQL_INJECTION]: {
     text: 'Co to jest SQL Injection i jak można temu zapobiec?'
