@@ -70,9 +70,9 @@ import { questionOptions } from '~/types/questions'
 import { Parser } from '@json2csv/plainjs'
 
 enum ANSWER_LEVEL {
-  GOOD = 'zły',
-  BAD = 'średni',
-  NEUTRAL = 'dobry'
+  GOOD = 'dobry',
+  BAD = 'zły',
+  NEUTRAL = 'średni'
 }
 
 interface Question{
