@@ -3,12 +3,7 @@ export const QUESTIONS = {
   SQL_INJECTION: 'SQL_INJECTION',
   DATABASE_INDEXING: 'DATABASE_INDEXING',
   ORM_BENEFITS: 'ORM_BENEFITS',
-  DATABASE_PERFORMANCE_OPTIMIZATION: 'DATABASE_PERFORMANCE_OPTIMIZATION',
-  SESSIONS_VS_COOKIES: 'SESSIONS_VS_COOKIES',
-  CACHING_MECHANISM: 'CACHING_MECHANISM',
-  LOAD_BALANCING: 'LOAD_BALANCING',
-  SERVER_SECURITY: 'SERVER_SECURITY',
-  HTTP_PROTOCOL: 'HTTP_PROTOCOL'
+  DATABASE_PERFORMANCE_OPTIMIZATION: 'DATABASE_PERFORMANCE_OPTIMIZATION'
 }
 
 const questionsModel = {
@@ -27,24 +22,10 @@ const questionsModel = {
   [QUESTIONS.DATABASE_PERFORMANCE_OPTIMIZATION]: {
     text: 'Jakich technik można użyć do optymalizacji wydajności bazy danych?'
   },
-  [QUESTIONS.SESSIONS_VS_COOKIES]: {
-    text: 'Jakie są różnice między sesjami a plikami cookie?'
-  },
-  [QUESTIONS.CACHING_MECHANISM]: {
-    text: 'Jak działa mechanizm buforowania i jakie są jego zalety?'
-  },
-  [QUESTIONS.LOAD_BALANCING]: {
-    text: 'Co to jest równoważenie obciążenia i jak wpływa na skalowalność aplikacji?'
-  },
-  [QUESTIONS.SERVER_SECURITY]: {
-    text: 'Jakie podstawowe środki bezpieczeństwa należy wdrożyć na serwerze?'
-  },
-  [QUESTIONS.HTTP_PROTOCOL]: {
-    text: 'Jak działa protokół HTTP i jakie są różnice między metodami GET i POST?'
-  }
 }
 
 export const questionOptions = () => {
   return Object.entries(questionsModel)
     .map(([id, { text }]) => ({ id, text }))
 }
+

@@ -33,51 +33,17 @@ Aby zapobiec SQL Injection, należy stosować parametryzowane zapytania SQL, kt�
 <v Base, Patryk>ORM to technologia, która umożliwia mapowanie obiektów z języka programowania na relacyjne bazy danych. Zalety ORM to m.in. łatwiejsza i szybsza implementacja aplikacji, większa czytelność kodu, unikanie błędów związanych z ręcznym mapowaniem obiektów na tabele w bazie danych oraz możliwość łatwej zmiany bazy danych bez konieczności zmiany kodu aplikacji.</v>
 
 00:01:29.640 --> 00:01:33.580
-<v Porębski, Bartosz>Jakie są różnice między sesjami a plikami cookie?</v>
-
-00:01:34.620 --> 00:01:47.290
-<v Base, Patryk>Sesje są przechowywane po stronie serwera i służą do przechowywania informacji o użytkowniku podczas jednej wizyty na stronie internetowej. Pliki cookie są przechowywane po stronie klienta (w przeglądarce) i służą do przechowywania informacji o użytkowniku między różnymi wizytami na stronie internetowej.</v>
-
-00:01:48.450 --> 00:01:52.980
-<v Porębski, Bartosz>Jak działa mechanizm buforowania i jakie są jego zalety?</v>
-
-00:01:53.840 --> 00:01:57.650
-<v Base, Patryk>Mechanizm buforowania polega na tym, że dane są tymczasowo przechowywane w pamięci podręcznej przed ich przetworzeniem lub zapisaniem na stałe. Dzięki temu procesor ma szybszy dostęp do danych i nie musi oczekiwać na ich pobranie z wolniejszych urządzeń pamięciowych, co przyspiesza działanie systemu.
-
-Zalety buforowania to przede wszystkim zwiększenie wydajności systemu, zmniejszenie opóźnień i czasu oczekiwania na dane oraz zmniejszenie obciążenia łącza komunikacyjnego. Dodatkowo, buforowanie pozwala na optymalizację wykorzystania pamięci i zwiększenie jej efektywności.
-
-Warto jednak pamiętać, że nadmierne buforowanie może prowadzić do zwiększenia zużycia pamięci i spowolnienia systemu, dlatego ważne jest odpowiednie dostosowanie mechanizmu buforowania do potrzeb i wymagań systemu.</v>
-
-00:02:13.780 --> 00:02:18.320
-<v Porębski, Bartosz>Co to jest równoważenie obciążenia i jak wpływa na skalowalność aplikacji?</v>
-
-00:02:21.490 --> 00:02:27.930
-<v Base, Patryk>Równoważenie obciążenia to proces dystrybucji ruchu sieciowego i obciążenia między różnymi serwerami w celu zapewnienia optymalnej wydajności i minimalizacji czasu odpowiedzi. Dzięki równoważeniu obciążenia aplikacja może skalować się w miarę wzrostu liczby użytkowników, ponieważ serwery są w stanie obsłużyć większą liczbę żądań. W ten sposób aplikacja może działać szybciej i bardziej niezawodnie, a użytkownicy nie doświadczają opóźnień lub awarii.</v>
-
-00:02:36.680 --> 00:02:42.890
-<v Porębski, Bartosz>Jakie podstawowe środki bezpieczeństwa należy wdrożyć na serwerze?</v>
-
-00:02:44.330 --> 00:02:55.270
-<v Base, Patryk>Należy zainstalować aktualizacje systemu operacyjnego i oprogramowania, skonfigurować zapory sieciowe, zabezpieczyć hasłami konta użytkowników, zainstalować oprogramowanie antywirusowe i przeprowadzać regularne kopie zapasowe danych.</v>
-
-00:02:57.420 --> 00:03:01.340
-<v Porębski, Bartosz>Jak działa protokół HTTP i jakie są różnice między metodami GET i POST?</v>
-
-00:03:03.400 --> 00:03:09.410
-<v Base, Patryk>Protokół HTTP służy do przesyłania danych między serwerem a klientem w Internecie. Działanie protokołu polega na tym, że klient wysyła żądanie do serwera, a serwer odpowiada na to żądanie.
-
-Metoda GET służy do pobierania danych z serwera. W przypadku tej metody, żądanie jest przesyłane w adresie URL, co oznacza, że dane są przesyłane w sposób jawny. Metoda ta jest używana do pobierania danych, takich jak strony internetowe, obrazy, pliki itp.
-
-Metoda POST służy do przesyłania danych do serwera. W przypadku tej metody, żądanie jest przesyłane w ciele żądania, co oznacza, że dane są przesyłane w sposób ukryty. Metoda ta jest używana do przesyłania danych, takich jak formularze, logowanie, dodawanie nowych rekordów itp.
-
-Różnica między metodami GET i POST polega na tym, że metoda GET jest używana do pobierania danych, a metoda POST jest używana do przesyłania danych. Metoda GET jest szybsza i prostsza w użyciu, ale nie jest bezpieczna, ponieważ dane są przesyłane w sposób jawny. Metoda POST jest bezpieczniejsza, ponieważ dane są przesyłane w sposób ukryty, ale jest wolniejsza i bardziej skomplikowana w użyciu.</v>
-
-00:02:57.420 --> 00:03:01.340
 <v Porębski, Bartosz>Jakich technik można użyć do optymalizacji wydajności bazy danych?</v>
 
-00:03:03.400 --> 00:03:09.410
-<v Base, Patryk>Do optymalizacji wydajności bazy danych można użyć takich technik jak indeksowanie, partycjonowanie, normalizacja, denormalizacja, cache'owanie, optymalizacja zapytań, optymalizacja konfiguracji serwera bazy danych oraz optymalizacja sprzętu.</v>
-
+00:01:34.620 --> 00:01:47.290
+<v Base, Patryk>Indeksowanie - umożliwia szybsze wyszukiwanie danych, poprzez tworzenie indeksów na kolumnach tabeli.
+Normalizacja - zwiększa wydajność poprzez zredukowanie powtarzających się danych i unikanie redundancji.
+Partycjonowanie - dzielenie tabeli na mniejsze, dzięki czemu łatwiej jest zarządzać dużymi zgromadzeniami danych.
+Caching - przechowywanie często używanych informacji w buforze, co eliminuje potrzebę ich częstego wyszukiwania.
+Kompresja danych - zmniejszenie rozmiaru danych, co przyspiesza ich przetwarzanie.
+Replikacja - umożliwia równoczesny dostęp do danych przez wiele użytkowników, dzięki czemu uzyskuje się większą wydajność całego systemu.
+Używanie odpowiedniego formatu danych - wybór odpowiedniego typu danych może zwiększyć wydajność bazy danych.
+Monitorowanie wydajności - umożliwia wykrycie i rozwiązanie problemów wydajnościowej, które mogą wpłynąć na funkcjonowanie bazy danych.</v>
 
 
 00:03:41.130 --> 00:03:43.630
