@@ -41,7 +41,7 @@ export const useInterview = () => {
       })
       state.value = 'complete'
       result.value = data
-      return result.value
+      return JSON.parse(result.value.data)
     } catch (error: any) {
       state.value = 'error'
       throw error.data.message

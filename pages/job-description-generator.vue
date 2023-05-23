@@ -10,6 +10,7 @@
   
       <UiElButton 
         v-if="form.position"
+        style="height:40px;"
         @click="prepareTasks"
       >
         Prepare Tasks
