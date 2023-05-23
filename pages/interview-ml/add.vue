@@ -107,25 +107,19 @@ onMounted(() => {
   }))
 })
 
-const onSend = () => {
-//  POST http://localhost:8001/mark-response
-//   [
-//     {
-//         "id": "TEST",
-//         "question": "dff",
-//         "answer": "Co to ?"
-//     }
-// ]
+const onSend = async () => {
 
-// Response
-// [
-//     {
-//         "id": "TEST",
-//         "answer": "Co to ?",
-//         "question": "dff",
-//         "rate": 0
-//     }
-// ]
+  const { data } = await useFetch(() => `http://localhost:8001/mark-response`,  {
+        method: "POST",
+        body: [
+            {
+                "id": "TEST",
+                "question": "dff",
+                "answer": "Co to ?"
+            }
+          ]
+      })
+
 }
 
 
