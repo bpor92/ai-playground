@@ -12,6 +12,11 @@
             </NuxtLink>
           </li>
           <li>
+            <NuxtLink to="/questions">
+              Question
+            </NuxtLink>
+          </li>
+          <li>
             <NuxtLink to="/interview">
               Interview
             </NuxtLink>
@@ -44,6 +49,11 @@
         <li>
           <NuxtLink to="/job-description-generator">
             Job description generator
+          </NuxtLink>
+        </li>
+        <li>
+          <NuxtLink to="/questions">
+            Question
           </NuxtLink>
         </li>
         <li>
