@@ -7,6 +7,7 @@
         :options="[
           { label: ANSWER_LEVEL.BAD, value: ANSWER_LEVEL.BAD },
           { label: ANSWER_LEVEL.NEUTRAL, value: ANSWER_LEVEL.NEUTRAL },
+          { label: ANSWER_LEVEL.VULGAR, value: ANSWER_LEVEL.VULGAR },
           { label: ANSWER_LEVEL.GOOD, value: ANSWER_LEVEL.GOOD }
         ]"
         label="Answer level"
@@ -73,6 +74,7 @@ const config = useRuntimeConfig();
 enum ANSWER_LEVEL {
   GOOD = 'zaawansowanym',
   BAD = 'zły',
+  VULGAR = 'wulgarnym',
   NEUTRAL = 'podstawowym'
 }
 
