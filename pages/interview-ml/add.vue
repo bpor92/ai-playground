@@ -57,7 +57,7 @@
       <UiElButton  mode="success" @click="onSend">Rate question</UiElButton>
       <UiElButton  mode="primary" @click="onCsv">to CSV</UiElButton>
     </div>
-    <div class="flex justify-center" v-if="totalSummary">
+    <div class="flex justify-center" v-if="ratedQuestions">
       <el-text class="mx-1" :type="totalSummary < 30 ? 'danger' : 'success'">
         TOTAL: {{ (totalSummary).toFixed(2) }} %
       </el-text>
