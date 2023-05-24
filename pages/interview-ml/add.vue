@@ -174,7 +174,10 @@ const onSendFile = async () => {
   const res = await interviewMlJsonGenerator({ file: fileContent.value, candidate: form.candidate })
   res.forEach((question: { id: string, answer: string, question: string }) => {
     const questionIndex = form.questions.findIndex(item => item.id === question.id)
-    form.questions[questionIndex].value = question.answer
+
+    if (questionIndex !== undefined) {
+      form.questions[questionIndex].value = question.answer
+    }
   })
 
   loading.close()
