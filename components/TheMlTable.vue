@@ -10,7 +10,7 @@
       </template>
       <template #default="scope">
         <NuxtLink :to="`/interview-ml/edit/${scope.row.id}`">
-          <UiElButton small>Edit</UiElButton>
+          <UiElButton small>Learn</UiElButton>
         </NuxtLink>
       </template>
     </el-table-column>
@@ -24,7 +24,6 @@ interface User {
   position: string
   date: string
   name: string
-  address: string
 }
 
 const search = ref('')
@@ -39,19 +38,17 @@ const filterTableData = computed(() =>
 const tableData: User[] = [
   {
     id: 1,
-    score: 3,
-    date: '2016-05-03',
-    name: 'Tom',
-    position: 'Backend developer',
-    address: 'No. 189, Grove St, Los Angeles',
+    score: 9,
+    date: '2023-05-23',
+    name: 'Base, Patryk',
+    position: 'Backend developer'
   },
   {
     id: 2,
     score: 8,
-    date: '2016-05-02',
-    name: 'John',
-    position: 'Backend developer',
-    address: 'No. 189, Grove St, Los Angeles',
+    date: '2016-05-23',
+    name: 'Porębski, Bartosz',
+    position: 'Frontend developer'
   },
 ]
 </script>
