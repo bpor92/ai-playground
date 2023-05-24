@@ -37,7 +37,7 @@ export const rateInterviewAgent = createAgent((context) => {
 
 export const summaryInterviewAgent = createAgent((context) => {
   const positiveFeedback = `Napisz w imieniu firmy pozytywny feedback na stanowisko ${context.level} ${context.position}. Kandydatem jest: ${context.candidate}. Zredaguj swoja wypowiedz na podstawie oceny rekrutera ${context.feedback}. Odpowiedz w jezyku polskim`
-  const negativeFeedback = ''
+  const negativeFeedback = `Napisz w imieniu firmy negatywny feedback na stanowisko ${context.level} ${context.position}. Kandydatem jest: ${context.candidate}. Zachec do nauki i ponownej proby rekrutacji - do monitorowania naszych ofert pracy. Zredaguj swoja wypowiedz na podstawie oceny rekrutera ${context.feedback}. Odpowiedz w jezyku polskim`
   return {
     messages: [
       {
