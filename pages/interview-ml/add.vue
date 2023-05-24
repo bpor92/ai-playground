@@ -47,7 +47,7 @@
           v-model="item.value"
           :loading="item.loader"
         />
-        <div v-if="item.rate !== null">
+        <div v-if="item.value && item.rate !== null">
           rate: {{ item.rate  }} 
         </div>
       </div>
