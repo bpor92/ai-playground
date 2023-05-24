@@ -47,13 +47,15 @@
           v-model="item.value"
           :loading="item.loader"
         />
-        <br>
+        <div v-if="item.rate !== null">
+          rate: {{ item.rate  }} 
+        </div>
       </div>
     </div>
 
     <div class="flex justify-center">
-      <UiElButton  mode="success" @click="onSend">send</UiElButton>
-      <UiElButton  mode="success" @click="onCsv">to CSV</UiElButton>
+      <UiElButton  mode="success" @click="onSend">Rate question</UiElButton>
+      <UiElButton  mode="primary" @click="onCsv">to CSV</UiElButton>
     </div>
   </UiForm>
 </template>
@@ -61,7 +63,6 @@
 <script setup lang="ts">
 import { questionOptions } from '~/types/questions'
 import { Parser } from '@json2csv/plainjs'
-import axios from 'axios';
 
 enum ANSWER_LEVEL {
   GOOD = 'zaawansowanym',
@@ -73,7 +74,8 @@ interface Question{
   id: string,
   text: string,
   value: string,
-  loader: boolean
+  loader: boolean,
+  rate: number | null
 }
 
 const form = reactive<{
@@ -95,20 +97,22 @@ onMounted(() => {
     id: item.id,
     text: item.text,
     value: '',
-    loader: false
+    loader: false,
+    rate: null,
   }))
 })
 
 const onSend = async () => {
   const body = form.questions.map(item => ({ id: item.id, question: item.text, answer: item.value }))
-
-  const { data } = await useFetch(`http://localhost:8001/mark-response`,  {
+  const { data } = await useFetch(`http://localhost:8000/mark-response`,  {
     method: "POST",
-    body
+    body,
   })
 
-  console.log(data.value)
-
+  data.value.forEach(item => {
+    const questionIndex = form.questions.findIndex(question => question.id === item.id)
+    form.questions[questionIndex].rate = item.rate
+  })
 }
 
 
