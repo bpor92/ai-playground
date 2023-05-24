@@ -58,7 +58,9 @@
       <UiElButton  mode="primary" @click="onCsv">to CSV</UiElButton>
     </div>
     <div class="flex justify-center" v-if="totalSummary">
-      TOTAL: {{ (totalSummary / 50 * 100).toFixed(2) }} %
+      <el-text class="mx-1" :type="totalSummary < 30 ? 'danger' : 'success'">
+        TOTAL: {{ (totalSummary).toFixed(2) }} %
+      </el-text>
     </div>
   </UiForm>
 </template>
@@ -94,7 +96,7 @@ const form = reactive<{
   position: 'Backend developer',
 })
 
-const totalSummary = computed(() => form.questions.reduce((a, b) => a + b.rate, 0))
+const totalSummary = computed(() => form.questions.reduce((a, b) => a + b.rate, 0) / 50 * 100)
 
 const questionsModel = [...questionOptions()]
 onMounted(() => {
@@ -165,6 +167,7 @@ const readFile = () =>  {
 }
 
 const onGenerateAnswers = async () => {
+  ratedQuestions.value = false
   const { generateAnswer } = useGenerateAnswers()
 
   for (let index = 0; index <= form.questions.length; index++) {
