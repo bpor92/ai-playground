@@ -1,7 +1,9 @@
 <template>
   <div class="tabs">
-    <a v-for="tab in props.items" :key="tab.id"
-      class="tab tab-bordered" 
+    <a
+      v-for="tab in props.items"
+      :key="tab.id"
+      class="tab tab-bordered"
       :class="{'tab-active': isActive(tab.id)}"
       @click="emit('click', tab.id)"
     >
@@ -21,13 +23,10 @@ const props = defineProps<{
   activeItem: string
 }>()
 
-const emit = defineEmits<{
-  (e: "click", index: string): void;
-}>()
+const emit = defineEmits<{(e: 'click', index: string): void}>()
 
-
-const isActive = ((id: string) => {
+const isActive = (id: string) => {
   return props.activeItem === id
-})
+}
 
 </script>

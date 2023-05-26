@@ -1,8 +1,8 @@
 <template>
-  <ThemeSwitcher/>
+  <ThemeSwitcher />
 
-  <UiSwap label="perdasdasd" v-model="swap">
-    <IconsMoon/>
+  <UiSwap v-model="swap" label="perdasdasd">
+    <IconsMoon />
     <IconsSun />
   </UiSwap>
   <br>
@@ -10,33 +10,43 @@
   <UiAlert>
     Info - default
     <template #actions>
-      <button class="btn btn-sm">See</button>
+      <button class="btn btn-sm">
+        See
+      </button>
     </template>
   </UiAlert>
   <br>
 
-  <UiAlert mode="info">info</UiAlert>
+  <UiAlert mode="info">
+    info
+  </UiAlert>
   <br>
 
-  <UiAlert mode="success">success</UiAlert>
+  <UiAlert mode="success">
+    success
+  </UiAlert>
   <br>
 
-  <UiAlert mode="warning">warning</UiAlert>
+  <UiAlert mode="warning">
+    warning
+  </UiAlert>
   <br>
 
-  <UiAlert mode="error">error</UiAlert>
+  <UiAlert mode="error">
+    error
+  </UiAlert>
 
   <br>
   <br>
 
-  <UiSteps @click="value => step = value" :currentStep="step" :items="items"/>
+  <UiSteps :current-step="step" :items="items" @click="value => step = value" />
 
   <br>
   <br>
 
   <pre>{{ tab }}</pre>
 
-  <UiTabs @click="value => tab = value" :activeItem="tab" :items="items"/>
+  <UiTabs :active-item="tab" :items="items" @click="value => tab = value" />
 
   <br>
   <br>
@@ -44,7 +54,6 @@
   <div @click="addToast">
     Add Toast
   </div>
-
 </template>
 
 <script setup lang="ts">
@@ -60,11 +69,10 @@ const addToast = () => {
   })
 }
 
-const items = [{title: 'First', id: 'FIRST'}, {title: 'Second', id: 'SECOND'}, {title: 'Third', id: 'THIRD'}, {title: 'Four', id: 'FOUR'}]
+const items = [{ title: 'First', id: 'FIRST' }, { title: 'Second', id: 'SECOND' }, { title: 'Third', id: 'THIRD' }, { title: 'Four', id: 'FOUR' }]
 
 const step = ref<Number>(3)
 
 const tab = ref<string>('FIRST')
-
 
 </script>

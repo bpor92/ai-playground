@@ -2,36 +2,35 @@
   <div>
     <div class="w-full p-2 md:max-w-sm md:mx-auto">
       <UiElText
-        label="Position"
         v-model="form.position"
+        label="Position"
       />
-      <UiElSelect 
+      <UiElSelect
         v-model="form.level"
         :label="'Level'"
         :options="[{ label: 'Junior', value: 'Junior'}, {value: 'Mid', label: 'Mid'}, {value: 'Senior', label: 'Senior'}]"
       />
-  
+
       <div class="flex justify-center mt-5">
-        <UiElButton mode="success" @click="onCreateQuestion">Send</UiElButton>
+        <UiElButton mode="success" @click="onCreateQuestion">
+          Send
+        </UiElButton>
       </div>
-      <UiElTextarea 
+      <UiElTextarea
         v-show="loader || result"
-        v-model="result" 
-        label="Questions" 
-        :rows="22"
+        v-model="result"
         v-loading="loader"
+        label="Questions"
+        :rows="22"
       />
     </div>
-
   </div>
 </template>
 
 <script lang="ts" setup>
-import Markdown from "vue3-markdown-it";
-
 const form = reactive({
   position: 'Frontend developer',
-  level: 'Junior',
+  level: 'Junior'
 })
 
 const result = ref('')

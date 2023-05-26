@@ -1,18 +1,18 @@
-import  createAgent  from '.'
+import createAgent from '.'
 
 export const preparePositionAgent = createAgent((context) => {
   return {
     messages: [
       {
-        role: "system",
+        role: 'system',
         content:
-          "YOU ARE A HUMAN RESOURCES SPECIALIST, YOU HELP CREATE JOB DESCRIPTIONS BASED ON THE TASKS THEY PERFORM. YOUR ANSWERS MUST BE IN POLISH!",
+          'YOU ARE A HUMAN RESOURCES SPECIALIST, YOU HELP CREATE JOB DESCRIPTIONS BASED ON THE TASKS THEY PERFORM. YOUR ANSWERS MUST BE IN POLISH!'
       },
       {
-        role: "user",
+        role: 'user',
         content: `CREATE A 10 TASKS FOR ${context.position} WORK. ONLY POINTS`
       }
     ],
-    max_tokens: 1000,
+    max_tokens: 1000
   }
 })

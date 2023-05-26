@@ -5,7 +5,7 @@ export const openAiResponseHandler = (data: CreateChatCompletionResponse) => {
     return {
       data: null,
       id: null,
-      error: "Invalid AI response"
+      error: 'Invalid AI response'
     }
   }
 

@@ -1,6 +1,6 @@
-import { openAiResponseHandler } from "../utils/open-ai-response-handler";
-import { summaryInterviewAgent } from '~/agents/interviewAgent'
+import { openAiResponseHandler } from '../utils/open-ai-response-handler'
 import { initOpenAi } from '../utils/initialize-open-ai'
+import { summaryInterviewAgent } from '~/agents/interviewAgent'
 
 const { openai, model } = initOpenAi()
 
@@ -13,8 +13,8 @@ export default defineEventHandler(async (event) => {
       messages: [],
       temperature: 0,
       ...summaryInterviewAgent(body)
-    });
-    return openAiResponseHandler(completion.data);
+    })
+    return openAiResponseHandler(completion.data)
   } catch (error) {
     return (error as Error).message
   }

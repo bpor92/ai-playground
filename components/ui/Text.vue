@@ -3,7 +3,7 @@
     <label class="label">
       <span class="label-text">{{ label }}</span>
     </label>
-    <input type="text" :value="modelValue" @input="onInput" :placeholder="placeholder" class="input input-bordered w-full max-w-xs" />
+    <input type="text" :value="modelValue" :placeholder="placeholder" class="input input-bordered w-full max-w-xs" @input="onInput">
   </div>
 </template>
 
@@ -17,7 +17,7 @@ defineProps<{
 const emit = defineEmits(['update:modelValue'])
 
 const onInput = (event: Event) => {
-  const target = event.target as HTMLButtonElement;
+  const target = event.target as HTMLButtonElement
   emit('update:modelValue', target.value)
 }
 </script>

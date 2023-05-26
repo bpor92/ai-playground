@@ -1,7 +1,9 @@
 <template>
   <ul class="steps lg:steps-horizontal">
-    <li v-for="(step, index) in props.items" 
-      class="step cursor-pointer" 
+    <li
+      v-for="(step, index) in props.items"
+      :key="index"
+      class="step cursor-pointer"
       :class="{'step-primary': isDone(index)}"
       @click="emit('click', index + 1)"
     >
@@ -20,13 +22,10 @@ const props = defineProps<{
   currentStep: Number
 }>()
 
-const emit = defineEmits<{
-  (e: "click", index: Number): void;
-}>()
+const emit = defineEmits<{(e: 'click', index: Number): void }>()
 
-
-const isDone = ((index: Number) => {
+const isDone = (index: Number) => {
   return props.currentStep > index
-})
+}
 
 </script>

@@ -3,13 +3,13 @@
     <label class="label">
       <span class="label-text">{{ label }}</span>
     </label>
-    <el-select 
+    <el-select
       :filterable="filterable"
       :label="label"
       :model-value="modelValue"
       size="large"
-      @update:model-value="value => emit('update:model-value', value)"
       :placeholder="placeholder"
+      @update:model-value="value => emit('update:model-value', value)"
     >
       <el-option
         v-for="item in options"
@@ -27,7 +27,7 @@ interface IElSelect {
   label: string,
 }
 
-const props = withDefaults(defineProps<{
+withDefaults(defineProps<{
   modelValue: any,
   options: IElSelect[],
   label: string,
@@ -35,6 +35,7 @@ const props = withDefaults(defineProps<{
   placeholder?: string
 }>(), {
   filterable: false,
+  placeholder: ''
 })
 
 const emit = defineEmits(['update:model-value'])

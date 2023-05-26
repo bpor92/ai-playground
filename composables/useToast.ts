@@ -1,4 +1,4 @@
-import { Toast } from "~/types/toast"
+import { Toast } from '~/types/toast'
 
 const toasts = ref<Toast[]>([])
 

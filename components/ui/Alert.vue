@@ -1,23 +1,23 @@
 <template>
-  <div 
+  <div
     class="alert shadow-lg"
     :class="classes"
   >
     <div>
       <component :is="alertIcon" />
-      <slot></slot>
+      <slot />
     </div>
     <div class="flex-none">
-      <slot name="actions"></slot>
+      <slot name="actions" />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import IconsInfo from "~~/components/icons/Info.vue"
-import IconsSuccess from "~~/components/icons/Success.vue"
-import IconsWarning from "~~/components/icons/Warning.vue"
-import IconsError from "~~/components/icons/Error.vue"
+import IconsInfo from '~~/components/icons/Info.vue'
+import IconsSuccess from '~~/components/icons/Success.vue'
+import IconsWarning from '~~/components/icons/Warning.vue'
+import IconsError from '~~/components/icons/Error.vue'
 import { type Mode } from '~~/types/alert'
 
 interface Props {
@@ -36,9 +36,9 @@ const alertIcon = computed(() => {
   switch (props.mode) {
     case 'success':
       return IconsSuccess
-    case 'warning': 
+    case 'warning':
       return IconsWarning
-    case 'error': 
+    case 'error':
       return IconsError
     default:
       return IconsInfo

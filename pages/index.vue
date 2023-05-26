@@ -3,5 +3,3 @@
     CUMULUS TEAM
   </div>
 </template>
-
-

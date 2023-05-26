@@ -8,7 +8,7 @@ export const QUESTIONS = {
 
 const questionsModel = {
   [QUESTIONS.REST_VS_SOAP]: {
-    text: 'Jaka jest różnica między REST a SOAP?',
+    text: 'Jaka jest różnica między REST a SOAP?'
   },
   [QUESTIONS.SQL_INJECTION]: {
     text: 'Co to jest SQL Injection i jak można temu zapobiec?'
@@ -21,11 +21,10 @@ const questionsModel = {
   },
   [QUESTIONS.DATABASE_PERFORMANCE_OPTIMIZATION]: {
     text: 'Jakich technik można użyć do optymalizacji wydajności bazy danych?'
-  },
+  }
 }
 
 export const questionOptions = () => {
   return Object.entries(questionsModel)
     .map(([id, { text }]) => ({ id, text }))
 }
-

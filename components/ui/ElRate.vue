@@ -1,11 +1,10 @@
 <template>
   <el-rate
-    :modelValue="modelValue"
+    :model-value="modelValue"
     clearable
     @update:model-value="val => emit('update:modelValue', val)"
   />
 </template>
-
 
 <script setup lang="ts">
 defineProps<{

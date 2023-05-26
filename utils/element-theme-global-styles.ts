@@ -7,4 +7,3 @@ export const elementThemeGlobalStyles = `
   --el-text-color-regular: var(--bc);
   --el-mask-color: rgba(0,0,0,0.1)
 `
-

@@ -1,4 +1,4 @@
-import type { ApiMessage, AsyncState } from "@/types/api";
+import type { ApiMessage, AsyncState } from '@/types/api'
 
 export const useChatGpt = () => {
   const state = ref<AsyncState>(null)
@@ -9,10 +9,10 @@ export const useChatGpt = () => {
     try {
       state.value = 'loading'
       const data = await $fetch('/api/chat', {
-        method: "POST",
+        method: 'POST',
         body: {
           messages
-        },
+        }
       })
       state.value = 'complete'
       result.value = data

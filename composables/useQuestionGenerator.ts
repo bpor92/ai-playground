@@ -1,5 +1,5 @@
-import type { AsyncState } from "@/types/api";
-import { QuestionGenerator } from "~/types/question-generator";
+import type { AsyncState } from '@/types/api'
+import { QuestionGenerator } from '~/types/question-generator'
 
 export const useQuestionGenerator = () => {
   const state = ref<AsyncState>(null)
@@ -10,8 +10,8 @@ export const useQuestionGenerator = () => {
     try {
       state.value = 'loading'
       const data = await $fetch('/api/question-generator', {
-        method: "POST",
-        body: payload,
+        method: 'POST',
+        body: payload
       })
       state.value = 'complete'
       result.value = data

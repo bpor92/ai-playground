@@ -1,4 +1,4 @@
-import type { AsyncState } from "@/types/api";
+import type { AsyncState } from '@/types/api'
 
 export const usePrepareTask = () => {
   const state = ref<AsyncState>(null)
@@ -9,8 +9,8 @@ export const usePrepareTask = () => {
     try {
       state.value = 'loading'
       const data = await $fetch('/api/prepare-position-tasks', {
-        method: "POST",
-        body: payload,
+        method: 'POST',
+        body: payload
       })
       state.value = 'complete'
       result.value = data

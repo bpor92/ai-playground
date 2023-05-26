@@ -4,7 +4,9 @@
     drag
     multiple
   >
-    <el-icon class="el-icon--upload"><upload-filled /></el-icon>
+    <el-icon class="el-icon--upload">
+      <upload-filled />
+    </el-icon>
     <div class="el-upload__text">
       Drop file here or <em>click to upload</em>
     </div>

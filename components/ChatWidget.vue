@@ -9,8 +9,8 @@
 </template>
 
 <script setup lang="ts">
+import { nanoid } from 'nanoid'
 import { Message, User } from '~~/types/chat'
-import { nanoid } from "nanoid"
 
 const user = ref<User>({
   id: 'user',
@@ -28,9 +28,9 @@ const users = computed(() => [user.value, bot.value])
 
 const messagesToApi = computed(() =>
   messages.value
-    .map((item) => ({
+    .map(item => ({
       role: item.userId,
-      content: item.text,
+      content: item.text
     }))
     .splice(-2)
 )
@@ -44,15 +44,15 @@ const onSendMessage = async (message: Message) => {
   try {
     const { chat } = useChatGpt()
     const { id, data, error } = await chat(messagesToApi.value)
-    if(error) throw new Error(error);
-    
+    if (error) { throw new Error(error) }
+
     typings.value = []
 
     const msg = {
       id,
       userId: bot.value.id,
       createdAt: new Date(),
-      text: data,
+      text: data
     }
 
     messages.value.push(msg)

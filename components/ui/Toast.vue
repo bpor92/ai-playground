@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-type HorizontalAlign =  'left' | 'center' | 'right'
+type HorizontalAlign = 'left' | 'center' | 'right'
 type VerticalAlign = 'top' | 'middle' | 'bottom'
 
 interface Props {

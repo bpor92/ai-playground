@@ -1,15 +1,15 @@
 <template>
   <div class="form-control mb-2 p-2">
     <label class="flex items-center cursor-pointer">
-      <input 
-        :checked="isChecked" 
+      <input
+        :checked="isChecked"
         :value="value"
+        type="radio"
+        :name="name"
+        class="radio"
         @change="onChange"
-        type="radio" 
-        :name="name" 
-        class="radio" 
-      />
-      <span class="ml-3 label-text">{{ label }}</span> 
+      >
+      <span class="ml-3 label-text">{{ label }}</span>
     </label>
   </div>
 </template>
@@ -21,12 +21,12 @@ const props = defineProps<{
   modelValue: string,
   name: string,
   label: string
-}>();
+}>()
 
 const emit = defineEmits(['change', 'update:modelValue'])
 
 const onChange = (event: Event) => {
-  const target = event.target as HTMLButtonElement;
+  const target = event.target as HTMLButtonElement
   emit('update:modelValue', target.value)
 }
 

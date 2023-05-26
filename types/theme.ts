@@ -1,6 +1,6 @@
 export enum Theme {
-  DARK = "dark",
-  AQUA = "aqua",
-  CUPCAKE = "cupcake",
-  SYMFONIA = "symfonia"
+  DARK = 'dark',
+  AQUA = 'aqua',
+  CUPCAKE = 'cupcake',
+  SYMFONIA = 'symfonia'
 }

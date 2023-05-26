@@ -1,4 +1,4 @@
-import type { ApiMessage, AsyncState } from "@/types/api";
+import type { AsyncState } from '@/types/api'
 
 interface InterviewJsonGenerator {
   file: string,
@@ -14,11 +14,11 @@ export const useInterview = () => {
     try {
       state.value = 'loading'
       const data = await $fetch('/api/interview', {
-        method: "POST",
+        method: 'POST',
         body: {
           file: payload.file,
           candidate: payload.candidate
-        },
+        }
       })
       state.value = 'complete'
       result.value = data
@@ -33,11 +33,11 @@ export const useInterview = () => {
     try {
       state.value = 'loading'
       const data = await $fetch('/api/interview-ml', {
-        method: "POST",
+        method: 'POST',
         body: {
           file: payload.file,
           candidate: payload.candidate
-        },
+        }
       })
       state.value = 'complete'
       result.value = data
@@ -56,13 +56,13 @@ export const useInterview = () => {
     try {
       rateState.value = 'loading'
       const data = await $fetch('/api/rate-interview', {
-        method: "POST",
+        method: 'POST',
         body: {
           answer: payload.answer,
           question: payload.question,
           position: payload.position,
-          level: payload.level,
-        },
+          level: payload.level
+        }
       })
       rateState.value = 'complete'
       rateResult.value = data
@@ -73,7 +73,6 @@ export const useInterview = () => {
     }
   }
 
-
   const summaryState = ref<AsyncState>(null)
   const summaryResult = ref()
   // TODO payload type
@@ -81,7 +80,7 @@ export const useInterview = () => {
     try {
       summaryState.value = 'loading'
       const data = await $fetch('/api/summary-interview', {
-        method: "POST",
+        method: 'POST',
         body: {
           questions: payload.value,
           position: payload.position,
@@ -89,7 +88,7 @@ export const useInterview = () => {
           candidate: payload.candidate,
           positiveFeedback: payload.positiveFeedback,
           feedback: payload.feedback
-        },
+        }
       })
       summaryState.value = 'complete'
       summaryResult.value = data
@@ -99,7 +98,7 @@ export const useInterview = () => {
       throw error.data.message
     }
   }
-  
+
   return {
     interviewJsonGenerator,
     rateInterview,

@@ -1,10 +1,11 @@
 <template>
   <div>
     <UiToast
-      horizontal="right" 
+      horizontal="right"
       vertical="top"
     >
-      <UiAlert v-for="item in toastList" 
+      <UiAlert
+        v-for="item in toastList"
         :key="item.id"
         :mode="item.mode"
       >

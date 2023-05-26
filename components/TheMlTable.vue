@@ -10,7 +10,9 @@
       </template>
       <template #default="scope">
         <NuxtLink :to="`/interview-ml/edit/${scope.row.id}`">
-          <UiElButton small>Learn</UiElButton>
+          <UiElButton small>
+            Learn
+          </UiElButton>
         </NuxtLink>
       </template>
     </el-table-column>
@@ -29,7 +31,7 @@ interface User {
 const search = ref('')
 const filterTableData = computed(() =>
   tableData.filter(
-    (data) =>
+    data =>
       !search.value ||
       data.name.toLowerCase().includes(search.value.toLowerCase())
   )
@@ -49,6 +51,6 @@ const tableData: User[] = [
     date: '2016-05-23',
     name: 'Porębski, Bartosz',
     position: 'Frontend developer'
-  },
+  }
 ]
 </script>

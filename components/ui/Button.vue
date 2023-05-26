@@ -1,9 +1,11 @@
 <template>
-  <button class="btn" :class="classes" :disabled="disabled"><slot/></button>
+  <button class="btn" :class="classes" :disabled="disabled">
+    <slot />
+  </button>
 </template>
 
 <script setup lang="ts">
-import { Mode } from "~/types/button";
+import { Mode } from '~/types/button'
 
 interface Props {
   mode?: Mode,

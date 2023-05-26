@@ -38,7 +38,7 @@ enum AccountingJob {
   BOOKKEEPER = 'BOOKKEEPER',
   FINANCIAL_ANALYST = 'FINANCIAL_ANALYST',
   PAYROLL_SPECIALIST = 'PAYROLL_SPECIALIST'
-};
+}
 
 const AccountingJobList: JobPosition[] = [
   { value: AccountingJob.ACCOUNTANT, label: 'Accountant' },
@@ -47,7 +47,7 @@ const AccountingJobList: JobPosition[] = [
   { value: AccountingJob.BOOKKEEPER, label: 'Bookkeeper' },
   { value: AccountingJob.FINANCIAL_ANALYST, label: 'Financial Analyst' },
   { value: AccountingJob.PAYROLL_SPECIALIST, label: 'Payroll Specialist' }
-];
+]
 
 enum HRJob {
   HR_BUSINESS_PARTNER = 'HR_BUSINESS_PARTNER',
@@ -71,14 +71,10 @@ const HRJobList: JobPosition[] = [
   { value: HRJob.TRAINING_SPECIALIST, label: 'Training Specialist' },
   { value: HRJob.TRAINING_MANAGER, label: 'Training Manager' },
   { value: HRJob.HR_ADMINISTRATOR, label: 'HR Administrator' }
-];
+]
 
 export const jobs: Array<JobPosition> = [
   ...ITJobList,
   ...AccountingJobList,
   ...HRJobList
 ]
-
-
-
-

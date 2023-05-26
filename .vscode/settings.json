@@ -1,4 +1,22 @@
 {
+  "prettier.singleQuote": true,
+  "prettier.semi": false,
+  "prettier.printWidth": 120,
+  "prettier.tabWidth": 2,
+  "prettier.singleAttributePerLine": true,
+  "eslint.enable": true,
+  "eslint.options": {
+      "extensions": [".html", ".js", ".vue", ".jsx"]
+  },
+  "eslint.run": "onType",
+  "emmet.syntaxProfiles": {
+      "vue-html": "html",
+      "vue": "html"
+  },
+ 
+  "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
+  },
   "i18n-ally.localesPaths": [
     "locales"
   ]

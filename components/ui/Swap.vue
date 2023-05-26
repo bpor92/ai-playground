@@ -1,17 +1,17 @@
 <template>
   <label class="swap swap-rotate">
-    <input 
-      type="checkbox"
+    <input
       v-model="model"
+      type="checkbox"
       :value="value"
-    />
+    >
     <div class="on">
-      <slot name="on"  />
+      <slot name="on" />
     </div>
 
     <div class="off">
       <slot name="off" />
-    </div>    
+    </div>
   </label>
 </template>
 
@@ -20,21 +20,21 @@
 const props = defineProps({
   modelValue: { type: [Array, Boolean] },
   value: { type: [Boolean, Object] },
-  label: { type: String },
-});
+  label: { type: String }
+})
 
 const emit = defineEmits([
   'update:modelValue'
 ])
 
 const model = computed({
-  get() {
-    return props.modelValue;
+  get () {
+    return props.modelValue
   },
-  set(value) {
-    emit("update:modelValue", value);
-  },
-});
+  set (value) {
+    emit('update:modelValue', value)
+  }
+})
 </script>
 
 <style scoped>
