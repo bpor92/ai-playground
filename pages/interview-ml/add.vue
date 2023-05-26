@@ -1,9 +1,10 @@
 <template>
-  <UiForm>
-    <div class="divider">
+  <div>
+    <UiDivider>
       Helper
-    </div>
-    <div class="w-full p-2 md:max-w-sm md:mx-auto">
+    </UiDivider>
+
+    <UiForm>
       <UiElSelect
         v-model="form.answerLevel"
         :options="[
@@ -20,12 +21,13 @@
           Generate
         </UiElButton>
       </div>
-    </div>
+    </UiForm>
 
-    <div class="divider">
+    <UiDivider>
       Candidate
-    </div>
-    <div class="w-full p-2 md:max-w-sm md:mx-auto">
+    </UiDivider>
+
+    <UiForm>
       <UiElText
         v-model="form.candidate"
         label="Surname and name"
@@ -45,8 +47,9 @@
           Send
         </UiElButton>
       </div>
-    </div>
-    <div class="divider" />
+    </UiForm>
+
+    <UiDivider />
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
       <div v-for="item in form.questions" :key="item.id" class="mb-5 self-end">
@@ -74,7 +77,7 @@
         TOTAL: {{ (totalSummary).toFixed(2) }} %
       </el-text>
     </div>
-  </UiForm>
+  </div>
 </template>
 
 <script setup lang="ts">

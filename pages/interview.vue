@@ -1,10 +1,10 @@
 <template>
-  <UiForm>
-    <div class="divider">
+  <div>
+    <UiDivider>
       Candidate
-    </div>
+    </UiDivider>
 
-    <div class="w-full p-2 md:max-w-sm md:mx-auto">
+    <UiForm>
       <UiElText
         v-model="form.candidate"
         label="Surname and name"
@@ -29,13 +29,11 @@
           Send
         </UiElButton>
       </div>
-    </div>
+    </UiForm>
 
-    <br>
-
-    <div v-if="questions.length" class="divider">
+    <UiDivider v-if="questions.length">
       Interview
-    </div>
+    </UiDivider>
 
     <div class="grid grid-cols-2 gap-5">
       <div v-for="(question, index) in questions" :key="index" class="flex flex-col ">
@@ -64,11 +62,12 @@
       </div>
     </div>
 
-    <div v-if="questions.length">
-      <div class="divider">
+    <template v-if="questions.length">
+      <UiDivider>
         Summary
-      </div>
-      <div class="w-full  p-2 md:max-w-sm md:mx-auto">
+      </UiDivider>
+
+      <UiForm>
         <div>
           Score: {{ summaryRate }} / {{ questions.length * 5 }}
         </div>
@@ -92,14 +91,15 @@
             Create summary
           </UiElButton>
         </div>
-      </div>
+      </UiForm>
+
       <UiMockupWindow
         v-show="feedbackResult"
       >
         <Markdown :source="feedbackResult" class="p-5 break-words" />
       </UiMockupWindow>
-    </div>
-  </UiForm>
+    </template>
+  </div>
 </template>
 
 <script lang="ts" setup>

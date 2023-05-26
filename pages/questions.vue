@@ -1,30 +1,29 @@
 <template>
-  <div>
-    <div class="w-full p-2 md:max-w-sm md:mx-auto">
-      <UiElText
-        v-model="form.position"
-        label="Position"
-      />
-      <UiElSelect
-        v-model="form.level"
-        :label="'Level'"
-        :options="[{ label: 'Junior', value: 'Junior'}, {value: 'Mid', label: 'Mid'}, {value: 'Senior', label: 'Senior'}]"
-      />
+  <UiForm>
+    <UiElText
+      v-model="form.position"
+      label="Position"
+    />
+    <UiElSelect
+      v-model="form.level"
+      :label="'Level'"
+      :options="[{ label: 'Junior', value: 'Junior'}, {value: 'Mid', label: 'Mid'}, {value: 'Senior', label: 'Senior'}]"
+    />
 
-      <div class="flex justify-center mt-5">
-        <UiElButton mode="success" @click="onCreateQuestion">
-          Send
-        </UiElButton>
-      </div>
-      <UiElTextarea
-        v-show="loader || result"
-        v-model="result"
-        v-loading="loader"
-        label="Questions"
-        :rows="22"
-      />
+    <div class="flex justify-center mt-5">
+      <UiElButton mode="success" @click="onCreateQuestion">
+        Send
+      </UiElButton>
     </div>
-  </div>
+
+    <UiElTextarea
+      v-show="loader || result"
+      v-model="result"
+      v-loading="loader"
+      label="Questions"
+      :rows="22"
+    />
+  </UiForm>
 </template>
 
 <script lang="ts" setup>

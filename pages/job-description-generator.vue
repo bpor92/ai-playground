@@ -1,5 +1,5 @@
 <template>
-  <UiForm class="w-full p-2 md:max-w-sm md:mx-auto">
+  <UiForm>
     <div class="flex justify-between items-end">
       <UiElSelect
         v-model="form.position"
