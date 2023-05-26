@@ -11,17 +11,19 @@
       </header>
       <div class="d-flex min-h-[100px]">
         <div ref="messageBox" class="pt-2 pb-2 max-h-[80vh] overflow-y-scroll">
-          <div v-for="message in messages" :key="message.id">
+          <div v-for="item in messages" :key="item.id">
             <UiChatBubble
-              :mode="messageMode(message)"
-              :created-at="message.createdAt"
-              :user="getUser(message.userId)"
+              :mode="messageMode(item)"
+              :created-at="item.createdAt"
+              :user="getUser(item.userId)"
             >
-              <Markdown :source="message?.text" class="w-full break-words" />
+              <Markdown :source="item?.text" class="w-full break-words" />
             </UiChatBubble>
           </div>
           <div v-for="userTyping in usersTypings" :key="userTyping.id">
-            <UiChatBubble mode="start"> ... </UiChatBubble>
+            <UiChatBubble mode="start">
+              ...
+            </UiChatBubble>
           </div>
         </div>
         <footer class="relative bottom-0 left-0 right-0 p-2">
@@ -40,9 +42,9 @@
 </template>
 
 <script setup lang="ts">
-import { nanoid } from "nanoid";
-import Markdown from "vue3-markdown-it";
-import { Message, User } from "~/types/chat";
+import { nanoid } from 'nanoid'
+import Markdown from 'vue3-markdown-it'
+import { Message, User } from '~/types/chat'
 
 const props = withDefaults(
   defineProps<{
@@ -52,53 +54,51 @@ const props = withDefaults(
     usersTypings?: User[];
   }>(),
   {
-    usersTypings: () => [],
+    usersTypings: () => []
   }
-);
+)
 
-const emit = defineEmits<{
-  (e: "newMessage", payload: Message): void;
-}>();
+const emit = defineEmits<{(e: 'newMessage', payload: Message): void}>()
 
 const getUser = (id: string) => {
-  const user = props.users.find((user) => user.id === id);
-  if (user) return user;
-  return null;
-};
+  const user = props.users.find(user => user.id === id)
+  if (user) { return user }
+  return null
+}
 
-const open = ref(false);
+const open = ref(false)
 
-const message = ref("");
+const message = ref('')
 const changeMessage = (event: Event) => {
-  const target = event.target as HTMLTextAreaElement;
-  message.value = target.value;
-};
+  const target = event.target as HTMLTextAreaElement
+  message.value = target.value
+}
 
 const onSendMessage = () => {
-  emit("newMessage", {
+  emit('newMessage', {
     userId: props.currentUser.id,
     id: nanoid(),
     createdAt: new Date(),
-    text: message.value,
-  });
-  message.value = "";
-};
+    text: message.value
+  })
+  message.value = ''
+}
 
 const messageMode = (message: Message) => {
-  if (message.userId === props.currentUser.id) return "end";
-  return "start";
-};
+  if (message.userId === props.currentUser.id) { return 'end' }
+  return 'start'
+}
 
-const messageBox = ref();
+const messageBox = ref()
 watch(
   () => [open, props.messages],
-  async (val) => {
-    if (!open.value) return;
-    await nextTick();
-    messageBox.value.scrollTop = messageBox.value.scrollHeight;
+  async () => {
+    if (!open.value) { return }
+    await nextTick()
+    messageBox.value.scrollTop = messageBox.value.scrollHeight
   },
   {
-    deep: true,
+    deep: true
   }
-);
+)
 </script>
