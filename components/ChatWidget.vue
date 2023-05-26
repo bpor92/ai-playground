@@ -9,19 +9,19 @@
 </template>
 
 <script setup lang="ts">
+import { nanoid } from 'nanoid'
 import { Message, User } from '~~/types/chat'
-import { nanoid } from "nanoid"
 
 const user = ref<User>({
   id: 'user',
   name: 'Ja',
-  avatar: ''
+  avatar: '',
 })
 
 const bot = ref<User>({
   id: 'system',
   name: 'ChatGPT',
-  avatar: ''
+  avatar: '',
 })
 
 const users = computed(() => [user.value, bot.value])
@@ -44,8 +44,8 @@ const onSendMessage = async (message: Message) => {
   try {
     const { chat } = useChatGpt()
     const { id, data, error } = await chat(messagesToApi.value)
-    if(error) throw new Error(error);
-    
+    if (error) throw new Error(error)
+
     typings.value = []
 
     const msg = {
@@ -63,7 +63,7 @@ const onSendMessage = async (message: Message) => {
       id: nanoid(),
       title: '',
       content: error as string,
-      mode: 'error'
+      mode: 'error',
     })
   }
 }
