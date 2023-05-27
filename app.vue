@@ -13,5 +13,6 @@
 </template>
 
 <script setup lang="ts">
+// eslint-disable-next-line
 import { elementThemeGlobalStyles } from './utils/element-theme-global-styles'
 </script>

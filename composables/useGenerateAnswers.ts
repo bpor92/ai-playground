@@ -1,24 +1,23 @@
+import { AiResponse } from '~/server/utils/open-ai-response-handler'
+
 interface GenerateAnswer {
   answerLevel: string,
   question: string
 }
 
 export const useGenerateAnswers = () => {
-  const generateAnswer = async (payload: GenerateAnswer) => {
-    return new Promise(async (resolve, reject) => {
-      try {
-        const data = await $fetch('/api/generate-answers', {
-          method: 'POST',
-          body: {
-            answerLevel: payload.answerLevel,
-            question: payload.question
-          }
-        })
-        return resolve(data)
-      } catch (error: any) {
-        reject(error.data.message)
-      }
-    })
+  const generateAnswer = (payload: GenerateAnswer): Promise<AiResponse> => {
+    return new Promise((resolve, reject) =>
+      $fetch('/api/generate-answers', {
+        method: 'POST',
+        body: {
+          answerLevel: payload.answerLevel,
+          question: payload.question
+        }
+      })
+        .then(res => resolve(res as AiResponse))
+        .catch(err => reject(err.data.message))
+    )
   }
 
   return {

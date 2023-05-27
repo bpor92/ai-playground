@@ -1,8 +1,6 @@
 <template>
   <div>
-    <VDivider>
-      Candidate
-    </VDivider>
+    <VDivider>Candidate</VDivider>
 
     <VForm>
       <VInputText
@@ -60,9 +58,7 @@
     </div>
 
     <template v-if="questions.length">
-      <VDivider>
-        Summary
-      </VDivider>
+      <VDivider>Summary</VDivider>
 
       <VForm>
         <div>

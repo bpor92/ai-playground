@@ -5,6 +5,12 @@ interface InterviewJsonGenerator {
   candidate: string
 }
 
+export type ResponseML = {
+  id: string,
+  answer: string,
+  question: string
+}
+
 export const useInterview = () => {
   const state = ref<AsyncState>(null)
   const result = ref()
@@ -29,7 +35,7 @@ export const useInterview = () => {
     }
   }
 
-  const interviewMlJsonGenerator = async (payload: InterviewJsonGenerator) => {
+  const interviewMlJsonGenerator = async (payload: InterviewJsonGenerator): Promise<ResponseML[]> => {
     try {
       state.value = 'loading'
       const data = await $fetch('/api/interview-ml', {
