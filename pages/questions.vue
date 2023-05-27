@@ -1,29 +1,29 @@
 <template>
-  <UiForm>
-    <UiElText
+  <VForm>
+    <VInputText
       v-model="form.position"
       label="Position"
     />
-    <UiElSelect
+    <VInputSelect
       v-model="form.level"
       :label="'Level'"
       :options="[{ label: 'Junior', value: 'Junior'}, {value: 'Mid', label: 'Mid'}, {value: 'Senior', label: 'Senior'}]"
     />
 
     <div class="flex justify-center mt-5">
-      <UiElButton mode="success" @click="onCreateQuestion">
+      <VButton mode="success" @click="onCreateQuestion">
         Send
-      </UiElButton>
+      </VButton>
     </div>
 
-    <UiElTextarea
+    <VInputTextarea
       v-show="loader || result"
       v-model="result"
       v-loading="loader"
       label="Questions"
       :rows="22"
     />
-  </UiForm>
+  </VForm>
 </template>
 
 <script lang="ts" setup>

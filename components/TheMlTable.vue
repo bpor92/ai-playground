@@ -10,9 +10,9 @@
       </template>
       <template #default="scope">
         <NuxtLink :to="`/interview-ml/edit/${scope.row.id}`">
-          <UiElButton small>
+          <VButton small>
             Learn
-          </UiElButton>
+          </VButton>
         </NuxtLink>
       </template>
     </el-table-column>

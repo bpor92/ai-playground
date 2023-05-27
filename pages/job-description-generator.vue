@@ -1,23 +1,23 @@
 <template>
-  <UiForm>
+  <VForm>
     <div class="flex justify-between items-end">
-      <UiElSelect
+      <VInputSelect
         v-model="form.position"
         :options="jobs"
         filterable
         label="Employee position"
       />
 
-      <UiElButton
+      <VButton
         v-if="form.position"
         style="height:40px;"
         @click="prepareTasks"
       >
         Prepare Tasks
-      </UiElButton>
+      </VButton>
     </div>
 
-    <UiElTextarea
+    <VInputTextarea
       v-model="form.tasks"
       label="Tasks"
       :rows="22"
@@ -25,20 +25,20 @@
     />
 
     <div class="flex justify-center mt-5">
-      <UiElButton :loading="prepareTasksLoader || responseDescriptionLoader" mode="success" @click="generateJobDescription">
+      <VButton :loading="prepareTasksLoader || responseDescriptionLoader" mode="success" @click="generateJobDescription">
         Generate
-      </UiElButton>
+      </VButton>
     </div>
-  </UiForm>
+  </VForm>
 
   <br>
 
-  <UiMockupWindow
+  <VMockupWindow
     v-show="responseDescription || responseDescriptionLoader"
     v-loading="responseDescriptionLoader"
   >
     <Markdown :source="responseDescription" class="p-5 break-words" />
-  </UiMockupWindow>
+  </VMockupWindow>
 </template>
 
 <script setup lang="ts">

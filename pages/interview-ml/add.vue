@@ -1,11 +1,11 @@
 <template>
   <div>
-    <UiDivider>
+    <VDivider>
       Helper
-    </UiDivider>
+    </VDivider>
 
-    <UiForm>
-      <UiElSelect
+    <VForm>
+      <VInputSelect
         v-model="form.answerLevel"
         :options="[
           { label: ANSWER_LEVEL.BAD, value: ANSWER_LEVEL.BAD },
@@ -17,22 +17,22 @@
       />
 
       <div class="flex justify-center mt-5">
-        <UiElButton mode="success" @click="onGenerateAnswers">
+        <VButton mode="success" @click="onGenerateAnswers">
           Generate
-        </UiElButton>
+        </VButton>
       </div>
-    </UiForm>
+    </VForm>
 
-    <UiDivider>
+    <VDivider>
       Candidate
-    </UiDivider>
+    </VDivider>
 
-    <UiForm>
-      <UiElText
+    <VForm>
+      <VInputText
         v-model="form.candidate"
         label="Surname and name"
       />
-      <UiElText
+      <VInputText
         v-model="form.position"
         label="Position"
       />
@@ -43,17 +43,17 @@
       <br>
 
       <div class="flex justify-center">
-        <UiElButton mode="success" @click="onSendFile">
+        <VButton mode="success" @click="onSendFile">
           Send
-        </UiElButton>
+        </VButton>
       </div>
-    </UiForm>
+    </VForm>
 
-    <UiDivider />
+    <VDivider />
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
       <div v-for="item in form.questions" :key="item.id" class="mb-5 self-end">
-        <UiElTextarea
+        <VInputTextarea
           v-model="item.value"
           :label="item.text"
           :loading="item.loader"
@@ -65,12 +65,12 @@
     </div>
 
     <div class="flex justify-center">
-      <UiElButton mode="success" @click="onSend">
+      <VButton mode="success" @click="onSend">
         Rate question
-      </UiElButton>
-      <UiElButton mode="primary" @click="onCsv">
+      </VButton>
+      <VButton mode="primary" @click="onCsv">
         to CSV
-      </UiElButton>
+      </VButton>
     </div>
     <div v-if="ratedQuestions" class="flex justify-center">
       <el-text class="mx-1" :type="totalSummary < 30 ? 'danger' : 'success'">
@@ -176,7 +176,7 @@ const readFile = () => {
   const file = fileInput.value.files[0]
   const reader = new FileReader()
   reader.readAsText(file)
-  reader.onload = async (res: any) => {
+  reader.onload = (res: any) => {
     fileContent.value = res.target.result
   }
 }

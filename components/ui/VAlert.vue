@@ -14,10 +14,10 @@
 </template>
 
 <script setup lang="ts">
-import IconsInfo from '~~/components/icons/Info.vue'
-import IconsSuccess from '~~/components/icons/Success.vue'
-import IconsWarning from '~~/components/icons/Warning.vue'
-import IconsError from '~~/components/icons/Error.vue'
+import IconsInfo from '~~/components/icons/IconsInfo.vue'
+import IconsSuccess from '~~/components/icons/IconsSuccess.vue'
+import IconsWarning from '~~/components/icons/IconsWarning.vue'
+import IconsError from '~~/components/icons/IconsError.vue'
 import { type Mode } from '~~/types/alert'
 
 interface Props {

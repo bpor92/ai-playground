@@ -1,19 +1,19 @@
 <template>
   <div>
-    <UiDivider>
+    <VDivider>
       Candidate
-    </UiDivider>
+    </VDivider>
 
-    <UiForm>
-      <UiElText
+    <VForm>
+      <VInputText
         v-model="form.candidate"
         label="Surname and name"
       />
-      <UiElText
+      <VInputText
         v-model="form.position"
         label="Position"
       />
-      <UiElSelect
+      <VInputSelect
         v-model="form.level"
         :label="'Level'"
         :options="[{ label: 'Junior', value: 'Junior'}, {value: 'Mid', label: 'Mid'}, {value: 'Senior', label: 'Senior'}]"
@@ -25,49 +25,49 @@
       <br>
 
       <div class="flex justify-center">
-        <UiElButton mode="success" @click="onSendFile">
+        <VButton mode="success" @click="onSendFile">
           Send
-        </UiElButton>
+        </VButton>
       </div>
-    </UiForm>
+    </VForm>
 
-    <UiDivider v-if="questions.length">
+    <VDivider v-if="questions.length">
       Interview
-    </UiDivider>
+    </VDivider>
 
     <div class="grid grid-cols-2 gap-5">
       <div v-for="(question, index) in questions" :key="index" class="flex flex-col ">
-        <UiElTextarea
+        <VInputTextarea
           v-model="question.answer"
           v-loading="question.loader"
           :label="question.question"
         />
         <div v-if="question.rateDescription">
           <div class="flex flex-row items-center">
-            Recruiter assessment: &nbsp; <UiElRate v-model="question.rate" />
+            Recruiter assessment: &nbsp; <VRate v-model="question.rate" />
           </div>
           <div>
             {{ question.rateDescription }}
           </div>
         </div>
         <br>
-        <UiElButton
+        <VButton
           v-if="questions.length && !question.rateDescription"
           mode="primary"
           :loading="question.loader"
           @click="onRateInterview(index)"
         >
           Rate
-        </UiElButton>
+        </VButton>
       </div>
     </div>
 
     <template v-if="questions.length">
-      <UiDivider>
+      <VDivider>
         Summary
-      </UiDivider>
+      </VDivider>
 
-      <UiForm>
+      <VForm>
         <div>
           Score: {{ summaryRate }} / {{ questions.length * 5 }}
         </div>
@@ -81,23 +81,23 @@
           </el-radio>
         </el-radio-group>
 
-        <UiElTextarea
+        <VInputTextarea
           v-model="form.feedback"
           label="Feedback"
         />
         <br>
         <div class="flex justify-center">
-          <UiElButton mode="success" @click="onCreateSummary">
+          <VButton mode="success" @click="onCreateSummary">
             Create summary
-          </UiElButton>
+          </VButton>
         </div>
-      </UiForm>
+      </VForm>
 
-      <UiMockupWindow
+      <VMockupWindow
         v-show="feedbackResult"
       >
         <Markdown :source="feedbackResult" class="p-5 break-words" />
-      </UiMockupWindow>
+      </VMockupWindow>
     </template>
   </div>
 </template>

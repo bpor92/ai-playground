@@ -1,18 +1,18 @@
 <template>
   <div>
-    <UiToast
+    <VToast
       horizontal="right"
       vertical="top"
     >
-      <UiAlert
+      <VAlert
         v-for="item in toastList"
         :key="item.id"
         :mode="item.mode"
       >
         <div>{{ item.title }}</div>
         <div>{{ item.content }}</div>
-      </UiAlert>
-    </UiToast>
+      </VAlert>
+    </VToast>
   </div>
 </template>
 

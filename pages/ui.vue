@@ -1,52 +1,52 @@
 <template>
   <ThemeSwitcher />
 
-  <UiSwap v-model="swap" label="perdasdasd">
+  <VSwap v-model="swap" label="perdasdasd">
     <IconsMoon />
     <IconsSun />
-  </UiSwap>
+  </VSwap>
   <br>
 
-  <UiAlert>
+  <VAlert>
     Info - default
     <template #actions>
       <button class="btn btn-sm">
         See
       </button>
     </template>
-  </UiAlert>
+  </VAlert>
   <br>
 
-  <UiAlert mode="info">
+  <VAlert mode="info">
     info
-  </UiAlert>
+  </VAlert>
   <br>
 
-  <UiAlert mode="success">
+  <VAlert mode="success">
     success
-  </UiAlert>
+  </VAlert>
   <br>
 
-  <UiAlert mode="warning">
+  <VAlert mode="warning">
     warning
-  </UiAlert>
+  </VAlert>
   <br>
 
-  <UiAlert mode="error">
+  <VAlert mode="error">
     error
-  </UiAlert>
+  </VAlert>
 
   <br>
   <br>
 
-  <UiSteps :current-step="step" :items="items" @click="value => step = value" />
+  <VSteps :current-step="step" :items="items" @click="value => step = value" />
 
   <br>
   <br>
 
   <pre>{{ tab }}</pre>
 
-  <UiTabs :active-item="tab" :items="items" @click="value => tab = value" />
+  <VTabs :active-item="tab" :items="items" @click="value => tab = value" />
 
   <br>
   <br>

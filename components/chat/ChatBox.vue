@@ -12,18 +12,18 @@
       <div class="d-flex min-h-[100px]">
         <div ref="messageBox" class="pt-2 pb-2 max-h-[80vh] overflow-y-scroll">
           <div v-for="item in messages" :key="item.id">
-            <UiChatBubble
+            <VChatBubble
               :mode="messageMode(item)"
               :created-at="item.createdAt"
               :user="getUser(item.userId)"
             >
               <Markdown :source="item?.text" class="w-full break-words" />
-            </UiChatBubble>
+            </VChatBubble>
           </div>
           <div v-for="userTyping in usersTypings" :key="userTyping.id">
-            <UiChatBubble mode="start">
+            <VChatBubble mode="start">
               ...
-            </UiChatBubble>
+            </VChatBubble>
           </div>
         </div>
         <footer class="relative bottom-0 left-0 right-0 p-2">

@@ -1,24 +1,24 @@
 <template>
   <div>
-    <UiRadio
+    <VRadio
       v-model="model"
       name="test"
       :value="Theme.DARK"
       label="dark"
     />
-    <UiRadio
+    <VRadio
       v-model="model"
       name="test"
       :value="Theme.CUPCAKE"
       label="cupcake"
     />
-    <UiRadio
+    <VRadio
       v-model="model"
       name="test"
       :value="Theme.AQUA"
       label="aqua"
     />
-    <UiRadio
+    <VRadio
       v-model="model"
       name="test"
       :value="Theme.SYMFONIA"

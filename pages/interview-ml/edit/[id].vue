@@ -1,12 +1,12 @@
 <template>
-  <UiForm>
+  <VForm>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-10">
       <div v-for="item in form.questions" :key="item.id" class="mb-5 self-end">
-        <UiElTextarea
+        <VInputTextarea
           v-model="item.value"
           :label="item.text"
         />
-        <UiElSelect
+        <VInputSelect
           v-model="item.score"
           label="Score"
           :options="scoreModel()"
@@ -14,11 +14,11 @@
       </div>
     </div>
     <div class="flex justify-center">
-      <UiElButton mode="success" @click="onSend">
+      <VButton mode="success" @click="onSend">
         Learn
-      </UiElButton>
+      </VButton>
     </div>
-  </UiForm>
+  </VForm>
 </template>
 
 <script setup lang="ts">

@@ -2,9 +2,9 @@
   <div>
     <div class="flex justify-end mb-5">
       <NuxtLink to="/interview-ml/add">
-        <UiElButton mode="primary">
+        <VButton mode="primary">
           Add interview
-        </UiElButton>
+        </VButton>
       </NuxtLink>
     </div>
     <TheMlTable />

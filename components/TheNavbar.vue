@@ -93,14 +93,14 @@
       </ul>
     </div>
     <div class="navbar-end">
-      <UiSwap v-model="swap">
+      <VSwap v-model="swap">
         <template #on>
           <IconsMoon />
         </template>
         <template #off>
           <IconsSun />
         </template>
-      </UiSwap>
+      </VSwap>
     </div>
   </div>
 </template>
