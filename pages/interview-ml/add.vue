@@ -78,7 +78,6 @@
 </template>
 
 <script setup lang="ts">
-import { Parser } from '@json2csv/plainjs'
 import { questionOptions } from '~/types/questions'
 const config = useRuntimeConfig()
 
@@ -138,34 +137,25 @@ const onSend = async () => {
   })
 }
 
-const onCsv = () => {
-  const parser = new Parser({ header: false })
-  const answerLevel = () => {
-    switch (form.answerLevel) {
-      case ANSWER_LEVEL.GOOD :
-        return 10
-      case ANSWER_LEVEL.NEUTRAL:
-        return 5
-      default:
-        return 0
-    }
+const answerLevel = () => {
+  switch (form.answerLevel) {
+    case ANSWER_LEVEL.GOOD :
+      return 10
+    case ANSWER_LEVEL.NEUTRAL:
+      return 5
+    default:
+      return 0
   }
-  const jsonData = form.questions.map(item => ({
-    id: item.id,
-    value: item.value,
-    score: answerLevel()
-  }))
-
-  const csv = parser.parse(jsonData)
-
-  const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' })
-  const url = URL.createObjectURL(blob)
-
-  const pom = document.createElement('a')
-  pom.href = url
-  pom.setAttribute('download', 'ai-batch.csv')
-  pom.click()
 }
+
+const prepareDataToCsv = () => form.questions.map(item => ({
+  id: item.id,
+  value: item.value,
+  score: answerLevel()
+}))
+
+const { download } = useCsv()
+const onCsv = () => download(prepareDataToCsv())
 
 const fileContent = ref('')
 const onFile = (val: string) => { fileContent.value = val }
