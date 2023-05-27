@@ -13,7 +13,7 @@ export default defineNuxtConfig({
     OPENAI_API_KEY: '',
     AZURE_API_KEY: '',
     public: {
-      MOCK_DATA: true
+      MOCK_DATA: false
     }
   },
   devtools: {

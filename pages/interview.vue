@@ -19,10 +19,7 @@
         :options="[{ label: 'Junior', value: 'Junior'}, {value: 'Mid', label: 'Mid'}, {value: 'Senior', label: 'Senior'}]"
       />
 
-      <br>
-      <input ref="fileInput" type="file" @change="readFile">
-      <br>
-      <br>
+      <VFile @on-file="onFile" />
 
       <div class="flex justify-center">
         <VButton mode="success" @click="onSendFile">
@@ -118,17 +115,8 @@ const form = reactive({
   positiveFeedback: FEEDBACK.POSITIVE
 })
 
-const fileInput = ref()
 const fileContent = ref('')
-
-const readFile = () => {
-  const file = fileInput.value.files[0]
-  const reader = new FileReader()
-  reader.readAsText(file)
-  reader.onload = async (res: any) => {
-    fileContent.value = res.target.result
-  }
-}
+const onFile = (val: string) => { fileContent.value = val }
 
 const questions = ref<{question: string, answer: string, rateDescription: string, rate: number, loader: boolean}[]>([])
 const onSendFile = async () => {

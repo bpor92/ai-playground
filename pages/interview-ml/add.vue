@@ -37,10 +37,7 @@
         label="Position"
       />
 
-      <br>
-      <input ref="fileInput" type="file" @change="readFile">
-      <br>
-      <br>
+      <VFile @on-file="onFile" />
 
       <div class="flex justify-center">
         <VButton mode="success" @click="onSendFile">
@@ -170,16 +167,8 @@ const onCsv = () => {
   pom.click()
 }
 
-const fileInput = ref()
 const fileContent = ref('')
-const readFile = () => {
-  const file = fileInput.value.files[0]
-  const reader = new FileReader()
-  reader.readAsText(file)
-  reader.onload = (res: any) => {
-    fileContent.value = res.target.result
-  }
-}
+const onFile = (val: string) => { fileContent.value = val }
 
 const onGenerateAnswers = async () => {
   ratedQuestions.value = false
