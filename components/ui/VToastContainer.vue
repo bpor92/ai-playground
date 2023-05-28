@@ -9,7 +9,9 @@
         :key="item.id"
         :mode="item.mode"
       >
-        <div>{{ item.title }}</div>
+        <div v-if="item.title ">
+          {{ item.title }}
+        </div>
         <div>{{ item.content }}</div>
       </VAlert>
     </VToast>

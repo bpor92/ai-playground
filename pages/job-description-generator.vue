@@ -79,7 +79,7 @@ const prepareTasks = async () => {
     position: form.position
   }
   prepareTasksLoader.value = true
-  const { data, error } = await useCustomFetch<AiResponse>('/api/prepare-position-tasks', { method: 'POST', body })
+  const { data, error } = await useCustomFetch<AiResponse>('/api/prepare-position-tasks', { body }).post()
   prepareTasksLoader.value = false
 
   if (error.value) { throw error.value }

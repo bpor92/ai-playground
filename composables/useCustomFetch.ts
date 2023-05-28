@@ -1,5 +1,8 @@
 import type { UseFetchOptions } from 'nuxt/app'
 import { defu } from 'defu'
+import { nanoid } from 'nanoid'
+
+const { add } = useToast()
 
 export function useCustomFetch<T> (url: string, options: UseFetchOptions<T> = {}) {
   const userAuth = useCookie('token')
@@ -19,13 +22,19 @@ export function useCustomFetch<T> (url: string, options: UseFetchOptions<T> = {}
       // _ctx.response._data = new myBusinessResponse(_ctx.response._data)
     },
 
-    onResponseError (_ctx) {
-      // throw new myBusinessError()
+    onResponseError (ctx) {
+      add({
+        id: nanoid(),
+        content: ctx.error ? ctx.error.message : 'Wystąpił nieoczekiwany bład',
+        mode: 'error'
+      })
     }
   }
 
-  // for nice deep defaults, please use unjs/defu
   const params = defu(options, defaults)
 
-  return useFetch(url, params)
+  return {
+    post: () => useFetch(url, { ...params, method: 'POST' }),
+    get: () => useFetch(url, { ...params, method: 'GET' })
+  }
 }
