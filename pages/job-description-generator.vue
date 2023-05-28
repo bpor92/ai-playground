@@ -44,6 +44,7 @@
 <script setup lang="ts">
 import Markdown from 'vue3-markdown-it'
 import { AiResponse } from '~/server/utils/open-ai-response-handler'
+import { generateJobDescriptionService } from '~/services/job-description-generator'
 import { jobs } from '~/types/employee-position'
 import { JobDescription } from '~/types/job-description'
 
@@ -79,7 +80,8 @@ const prepareTasks = async () => {
     position: form.position
   }
   prepareTasksLoader.value = true
-  const { data, error } = await useCustomFetch<AiResponse>('/api/prepare-position-tasks', { body }).post()
+  // const { data, error } = await useCustomFetch<AiResponse>('/api/prepare-position-tasks', { body }).post()
+  const { data, error } = await generateJobDescriptionService(body)
   prepareTasksLoader.value = false
 
   if (error.value) { throw error.value }
