@@ -1,4 +1,4 @@
 export interface JobDescription {
   position: string,
-  tasks?: string
+  tasks?: string | null
 }

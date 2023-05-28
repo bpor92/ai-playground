@@ -43,10 +43,14 @@
 
 <script setup lang="ts">
 import Markdown from 'vue3-markdown-it'
+import { AiResponse } from '~/server/utils/open-ai-response-handler'
 import { jobs } from '~/types/employee-position'
 import { JobDescription } from '~/types/job-description'
 
-const form = reactive({
+const form = reactive<{
+  position: string,
+  tasks: string | null
+}>({
   position: '',
   tasks: ''
 })
@@ -69,15 +73,16 @@ const generateJobDescription = async () => {
   responseDescription.value = response
 }
 
-const { api: taskApi, state: taskState } = usePrepareTask()
-const prepareTasksLoader = computed(() => taskState.value === 'loading')
-
+const prepareTasksLoader = ref(false)
 const prepareTasks = async () => {
-  const data = {
+  const body = {
     position: form.position
   }
-  const { data: response, error } = await taskApi(data)
-  if (error) { throw new Error(error) }
-  form.tasks = response
+  prepareTasksLoader.value = true
+  const { data, error } = await useCustomFetch<AiResponse>('/api/prepare-position-tasks', { method: 'POST', body })
+  prepareTasksLoader.value = false
+
+  if (error.value) { throw error.value }
+  if (data.value) { form.tasks = data.value.data }
 }
 </script>
