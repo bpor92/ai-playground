@@ -43,6 +43,7 @@
 
 <script setup lang="ts">
 import Markdown from 'vue3-markdown-it'
+import { useJob } from '~/composables/useJob'
 import { AiResponse } from '~/server/utils/open-ai-response-handler'
 import { generateJobDescriptionService } from '~/services/job-description-generator'
 import { jobs } from '~/types/employee-position'
@@ -74,17 +75,18 @@ const generateJobDescription = async () => {
   responseDescription.value = response
 }
 
-const prepareTasksLoader = ref(false)
-const prepareTasks = async () => {
-  const body = {
-    position: form.position
-  }
-  prepareTasksLoader.value = true
-  // const { data, error } = await useCustomFetch<AiResponse>('/api/prepare-position-tasks', { body }).post()
-  const { data, error } = await generateJobDescriptionService(body)
-  prepareTasksLoader.value = false
+const { generateDescription, generateState } = useJob()
+const prepareTasksLoader = computed(() => generateState.loader)
+watch(generateState, (val) => {
+  form.tasks = val.data.data
+})
+const prepareTasks = () => generateDescription({ position: form.position })
 
-  if (error.value) { throw error.value }
-  if (data.value) { form.tasks = data.value.data }
-}
+// prepareTasksLoader.value = true
+// const { data, error } = await useCustomFetch<AiResponse>('/api/prepare-position-tasks', { body }).post()
+// const { data, error } = await generateJobDescriptionService(body)
+// prepareTasksLoader.value = false
+
+// if (error.value) { throw error.value }
+// if (data.value) { form.tasks = data.value.data }
 </script>
