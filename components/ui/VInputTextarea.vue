@@ -16,7 +16,7 @@
 
 <script lang="ts" setup>
 withDefaults(defineProps<{
-  modelValue: string,
+  modelValue: string | null,
   label: string,
   loading?: boolean,
   rows?: number,
