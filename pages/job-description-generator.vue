@@ -21,11 +21,11 @@
       v-model="form.tasks"
       label="Tasks"
       :rows="22"
-      :loading="prepareTasksLoader"
+      :loading="generateState.loader"
     />
 
     <div class="flex justify-center mt-5">
-      <VButton :loading="prepareTasksLoader || responseDescriptionLoader" mode="success" @click="generateJobDescription">
+      <VButton :loading="generateState.loader || responseDescriptionLoader" mode="success" @click="generateJobDescription">
         Generate
       </VButton>
     </div>
@@ -76,7 +76,6 @@ const generateJobDescription = async () => {
 }
 
 const { generateDescription, generateState } = useJob()
-const prepareTasksLoader = computed(() => generateState.loader)
 watch(generateState, (val) => {
   form.tasks = val.data.data
 })
