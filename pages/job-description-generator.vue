@@ -21,11 +21,11 @@
       v-model="form.tasks"
       label="Tasks"
       :rows="22"
-      :loading="generateState.loader"
+      :loading="loading"
     />
 
     <div class="flex justify-center mt-5">
-      <VButton :loading="generateState.loader || responseDescriptionLoader" mode="success" @click="generateJobDescription">
+      <VButton :loading="loading || responseDescriptionLoader" mode="success" @click="generateJobDescription">
         Generate
       </VButton>
     </div>
@@ -45,7 +45,7 @@
 import Markdown from 'vue3-markdown-it'
 import { useJob } from '~/composables/useJob'
 import { AiResponse } from '~/server/utils/open-ai-response-handler'
-import { generateJobDescriptionService } from '~/services/job-description-generator'
+import { generateJobDescriptionService, useGenerateJobDescriptionService } from '~/services/job-description-generator'
 import { jobs } from '~/types/employee-position'
 import { JobDescription } from '~/types/job-description'
 
@@ -75,11 +75,15 @@ const generateJobDescription = async () => {
   responseDescription.value = response
 }
 
-const { generateDescription, generateState } = useJob()
-watch(generateState, (val) => {
-  form.tasks = val.data.data
-})
-const prepareTasks = () => generateDescription({ position: form.position })
+// const { generateDescription, generateState } = useJob()
+// watch(generateState, (val) => {
+//   form.tasks = val.data.data
+// })
+// const prepareTasks = () => generateDescription({ position: form.position })
+
+const { loading, data, request } = useGenerateJobDescriptionService()
+watch(data, (val) => { form.tasks = val.value.data })
+const prepareTasks = () => request({ position: form.position })
 
 // prepareTasksLoader.value = true
 // const { data, error } = await useCustomFetch<AiResponse>('/api/prepare-position-tasks', { body }).post()
