@@ -1,4 +1,4 @@
-export const ApiService = <T> (url: string) => {
+export const useService = <T> (url: string) => {
   const loading = ref(false)
   const data = ref({})
   const error = ref(null)

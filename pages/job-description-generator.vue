@@ -75,21 +75,8 @@ const generateJobDescription = async () => {
   responseDescription.value = response
 }
 
-// const { generateDescription, generateState } = useJob()
-// watch(generateState, (val) => {
-//   form.tasks = val.data.data
-// })
-// const prepareTasks = () => generateDescription({ position: form.position })
-
-const { loading, data, request } = useGenerateJobDescriptionService()
+const { loading, data, request } = useJob()
 watch(data, (val) => { form.tasks = val.value.data })
 const prepareTasks = () => request({ position: form.position })
 
-// prepareTasksLoader.value = true
-// const { data, error } = await useCustomFetch<AiResponse>('/api/prepare-position-tasks', { body }).post()
-// const { data, error } = await generateJobDescriptionService(body)
-// prepareTasksLoader.value = false
-
-// if (error.value) { throw error.value }
-// if (data.value) { form.tasks = data.value.data }
 </script>
