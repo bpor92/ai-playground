@@ -2,6 +2,6 @@ import { useGenerateJobDescriptionService } from '../services/job-description-ge
 
 export const useJob = () => {
   return {
-    ...useGenerateJobDescriptionService()
+    ...useGenerateJobDescriptionService
   }
 }

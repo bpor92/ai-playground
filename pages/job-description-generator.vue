@@ -75,8 +75,10 @@ const generateJobDescription = async () => {
   responseDescription.value = response
 }
 
-const { loading, data, request } = useJob()
-watch(data, (val) => { form.tasks = val.value.data })
-const prepareTasks = () => request({ position: form.position })
+const { request, loading } = useJob()
+const prepareTasks = async () => {
+  const val = await request({ position: form.position })
+  form.tasks = val.data.value.data
+}
 
 </script>

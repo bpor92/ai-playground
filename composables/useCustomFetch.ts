@@ -4,7 +4,7 @@ import { nanoid } from 'nanoid'
 
 const { add } = useToast()
 
-export function useCustomFetch<T> (url: string, options: UseFetchOptions<T> = {}) {
+export const useCustomFetch = <T> (url: string, options: UseFetchOptions<T> = {}) => {
   const userAuth = useCookie('token')
   const config = useRuntimeConfig()
 
@@ -33,8 +33,20 @@ export function useCustomFetch<T> (url: string, options: UseFetchOptions<T> = {}
 
   const params = defu(options, defaults)
 
-  return {
-    post: () => useFetch(url, { ...params, method: 'POST' }),
-    get: () => useFetch(url, { ...params, method: 'GET' })
+  const loading = ref(false)
+  const request = async (body: Record<string, any>) => {
+    loading.value = true
+    const data = await useFetch(url, { ...{ ...params, body }, method: 'POST' })
+    loading.value = false
+    return data
   }
+
+  return {
+    request,
+    loading
+  }
+  // return {
+  //   post: () => useFetch(url, { ...params, method: 'POST' }),
+  //   get: () => useFetch(url, { ...params, method: 'GET' })
+  // }
 }
