@@ -1,4 +1,7 @@
+// todo remove body
 export interface JobDescription {
-  position: string,
-  tasks?: string | null
+  body: {
+    position: string,
+    tasks?: string | null
+  }
 }
