@@ -60,7 +60,7 @@ const form = reactive<{
   tasks: ''
 })
 
-const description = ref<string | null>(null)
+const description = ref<string | null>('')
 
 const { request: jobDescriptionRequest, loading: descriptionLoader } = useJobDescription()
 const generateJobDescription = async () => {
