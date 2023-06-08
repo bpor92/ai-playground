@@ -18,9 +18,7 @@ export const useCustomFetch = <T> (url: string, options: UseFetchOptions<T> = {}
       ? { Authorization: `Bearer ${userAuth.value}` }
       : {},
 
-    onResponse (_ctx) {
-      // _ctx.response._data = new myBusinessResponse(_ctx.response._data)
-    },
+    onResponse (_ctx) {},
 
     onResponseError (ctx) {
       add({
@@ -34,9 +32,10 @@ export const useCustomFetch = <T> (url: string, options: UseFetchOptions<T> = {}
   const params = defu(options, defaults)
 
   const loading = ref(false)
-  const request = async (body: Record<string, any>) => {
+
+  const request = async (arg: Record<string, any>) => {
     loading.value = true
-    const data = await useFetch(url, { ...{ ...params, body }, method: 'POST' })
+    const data = await useFetch(url, { ...params, ...arg })
     loading.value = false
     return data
   }
@@ -45,8 +44,4 @@ export const useCustomFetch = <T> (url: string, options: UseFetchOptions<T> = {}
     request,
     loading
   }
-  // return {
-  //   post: () => useFetch(url, { ...params, method: 'POST' }),
-  //   get: () => useFetch(url, { ...params, method: 'GET' })
-  // }
 }
