@@ -44,6 +44,7 @@
 <script setup lang="ts">
 import Markdown from 'vue3-markdown-it'
 import { useJob } from '~/composables/useJob'
+import { AiResponse } from '~/server/utils/open-ai-response-handler'
 import { jobs } from '~/types/employee-position'
 import { JobDescription } from '~/types/job-description'
 
@@ -75,8 +76,8 @@ const generateJobDescription = async () => {
 
 const { request, loading } = useJob()
 const prepareTasks = async () => {
-  const val = await request({ body: { position: form.position } })
-  form.tasks = val.data.value.data
+  const { data } = await request<AiResponse>({ body: { position: form.position } })
+  if (data.value) { form.tasks = data.value.data }
 }
 
 </script>

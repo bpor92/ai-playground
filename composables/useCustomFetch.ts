@@ -33,9 +33,9 @@ export const useCustomFetch = <T> (url: string, options: UseFetchOptions<T> = {}
 
   const loading = ref(false)
 
-  const request = async (arg: Record<string, any>) => {
+  const request = async <T> (arg: any) => {
     loading.value = true
-    const data = await useFetch(url, { ...params, ...arg })
+    const data = await useFetch<T>(url, { ...params, ...arg })
     loading.value = false
     return data
   }
