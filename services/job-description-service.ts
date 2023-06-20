@@ -1,3 +1,3 @@
 import { AiResponse } from '~/server/utils/open-ai-response-handler'
 
-export const jobDescriptionService = useCustomFetch<AiResponse>('/api/job-description-generator', { method: 'POST' })
+export const jobDescriptionService = useCustomFetch<AiResponse>('/api/job-description-generator', { method: 'POST' }, { globalError: true })

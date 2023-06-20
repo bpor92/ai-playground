@@ -6,7 +6,7 @@ const { openai, model } = initOpenAi()
 
 export default defineEventHandler(async (event) => {
   const body = await readBody(event)
-
+  
   if (!body.position) {
     throw createError({
       statusCode: 400,

@@ -80,7 +80,8 @@ const generateJobDescription = async () => {
 
 const { request, loading } = useJobTasks()
 const prepareTasks = async () => {
-  const { data } = await request<AiResponse>({ body: { position: form.position } })
+  const { data, error } = await request<AiResponse>({ body: { position: form.position } })
+  if (error.value?.statusMessage) console.log(error.value?.statusMessage)
   if (data.value) { form.tasks = data.value.data }
 }
 </script>

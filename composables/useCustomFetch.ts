@@ -2,9 +2,13 @@ import type { UseFetchOptions } from 'nuxt/app'
 import { defu } from 'defu'
 import { nanoid } from 'nanoid'
 
+interface Options {
+  globalError?: boolean
+}
+
 const { add } = useToast()
 
-export const useCustomFetch = <T> (url: string, options: UseFetchOptions<T> = {}) => {
+export const useCustomFetch = <T> (url: string, fetchOptions: UseFetchOptions<T> = {}, options: Options = {}) => {
   const userAuth = useCookie('token')
   const config = useRuntimeConfig()
 
@@ -21,6 +25,7 @@ export const useCustomFetch = <T> (url: string, options: UseFetchOptions<T> = {}
     onResponse (_ctx) {},
 
     onResponseError (ctx) {
+      if (!options.globalError) return 
       add({
         id: nanoid(),
         content: ctx.error ? ctx.error.message : 'Wystąpił nieoczekiwany bład',
@@ -29,7 +34,7 @@ export const useCustomFetch = <T> (url: string, options: UseFetchOptions<T> = {}
     }
   }
 
-  const params = defu(options, defaults)
+  const params = defu(fetchOptions, defaults)
 
   const loading = ref(false)
 
