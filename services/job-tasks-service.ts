@@ -1,3 +1,1 @@
-import { AiResponse } from '~/server/utils/open-ai-response-handler'
-
-export const jobTasksService = useCustomFetch<AiResponse>('/api/prepare-position-tasks', { method: 'POST' }, { globalError: true })
+export const jobTasksService = useCustomFetch('/api/prepare-position-tasks', { method: 'POST' }, { globalError: true })
