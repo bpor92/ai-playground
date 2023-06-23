@@ -47,7 +47,6 @@
 
 <script setup lang="ts">
 import Markdown from 'vue3-markdown-it'
-import useJobTasks from '~/composables/useJobTasks'
 import { AiResponse } from '~/server/utils/open-ai-response-handler'
 import { jobs } from '~/types/employee-position'
 import { JobDescription } from '~/types/job-description'
