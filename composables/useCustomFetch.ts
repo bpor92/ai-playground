@@ -2,9 +2,15 @@ import type { UseFetchOptions } from 'nuxt/app'
 import { defu } from 'defu'
 import { nanoid } from 'nanoid'
 
+interface Options {
+  globalError?: boolean,
+  globalLoader?: boolean,
+  cache?: boolean
+}
+
 const { add } = useToast()
 
-export function useCustomFetch<T> (url: string, options: UseFetchOptions<T> = {}) {
+export const useCustomFetch = <T> (url: string, fetchOptions: UseFetchOptions<T> = {}, options: Options = {}) => {
   const userAuth = useCookie('token')
   const config = useRuntimeConfig()
 
@@ -18,11 +24,10 @@ export function useCustomFetch<T> (url: string, options: UseFetchOptions<T> = {}
       ? { Authorization: `Bearer ${userAuth.value}` }
       : {},
 
-    onResponse (_ctx) {
-      // _ctx.response._data = new myBusinessResponse(_ctx.response._data)
-    },
+    onResponse (_ctx) {},
 
     onResponseError (ctx) {
+      if (!options.globalError) return 
       add({
         id: nanoid(),
         content: ctx.error ? ctx.error.message : 'Wystąpił nieoczekiwany bład',
@@ -30,11 +35,25 @@ export function useCustomFetch<T> (url: string, options: UseFetchOptions<T> = {}
       })
     }
   }
+  
+  const params = defu(fetchOptions, defaults)
 
-  const params = defu(options, defaults)
+  const loading = ref(false)
+  
+  const request = async <T> (arg: any) => {
+    if(options.hasOwnProperty('cache') && !options.cache) params.key = nanoid()
+
+    let globalLoader: any
+    if(options.globalLoader) globalLoader = ElLoading.service({ fullscreen: true })
+    loading.value = true
+    const data = await useFetch<T>(url, { ...params, ...arg })
+    loading.value = false
+    if(options.globalLoader) globalLoader.close()
+    return data
+  }
 
   return {
-    post: () => useFetch(url, { ...params, method: 'POST' }),
-    get: () => useFetch(url, { ...params, method: 'GET' })
+    request,
+    loading
   }
 }

@@ -97,6 +97,7 @@
 
 <script lang="ts" setup>
 import Markdown from 'vue3-markdown-it'
+import { AiResponse } from "~/server/utils/open-ai-response-handler";
 
 enum FEEDBACK {
   POSITIVE = 'POSITIVE',
@@ -115,47 +116,50 @@ const fileContent = ref('')
 const onFile = (val: string) => { fileContent.value = val }
 
 const questions = ref<{question: string, answer: string, rateDescription: string, rate: number, loader: boolean}[]>([])
-const onSendFile = async () => {
-  const loading = ElLoading.service({ fullscreen: true })
 
-  const { interviewJsonGenerator } = useInterview()
-  const res = await interviewJsonGenerator({ file: fileContent.value, candidate: form.candidate })
-  loading.close()
-  const data = JSON.parse(res.data)
-  questions.value = data.map((item: { value: string, label: string }) => ({ ...item, rateDescription: '', rate: 0, loader: false }))
+const { request } = useInterview()
+const onSendFile = async () => {
+  const res = await request<AiResponse>({body: { file: fileContent.value, candidate: form.candidate }})
+  if(res.data  && res.data.value?.data) {
+    const data = JSON.parse(res.data.value?.data)
+    questions.value = data.map((item: { value: string, label: string }) => ({ ...item, rateDescription: '', rate: 0, loader: false }))
+  }
 }
 
 const onRateInterview = async (index: number) => {
-  const { rateInterview, rateLoading } = useInterview()
-  // TODO
-  questions.value[index].loader = rateLoading
-
-  const res = await rateInterview({
+  const { request: interviewRateRequest } = useInterviewRate()
+  questions.value[index].loader = true
+  const result = await interviewRateRequest<AiResponse>({ body: {
     question: questions.value[index].question,
     answer: questions.value[index].answer,
     level: form.level,
     position: form.position
-  })
-  const data = JSON.parse(res.data)
-  questions.value[index].rateDescription = data.result
-  questions.value[index].rate = data.rate
+  }})
+  
+  if(result.data && result.data.value?.data) {
+    const data = JSON.parse(result.data.value.data)
+    questions.value[index].rateDescription = data.result
+    questions.value[index].rate = data.rate
+  }
+  
+  questions.value[index].loader = false
 }
 
-const summaryRate = computed(() => questions.value.reduce((a, b) => a + b.rate, 0))
-
 const feedbackResult = ref('')
+const { request: summarizeInterviewRequest } = useInterviewSummary()
 const onCreateSummary = async () => {
-  const loading = ElLoading.service({ fullscreen: true })
-  const { summarizeInterview } = useInterview()
-  const res = await summarizeInterview({
+  const result = await summarizeInterviewRequest<AiResponse>({ body: {
     questions: questions.value,
     position: form.position,
     level: form.level,
     candidate: form.candidate,
     positiveFeedback: form.positiveFeedback === FEEDBACK.POSITIVE,
     feedback: form.feedback
-  })
-  feedbackResult.value = res.data
-  loading.close()
+  }})
+  if(result.data && result.data.value?.data) {
+    feedbackResult.value = result.data.value.data
+  }
 }
+
+const summaryRate = computed(() => questions.value.reduce((a, b) => a + b.rate, 0))
 </script>

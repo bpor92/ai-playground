@@ -21,11 +21,15 @@
       v-model="form.tasks"
       label="Tasks"
       :rows="22"
-      :loading="generateState.loader"
+      :loading="loading"
     />
 
     <div class="flex justify-center mt-5">
-      <VButton :loading="generateState.loader || responseDescriptionLoader" mode="success" @click="generateJobDescription">
+      <VButton
+        :loading="loading || descriptionLoader"
+        mode="success"
+        @click="generateJobDescription"
+      >
         Generate
       </VButton>
     </div>
@@ -34,18 +38,16 @@
   <br>
 
   <VMockupWindow
-    v-show="responseDescription || responseDescriptionLoader"
-    v-loading="responseDescriptionLoader"
+    v-show="description || descriptionLoader"
+    v-loading="descriptionLoader"
   >
-    <Markdown :source="responseDescription" class="p-5 break-words" />
+    <Markdown :source="description" class="p-5 break-words" />
   </VMockupWindow>
 </template>
 
 <script setup lang="ts">
 import Markdown from 'vue3-markdown-it'
-import { useJob } from '~/composables/useJob'
 import { AiResponse } from '~/server/utils/open-ai-response-handler'
-import { generateJobDescriptionService } from '~/services/job-description-generator'
 import { jobs } from '~/types/employee-position'
 import { JobDescription } from '~/types/job-description'
 
@@ -57,35 +59,28 @@ const form = reactive<{
   tasks: ''
 })
 
-const responseDescription = ref('')
-const { api: descriptionApi, state: jobDescriptionState } = useJobDescriptionGenerator()
-const responseDescriptionLoader = computed(() => jobDescriptionState.value === 'loading')
+const description = ref<string | null>('')
 
+const { request: jobDescriptionRequest, loading: descriptionLoader } = useJobDescription()
 const generateJobDescription = async () => {
   const position = useArrayFind(jobs, val => val.value === form.position).value?.label
   if (!position) { throw new Error('Invalid position') }
 
   const data: JobDescription = {
-    position,
-    tasks: form.tasks
+    body: {
+      position,
+      tasks: form.tasks
+    }
   }
 
-  const { data: response, error } = await descriptionApi(data)
-  if (error) { throw new Error(error) }
-  responseDescription.value = response
+  const { data: response } = await jobDescriptionRequest<AiResponse>(data)
+  if (response.value) { description.value = response.value.data }
 }
 
-const { generateDescription, generateState } = useJob()
-watch(generateState, (val) => {
-  form.tasks = val.data.data
-})
-const prepareTasks = () => generateDescription({ position: form.position })
-
-// prepareTasksLoader.value = true
-// const { data, error } = await useCustomFetch<AiResponse>('/api/prepare-position-tasks', { body }).post()
-// const { data, error } = await generateJobDescriptionService(body)
-// prepareTasksLoader.value = false
-
-// if (error.value) { throw error.value }
-// if (data.value) { form.tasks = data.value.data }
+const { request, loading } = useJobTasks()
+const prepareTasks = async () => {
+  const { data, error } = await request<AiResponse>({ body: { position: form.position } })
+  if (error.value?.statusMessage) console.log(error.value?.statusMessage)
+  if (data.value) { form.tasks = data.value.data }
+}
 </script>

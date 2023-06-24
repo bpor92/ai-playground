@@ -10,8 +10,10 @@ module.exports = {
   },
   extends: ['@nuxtjs/eslint-config-typescript'],
   plugins: [],
+  curly: ['error', 'multi'],
   rules: {
     'vue/multi-word-component-names': 0,
     'vue/no-multiple-template-root': 0
+
   }
 }
