@@ -138,7 +138,6 @@ const onRateInterview = async (index: number) => {
   
   if(result.data && result.data.value?.data) {
     const data = JSON.parse(result.data.value.data)
-    debugger
     questions.value[index].rateDescription = data.result
     questions.value[index].rate = data.rate
   }

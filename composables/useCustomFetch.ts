@@ -4,7 +4,8 @@ import { nanoid } from 'nanoid'
 
 interface Options {
   globalError?: boolean,
-  globalLoader?: boolean
+  globalLoader?: boolean,
+  cache?: boolean
 }
 
 const { add } = useToast()
@@ -34,12 +35,14 @@ export const useCustomFetch = <T> (url: string, fetchOptions: UseFetchOptions<T>
       })
     }
   }
-
+  
   const params = defu(fetchOptions, defaults)
 
   const loading = ref(false)
-
+  
   const request = async <T> (arg: any) => {
+    if(options.hasOwnProperty('cache') && !options.cache) params.key = nanoid()
+
     let globalLoader: any
     if(options.globalLoader) globalLoader = ElLoading.service({ fullscreen: true })
     loading.value = true
