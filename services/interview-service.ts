@@ -1,5 +1,3 @@
-import { nanoid } from 'nanoid'
-
 export const interviewService = useCustomFetch('/api/interview', { method: 'POST' }, { globalError: true, globalLoader: true })
 export const interviewMlService = useCustomFetch('/api/interview-ml', { method: 'POST' }, { globalError: true, globalLoader: true })
 export const interviewRate = useCustomFetch('/api/rate-interview', { method: 'POST' }, { globalError: true, cache: false })
