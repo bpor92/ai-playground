@@ -3,7 +3,8 @@ import { defu } from 'defu'
 import { nanoid } from 'nanoid'
 
 interface Options {
-  globalError?: boolean
+  globalError?: boolean,
+  globalLoader?: boolean
 }
 
 const { add } = useToast()
@@ -39,9 +40,12 @@ export const useCustomFetch = <T> (url: string, fetchOptions: UseFetchOptions<T>
   const loading = ref(false)
 
   const request = async <T> (arg: any) => {
+    let globalLoader: any
+    if(options.globalLoader) globalLoader = ElLoading.service({ fullscreen: true })
     loading.value = true
     const data = await useFetch<T>(url, { ...params, ...arg })
     loading.value = false
+    if(options.globalLoader) globalLoader.close()
     return data
   }
 
