@@ -9,8 +9,8 @@
 </template>
 
 <script setup lang="ts">
-import { nanoid } from 'nanoid'
 import { Message, User } from '~~/types/chat'
+import { AiResponse } from "~/server/utils/open-ai-response-handler";
 
 const user = ref<User>({
   id: 'user',
@@ -38,33 +38,21 @@ const messagesToApi = computed(() =>
 const messages = ref<Message[]>([])
 const typings = ref<User[]>([])
 
+const { request } = useChat()
 const onSendMessage = async (message: Message) => {
   typings.value.push(bot.value)
   messages.value.push(message)
-  try {
-    const { chat } = useChatGpt()
-    const { id, data, error } = await chat(messagesToApi.value)
-    if (error) { throw new Error(error) }
+  const response = await request<AiResponse>({ body: { messages: messagesToApi.value } })
 
-    typings.value = []
-
-    const msg = {
-      id,
+  typings.value = []
+  if(response.data.value?.data) { 
+    const msg: Message = {
+      id: response.data.value?.id,
       userId: bot.value.id,
       createdAt: new Date(),
-      text: data
+      text: response.data.value?.data
     }
-
     messages.value.push(msg)
-  } catch (error) {
-    typings.value = []
-    const { add } = useToast()
-    add({
-      id: nanoid(),
-      title: '',
-      content: error as string,
-      mode: 'error'
-    })
   }
 }
 </script>

@@ -1,5 +1,5 @@
 interface Message {
-  id: string,
+  id: string | null,
   userId: string,
   text: string,
   createdAt: Date,
