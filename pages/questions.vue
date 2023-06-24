@@ -27,20 +27,20 @@
 </template>
 
 <script lang="ts" setup>
+import { AiResponse } from "~/server/utils/open-ai-response-handler";
+
 const form = reactive({
   position: 'Frontend developer',
   level: 'Junior'
 })
 
 const result = ref('')
-const loader = ref(false)
 
+const { request, loading: loader } = useInterviewQuestion()
 const onCreateQuestion = async () => {
-  loader.value = true
-  const { api } = useQuestionGenerator()
-  const response = await api({ position: form.position, level: form.level })
-  result.value = response.data
-  loader.value = false
+  const response = await request<AiResponse>({ body: { position: form.position, level: form.level }})
+  if(response.data.value?.data) {
+    result.value = response.data.value?.data
+  }
 }
-
 </script>

@@ -6,7 +6,6 @@ export const useJobDescription = () => {
   }
 }
 
-
 export const useJobTasks = () => {
   return {
     ...jobTasksService

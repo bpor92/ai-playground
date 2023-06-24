@@ -163,15 +163,17 @@ const onCsv = () => download(prepareDataToCsv())
 const fileContent = ref('')
 const onFile = (val: string) => { fileContent.value = val }
 
+const { request: interviewAnswerRequest } = useInterviewAnswers()
 const onGenerateAnswers = async () => {
   ratedQuestions.value = false
-  const { generateAnswer } = useGenerateAnswers()
 
   for (let index = 0; index <= form.questions.length; index++) {
     form.questions[index].loader = true
-    const response = await generateAnswer({ answerLevel: form.answerLevel, question: form.questions[index].text })
+    const response = await interviewAnswerRequest<AiResponse>({ body: { answerLevel: form.answerLevel, question: form.questions[index].text }})
     form.questions[index].loader = false
-    form.questions[index].value = response.data
+    if(response.data.value?.data) {
+      form.questions[index].value = response.data.value?.data
+    }
   }
 }
 

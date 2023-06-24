@@ -1,4 +1,11 @@
-import { interviewService, interviewMlService, interviewRate, interviewSummary } from '../services/interview-service'
+import { 
+  interviewService,
+  interviewMlService,
+  interviewRate,
+  interviewSummary,
+  interviewQuestion,
+  interviewAnswers 
+  } from '../services/interview-service'
 
 export type ResponseML = {
   id: string,
@@ -27,5 +34,17 @@ export const useInterviewRate = () => {
 export const useInterviewSummary = () => {
   return {
     ...interviewSummary
+  }
+}
+
+export const useInterviewQuestion = () => {
+  return {
+    ...interviewQuestion
+  }
+}
+
+export const useInterviewAnswers = () => {
+  return {
+    ...interviewAnswers
   }
 }

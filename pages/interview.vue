@@ -142,7 +142,7 @@ const onRateInterview = async (index: number) => {
     questions.value[index].rateDescription = data.result
     questions.value[index].rate = data.rate
   }
-
+  
   questions.value[index].loader = false
 }
 
