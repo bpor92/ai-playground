@@ -1,0 +1,23 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-aichat-dev-182358-authRole",
+      "UnauthRoleArn": "arn:aws:iam::052381271413:role/amplify-aichat-dev-182358-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::052381271413:role/amplify-aichat-dev-182358-authRole",
+      "Region": "eu-north-1",
+      "DeploymentBucketName": "amplify-aichat-dev-182358-deployment",
+      "UnauthRoleName": "amplify-aichat-dev-182358-unauthRole",
+      "StackName": "amplify-aichat-dev-182358",
+      "StackId": "arn:aws:cloudformation:eu-north-1:052381271413:stack/amplify-aichat-dev-182358/04a69250-19be-11ee-9ea2-0e33cdd291b6",
+      "AmplifyAppId": "dklv11pnyp779"
+    },
+    "categories": {
+      "auth": {
+        "aichat45455fd7": {}
+      },
+      "predictions": {
+        "speechGenerator5383765b": {}
+      }
+    }
+  }
+}

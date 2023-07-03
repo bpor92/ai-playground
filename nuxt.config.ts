@@ -9,6 +9,14 @@ export default defineNuxtConfig({
       pathPrefix: false
     }
   ],
+  alias: {
+    "./runtimeConfig" : "./runtimeConfig.browser"
+  },
+  vite: {
+    define: {
+      "window.global": {}
+    }
+  },
   runtimeConfig: {
     OPENAI_API_KEY: '',
     AZURE_API_KEY: '',

@@ -50,6 +50,7 @@ import Markdown from 'vue3-markdown-it'
 import { AiResponse } from '~/server/utils/open-ai-response-handler'
 import { jobs } from '~/types/employee-position'
 import { JobDescription } from '~/types/job-description'
+import { Predictions } from "aws-amplify";
 
 const form = reactive<{
   position: string,
@@ -80,7 +81,27 @@ const generateJobDescription = async () => {
 const { request, loading } = useJobTasks()
 const prepareTasks = async () => {
   const { data, error } = await request<AiResponse>({ body: { position: form.position } })
+    
   if (error.value?.statusMessage) console.log(error.value?.statusMessage)
-  if (data.value) { form.tasks = data.value.data }
+  if (data.value) { 
+    form.tasks = data.value.data
+    play(data.value.data)
+   }
+}
+
+
+async function play(text: string) {
+  const res = await Predictions.convert({
+    textToSpeech: {
+      source: {
+        text: text
+      },
+      voiceId: "Ewa" // default configured on aws-exports.js
+      // list of different options are here https://docs.aws.amazon.com/polly/latest/dg/voicelist.html
+    }
+  });
+  var audio = new Audio();
+  audio.src = res.speech.url;
+  audio.play();
 }
 </script>

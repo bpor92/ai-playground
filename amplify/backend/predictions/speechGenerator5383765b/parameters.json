@@ -1,0 +1,14 @@
+{
+    "resourceName": "speechGenerator5383765b",
+    "convertPolicyName": "speechGeneratorPolicy5383765b",
+    "authRoleName": {
+        "Ref": "AuthRoleName"
+    },
+    "unauthRoleName": {
+        "Ref": "UnauthRoleName"
+    },
+    "convertType": "speechGenerator",
+    "language": "pl-PL",
+    "voice": "Maja",
+    "access": "authAndGuest"
+}
